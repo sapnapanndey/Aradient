@@ -1,6 +1,14 @@
 "use client";
 
+import Image from "next/image";
+import akankshaImage from "../images/akanksha.jpeg";
 import { useEffect, useMemo, useState } from "react";
+import engineeringImage from "../images/engineering.png";
+import kunalReddyImage from "../images/kunal Reddy.png";
+import launchImage from "../images/launch.png";
+import prototypeImage from "../images/prototype.png";
+import sonamTripathiImage from "../images/Sonam Tripathi.png";
+import strategyImage from "../images/strategy.png";
 import siteContent from "./content/site-content.json";
 
 function SvgIcon({
@@ -146,10 +154,17 @@ function SvgIcon({
   }
 }
 
+const teamImages = {
+  akanksha: akankshaImage,
+  kunalReddy: kunalReddyImage,
+  sonamTripathi: sonamTripathiImage,
+} as const;
+
 export default function Home() {
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [activeProductIndex, setActiveProductIndex] = useState(0);
   const [flippedSuccessIndex, setFlippedSuccessIndex] = useState<number | null>(null);
+  const [headerOnLight, setHeaderOnLight] = useState(false);
   const [visibleSections, setVisibleSections] = useState<number[]>([]);
 
   const {
@@ -198,6 +213,25 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const updateHeaderTheme = () => {
+      const triggerSection = document.getElementById("company");
+      if (!triggerSection) return;
+
+      const switchPoint = triggerSection.offsetTop - 88;
+      setHeaderOnLight(window.scrollY >= switchPoint);
+    };
+
+    updateHeaderTheme();
+    window.addEventListener("scroll", updateHeaderTheme, { passive: true });
+    window.addEventListener("resize", updateHeaderTheme);
+
+    return () => {
+      window.removeEventListener("scroll", updateHeaderTheme);
+      window.removeEventListener("resize", updateHeaderTheme);
+    };
+  }, []);
+
   const activeProduct = useMemo(
     () => products.items[activeProductIndex],
     [activeProductIndex, products.items],
@@ -208,7 +242,7 @@ export default function Home() {
 
   return (
     <main>
-      <nav>
+      <nav className={headerOnLight ? "nav-on-light" : "nav-on-dark"}>
         <div className="nav-logo">
           <span className="dot" />
           {brand.name}
@@ -284,24 +318,12 @@ export default function Home() {
             </div>
             <div className="feature-visual" aria-hidden="true">
               <div className="feature-glow" />
-              <div className="feature-orbit feature-orbit-one" />
-              <div className="feature-orbit feature-orbit-two" />
-              <div className="feature-orbit feature-orbit-three" />
-              {showcase.orbits.map((orbit) => (
-                <div className={orbit.className} key={orbit.className}>
-                  <SvgIcon name={orbit.icon} className="icon-svg orbit-chip-svg" />
-                </div>
-              ))}
-              <div className="feature-robot">
-                <div className="robot-head">
-                  <div className="robot-eye" />
-                </div>
-                <div className="robot-neck" />
-                <div className="robot-body" />
-                <div className="robot-headset">
-                  <div className="robot-headset-ring" />
-                </div>
-              </div>
+              <Image
+                alt="Engineering illustration"
+                className="feature-image"
+                priority
+                src={engineeringImage}
+              />
             </div>
           </article>
 
@@ -310,6 +332,8 @@ export default function Home() {
 
       <section className={`success-section ${isVisible(3)}`} data-reveal="3" id="services">
         <div className="success-shell">
+          <div className="success-ambient success-ambient-left" aria-hidden="true" />
+          <div className="success-ambient success-ambient-right" aria-hidden="true" />
           <div className={`success-header ${isVisible(4)}`} data-reveal="4">
             <h2>{successSection.title}</h2>
             <p>{successSection.description}</p>
@@ -333,10 +357,23 @@ export default function Home() {
                 >
                   <div className="success-card-inner">
                     <div className="success-card-face success-card-front">
-                      <div className={step.iconClassName}>
-                        <SvgIcon name={step.icon} className="icon-svg success-svg" />
+                      <div
+                        className={`${step.iconClassName} ${
+                          step.image ? "success-icon-plain" : ""
+                        }`}
+                      >
+                        {step.image === "strategy" ? (
+                          <Image alt="" className="success-image-icon" src={strategyImage} />
+                        ) : step.image === "prototype" ? (
+                          <Image alt="" className="success-image-icon" src={prototypeImage} />
+                        ) : step.image === "launch" ? (
+                          <Image alt="" className="success-image-icon" src={launchImage} />
+                        ) : (
+                          <SvgIcon name={step.icon} className="icon-svg success-svg" />
+                        )}
                       </div>
                       <h3>{step.title}</h3>
+                      <div className="success-card-line" aria-hidden="true" />
                       <span className="success-card-hint">View details</span>
                     </div>
 
@@ -346,13 +383,6 @@ export default function Home() {
                     </div>
                   </div>
                 </button>
-                {index < successSection.steps.length - 1 ? (
-                  <div className="success-connector" aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                ) : null}
               </div>
             ))}
           </div>
@@ -408,12 +438,21 @@ export default function Home() {
                 key={member.name}
               >
                 <div className={`team-portrait team-portrait-${member.variant}`}>
-                  <img
-                    alt={member.name}
-                    className="team-portrait-image"
-                    loading="lazy"
-                    src={member.image}
-                  />
+                  {member.image in teamImages ? (
+                    <Image
+                      alt={member.name}
+                      className="team-portrait-image"
+                      loading="lazy"
+                      src={teamImages[member.image as keyof typeof teamImages]}
+                    />
+                  ) : (
+                    <img
+                      alt={member.name}
+                      className="team-portrait-image"
+                      loading="lazy"
+                      src={member.image}
+                    />
+                  )}
                 </div>
                 <div className="team-copy">
                   <h3>{member.name}</h3>

@@ -81,19 +81,22 @@
         "icon": "idea",
         "iconClassName": "success-icon success-icon-violet",
         "title": "Define & Strategize",
-        "description": "Collaborate to identify objectives, strategy and requirements"
+        "description": "Collaborate to identify objectives, strategy and requirements",
+        "image": "strategy"
       },
       {
         "icon": "tools",
         "iconClassName": "success-icon success-icon-blue",
         "title": "Prototype & Build",
-        "description": "Rapid prototyping and agile MVP delivery"
+        "description": "Rapid prototyping and agile MVP delivery",
+        "image": "prototype"
       },
       {
         "icon": "rocket",
         "iconClassName": "success-icon success-icon-mint",
         "title": "Launch & Optimize",
-        "description": "Launch confidently and iterate with data-driven insights"
+        "description": "Launch confidently and iterate with data-driven insights",
+        "image": "launch"
       }
     ]
   },
@@ -101,9 +104,9 @@
     "title": "Our Clients",
     "description": "Forward-thinking teams trust Aradient to design, build, and scale digital products, AI workflows, and modern software systems.",
     "rows": [
-      ["Northstar", "Velora", "Lumio", "Korbit", "Helix Labs", "Aven", "Solvix"],
-      ["Acora", "Fintrix", "Novus Health", "Pixelcraft", "Zenbyte", "Verto", "Aptiq"],
-      ["OrbitOne", "Bluepeak", "Kinetic", "Flexton", "Datanova", "Inventa", "MercuryOS"]
+      ["FixAi Canada", "Samgra Enterprises Solar Company", "Gurukul Technology", "Deep Individual Coaching"],
+      ["FixAi Canada", "Gurukul Technology", "Samgra Enterprises Solar Company", "Deep Individual Coaching"],
+      ["Deep Individual Coaching", "FixAi Canada", "Samgra Enterprises Solar Company", "Gurukul Technology"]
     ]
   },
   "teamSection": {
@@ -112,28 +115,22 @@
     "description": "Our skilled team continuously innovates, ensuring our product stays ahead of industry standards.",
     "members": [
       {
-        "name": "Ritu Malhotra",
-        "role": "CEO & Owner",
+        "name": "Akanksha Kumari",
+        "role": "Managing Director",
         "variant": "pink",
-        "image": "https://placehold.co/640x720/f3a9c5/241f2b?text=Ritu"
+        "image": "akanksha"
       },
       {
-        "name": "Kavita Sinha",
-        "role": "Co-Founder",
-        "variant": "neutral",
-        "image": "https://placehold.co/640x720/e8e6e4/241f2b?text=Kavita"
-      },
-      {
-        "name": "Dev Patel",
-        "role": "Marketing Manager",
+        "name": "Sonam Tripathi",
+        "role": "Marketing Head",
         "variant": "plum",
-        "image": "https://placehold.co/640x720/d4c1c8/241f2b?text=Dev"
+        "image": "sonamTripathi"
       },
       {
-        "name": "Kunal Verma",
-        "role": "Developer",
+        "name": "Kunal Reddy",
+        "role": "CTO",
         "variant": "blue",
-        "image": "https://placehold.co/640x720/c8d7ec/241f2b?text=Kunal"
+        "image": "kunalReddy"
       }
     ]
   },
