@@ -111,37 +111,37 @@
     "ctaButton": "Call Us Now",
     "items": [
       {
-        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/in/illustrations/previews/xWrhgyf6uCRFKSrI.webp",
+        "illustrationUrl": "https://www.svgrepo.com/show/1699/web-development.svg",
         "title": "Web App Development",
         "description": "Responsive product websites, dashboards, admin panels, and full-featured web applications."
       },
       {
-        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/tm/illustrations/previews/_ATRSSbCs3bFxHu7.webp",
+        "illustrationUrl": "https://www.svgrepo.com/show/530452/mobile-app.svg",
         "title": "Mobile App Development",
         "description": "Cross-platform iOS and Android apps with polished user experience and scalable architecture."
       },
       {
-        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/wy/illustrations/previews/-m3pfcKcWqPN5WYE.webp",
+        "illustrationUrl": "https://www.svgrepo.com/show/198469/artificial-intelligence.svg",
         "title": "AI Solutions",
         "description": "AI assistants, copilots, retrieval systems, workflows, and intelligent product experiences."
       },
       {
-        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/nj/illustrations/previews/ohJ0h5S6xCKO_6op.webp",
+        "illustrationUrl": "https://www.svgrepo.com/show/20519/coding.svg",
         "title": "Custom Software",
         "description": "Tailored platforms and internal tools built around your business model, users, and operations."
       },
       {
-        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/kx/illustrations/previews/ZXHSdr_DYccYqoDh.webp",
+        "illustrationUrl": "https://www.svgrepo.com/show/409864/automation.svg",
         "title": "Automation & Integrations",
         "description": "Automate repetitive work and connect CRMs, APIs, internal systems, and third-party services."
       },
       {
-        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/qd/illustrations/previews/F9bLVoXqqPKUIJxs.webp",
+        "illustrationUrl": "https://www.svgrepo.com/show/374212/api.svg",
         "title": "Backend & APIs",
         "description": "Reliable backend systems, secure APIs, databases, authentication, and cloud-ready architecture."
       },
       {
-        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/rl/illustrations/previews/yYdhW4trFpOeMJUb.webp",
+        "illustrationUrl": "https://www.svgrepo.com/show/192987/analytics.svg",
         "title": "Data & Analytics",
         "description": "Reporting pipelines, operational dashboards, data workflows, and product analytics foundations."
       }
