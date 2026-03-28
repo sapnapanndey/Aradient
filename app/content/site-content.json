@@ -424,33 +424,29 @@
   },
   "footer": {
     "description": "Aradient builds AI products and custom software for teams that want practical innovation, fast execution, and durable systems.",
-    "columns": [
+    "contacts": [
       {
-        "title": "SERVICES",
-        "links": [
-          {
-            "label": "AI Product Development",
-            "href": "#products"
-          },
-          {
-            "label": "Custom Software Engineering",
-            "href": "#products"
-          },
-          {
-            "label": "Workflow Automation",
-            "href": "#products"
-          },
-          {
-            "label": "Technical Discovery",
-            "href": "#services"
-          }
-        ]
+        "icon": "phone",
+        "label": "+91 98765 43210",
+        "href": "tel:+919876543210"
       },
       {
-        "title": "COMPANY",
+        "icon": "mail",
+        "label": "hello@aradient.com",
+        "href": "mailto:hello@aradient.com"
+      },
+      {
+        "icon": "location",
+        "label": "Remote-first team supporting India, US, and global product teams",
+        "href": "#company"
+      }
+    ],
+    "columns": [
+      {
+        "title": "Getting Started",
         "links": [
           {
-            "label": "About Aradient",
+            "label": "Introduction",
             "href": "#company"
           },
           {
@@ -459,33 +455,130 @@
           },
           {
             "label": "Capabilities",
-            "href": "#capabilities"
+            "href": "#products"
           },
           {
-            "label": "Contact",
+            "label": "Book a Discovery Call",
+            "href": "#company"
+          },
+          {
+            "label": "Technology Stack",
+            "href": "#clients"
+          },
+          {
+            "label": "Team",
+            "href": "#team"
+          }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          {
+            "label": "About Us",
+            "href": "#company"
+          },
+          {
+            "label": "Products",
+            "href": "#products"
+          },
+          {
+            "label": "Our Services",
+            "href": "#services"
+          },
+          {
+            "label": "Clients & Tech",
+            "href": "#clients"
+          },
+          {
+            "label": "Contact Us",
             "href": "#company"
           }
         ]
       },
       {
-        "title": "FOCUS",
+        "title": "Partner",
         "links": [
           {
-            "label": "AI Applications",
-            "href": "#products"
+            "label": "For Startups",
+            "href": "#company"
           },
           {
-            "label": "Internal Tools",
-            "href": "#products"
+            "label": "For Enterprises",
+            "href": "#company"
           },
           {
-            "label": "Automation Systems",
-            "href": "#products"
+            "label": "For Product Teams",
+            "href": "#company"
+          },
+          {
+            "label": "For Founders",
+            "href": "#company"
+          }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          {
+            "label": "Support",
+            "href": "#company"
+          },
+          {
+            "label": "Security",
+            "href": "#company"
+          },
+          {
+            "label": "Help Center",
+            "href": "#company"
+          },
+          {
+            "label": "Privacy Policy",
+            "href": "#company"
+          },
+          {
+            "label": "Terms of Use",
+            "href": "#company"
           }
         ]
       }
     ],
     "copyright": "© 2026 Aradient. All rights reserved.",
-    "bottomTagline": "Built for teams shipping intelligent software."
+    "bottomLinks": [
+      {
+        "label": "Terms & Conditions",
+        "href": "#company"
+      },
+      {
+        "label": "Privacy Policy",
+        "href": "#company"
+      },
+      {
+        "label": "Cookie Policy",
+        "href": "#company"
+      }
+    ],
+    "socials": [
+      {
+        "label": "Facebook",
+        "href": "#company",
+        "icon": "facebook"
+      },
+      {
+        "label": "X",
+        "href": "#company",
+        "icon": "x-social"
+      },
+      {
+        "label": "Instagram",
+        "href": "#company",
+        "icon": "instagram"
+      },
+      {
+        "label": "Dribbble",
+        "href": "#company",
+        "icon": "globe"
+      }
+    ]
   }
 }

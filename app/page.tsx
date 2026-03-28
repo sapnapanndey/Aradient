@@ -178,6 +178,53 @@ function SvgIcon({
           <path d="M8.5 13H11.5M8.5 16H10.5M13.5 16H15.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
         </svg>
       );
+    case "phone":
+      return (
+        <svg {...sharedProps}>
+          <path d="M7.2 4.8C7.9 4.1 9.1 4.1 9.8 4.8L11.5 6.5C12.2 7.2 12.2 8.3 11.5 9L10.5 10C10.9 10.8 11.4 11.6 12.1 12.3C12.8 13 13.5 13.5 14.4 14L15.4 13C16.1 12.3 17.2 12.3 17.9 13L19.6 14.7C20.3 15.4 20.3 16.6 19.6 17.3L18.7 18.2C17.8 19.1 16.4 19.5 15.1 19.1C12.6 18.3 10.3 16.8 8.3 14.8C6.3 12.8 4.8 10.5 4 8C3.6 6.7 4 5.3 4.9 4.4L5.8 3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "mail":
+      return (
+        <svg {...sharedProps}>
+          <rect x="3.5" y="5.5" width="17" height="13" rx="2.4" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M4.5 7L12 12.5L19.5 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "location":
+      return (
+        <svg {...sharedProps}>
+          <path d="M12 20C15.8 16.2 18 13.5 18 10.2C18 6.8 15.3 4 12 4C8.7 4 6 6.8 6 10.2C6 13.5 8.2 16.2 12 20Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+          <circle cx="12" cy="10" r="2.2" stroke="currentColor" strokeWidth="1.6" />
+        </svg>
+      );
+    case "facebook":
+      return (
+        <svg {...sharedProps}>
+          <path d="M13.3 20V12.8H15.7L16.1 10H13.3V8.2C13.3 7.4 13.6 6.8 14.8 6.8H16.2V4.3C15.9 4.3 14.9 4.2 13.8 4.2C11.5 4.2 10 5.6 10 8.1V10H7.6V12.8H10V20H13.3Z" fill="currentColor" />
+        </svg>
+      );
+    case "x-social":
+      return (
+        <svg {...sharedProps}>
+          <path d="M5 5L10.6 12.5L5.4 19H7.9L11.8 14.1L15.5 19H19L13.1 11.2L18 5H15.5L11.9 9.6L8.5 5H5Z" fill="currentColor" />
+        </svg>
+      );
+    case "instagram":
+      return (
+        <svg {...sharedProps}>
+          <rect x="4" y="4" width="16" height="16" rx="4.2" stroke="currentColor" strokeWidth="1.6" />
+          <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.6" />
+          <circle cx="17.2" cy="6.8" r="1" fill="currentColor" />
+        </svg>
+      );
+    case "globe":
+      return (
+        <svg {...sharedProps}>
+          <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M3.8 12H20.2M12 3.8C14.2 6.1 15.4 9 15.4 12C15.4 15 14.2 17.9 12 20.2C9.8 17.9 8.6 15 8.6 12C8.6 9 9.8 6.1 12 3.8Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        </svg>
+      );
     case "react":
       return (
         <svg {...sharedProps}>
@@ -1015,6 +1062,16 @@ export default function Home() {
               {brand.name}
             </div>
             <p>{footer.description}</p>
+            <div className="footer-contact-list">
+              {footer.contacts.map((item) => (
+                <a className="footer-contact-item" href={item.href} key={item.label}>
+                  <span className="footer-contact-icon" aria-hidden="true">
+                    <SvgIcon className="icon-svg" name={item.icon} />
+                  </span>
+                  <span>{item.label}</span>
+                </a>
+              ))}
+            </div>
           </div>
           {footer.columns.map((column) => (
             <div className="footer-col" key={column.title}>
@@ -1029,7 +1086,25 @@ export default function Home() {
         </div>
         <div className="footer-bottom">
           <p>{footer.copyright}</p>
-          <p>{footer.bottomTagline}</p>
+          <div className="footer-bottom-links">
+            {footer.bottomLinks.map((link) => (
+              <a href={link.href} key={link.label}>
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div className="footer-socials">
+            {footer.socials.map((social) => (
+              <a
+                aria-label={social.label}
+                className="footer-social-link"
+                href={social.href}
+                key={social.label}
+              >
+                <SvgIcon className="icon-svg footer-social-icon" name={social.icon} />
+              </a>
+            ))}
+          </div>
         </div>
       </footer>
 
