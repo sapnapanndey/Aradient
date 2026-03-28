@@ -1,0 +1,277 @@
+{
+  "metadata": {
+    "title": "Aradient | AI Product-Focused Software Development Company",
+    "description": "Aradient designs, builds, and scales AI products, custom software platforms, and intelligent automation for ambitious teams."
+  },
+  "brand": {
+    "name": "Aradient",
+    "tagline": "AI Product-Focused Software Development Company"
+  },
+  "navigation": {
+    "links": [
+      {
+        "label": "Services",
+        "href": "#services"
+      },
+      {
+        "label": "Capabilities",
+        "href": "#capabilities"
+      },
+      {
+        "label": "Products",
+        "href": "#products"
+      },
+      {
+        "label": "Company",
+        "href": "#company"
+      }
+    ],
+    "cta": "Book a discovery call"
+  },
+  "hero": {
+    "badge": "AI-first digital product studio",
+    "words": ["products", "agents", "platforms", "workflows"],
+    "titlePrefix": "We build",
+    "titleSuffix": "for modern teams",
+    "description": "Aradient partners with startups and enterprises to design, engineer, and launch AI-powered software products that create measurable business momentum.",
+    "formPlaceholder": "Enter your work email",
+    "formButton": "Start a project",
+    "stats": [
+      {
+        "value": "AI",
+        "label": "Native product thinking"
+      },
+      {
+        "value": "Full-stack",
+        "label": "Design to deployment"
+      },
+      {
+        "value": "Fast",
+        "label": "Lean delivery cycles"
+      }
+    ]
+  },
+  "showcase": {
+    "feature": {
+      "title": "Engineering software that turns AI into a real business advantage",
+      "description": "We combine product strategy, UX, modern web engineering, backend systems, and AI integration to turn ambitious ideas into dependable software.",
+      "primaryButton": "Get Started",
+      "secondaryButton": "Learn More"
+    },
+    "orbits": [
+      {
+        "icon": "gear",
+        "className": "orbit-chip orbit-chip-blue"
+      },
+      {
+        "icon": "rocket",
+        "className": "orbit-chip orbit-chip-violet"
+      },
+      {
+        "icon": "brain",
+        "className": "orbit-chip orbit-chip-dark"
+      }
+    ],
+    "capabilities": [
+      {
+        "icon": "spark",
+        "iconClassName": "capability-icon capability-icon-dark",
+        "title": "Rapid prototyping & MVP delivery",
+        "description": "Quickly bring ideas to life and validate concepts",
+        "size": "wide"
+      },
+      {
+        "icon": "bot",
+        "iconClassName": "capability-icon capability-icon-light",
+        "title": "AI copilots & workflow automation",
+        "description": "Build AI assistants to automate tasks and improve efficiency",
+        "size": "wide"
+      },
+      {
+        "icon": "bot",
+        "iconClassName": "capability-icon capability-icon-light",
+        "title": "AI copilots & workflow automation",
+        "description": "Build AI assistants to automate tasks and improve efficiency",
+        "size": "standard"
+      },
+      {
+        "icon": "puzzle",
+        "iconClassName": "capability-icon capability-icon-mint",
+        "title": "Scalable web apps & AI platforms",
+        "description": "Develop apps, APIs, and internal tools ready to scale",
+        "size": "standard"
+      }
+    ],
+    "cta": {
+      "title": "Work with a team that can shape the product vision, build the platform, and evolve it as your AI roadmap matures.",
+      "steps": [
+        {
+          "icon": "idea",
+          "label": "Vision"
+        },
+        {
+          "icon": "tools",
+          "label": "Development"
+        },
+        {
+          "icon": "rocket",
+          "label": "Launch"
+        }
+      ]
+    }
+  },
+  "successSection": {
+    "title": "How we help you succeed",
+    "description": "From idea to scale, our process is tailored to meet teams where they are and drive impact at each stage.",
+    "steps": [
+      {
+        "icon": "idea",
+        "iconClassName": "success-icon success-icon-violet",
+        "title": "Define & Strategize",
+        "description": "Collaborate to identify objectives, strategy and requirements"
+      },
+      {
+        "icon": "tools",
+        "iconClassName": "success-icon success-icon-blue",
+        "title": "Prototype & Build",
+        "description": "Rapid prototyping and agile MVP delivery"
+      },
+      {
+        "icon": "rocket",
+        "iconClassName": "success-icon success-icon-mint",
+        "title": "Launch & Optimize",
+        "description": "Launch confidently and iterate with data-driven insights"
+      }
+    ]
+  },
+  "products": {
+    "items": [
+      {
+        "icon": "brain",
+        "title": "AI Product Development",
+        "badge": "Product Strategy",
+        "centerIcon": "brain",
+        "items": [
+          {
+            "label": "Opportunity mapping",
+            "text": "Identify where AI creates real value across your product, operations, and customer experience."
+          },
+          {
+            "label": "MVP definition",
+            "text": "Scope launch-ready products with clear priorities, workflows, and measurable outcomes."
+          },
+          {
+            "label": "Execution leadership",
+            "text": "Move from idea to release with structured delivery and hands-on technical ownership."
+          }
+        ]
+      },
+      {
+        "icon": "code",
+        "title": "Custom Software Engineering",
+        "badge": "Full-Stack Build",
+        "centerIcon": "code",
+        "items": [
+          {
+            "label": "Modern frontend systems",
+            "text": "Responsive web apps built for speed, clarity, and conversion."
+          },
+          {
+            "label": "Backend and APIs",
+            "text": "Reliable services, integrations, data models, and business logic tailored to your workflows."
+          },
+          {
+            "label": "Production readiness",
+            "text": "Deployable software with maintainable code, observability, and room to scale."
+          }
+        ]
+      },
+      {
+        "icon": "bot",
+        "title": "Automation and AI Enablement",
+        "badge": "Workflow Automation",
+        "centerIcon": "automation",
+        "items": [
+          {
+            "label": "Agentic workflows",
+            "text": "Automate research, support, operations, and repetitive internal tasks."
+          },
+          {
+            "label": "LLM integrations",
+            "text": "Connect models, tools, and data sources into secure product experiences."
+          },
+          {
+            "label": "Human-in-the-loop systems",
+            "text": "Balance automation with review flows, governance, and business control."
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "description": "Aradient builds AI products and custom software for teams that want practical innovation, fast execution, and durable systems.",
+    "columns": [
+      {
+        "title": "SERVICES",
+        "links": [
+          {
+            "label": "AI Product Development",
+            "href": "#products"
+          },
+          {
+            "label": "Custom Software Engineering",
+            "href": "#products"
+          },
+          {
+            "label": "Workflow Automation",
+            "href": "#products"
+          },
+          {
+            "label": "Technical Discovery",
+            "href": "#services"
+          }
+        ]
+      },
+      {
+        "title": "COMPANY",
+        "links": [
+          {
+            "label": "About Aradient",
+            "href": "#company"
+          },
+          {
+            "label": "How We Work",
+            "href": "#services"
+          },
+          {
+            "label": "Capabilities",
+            "href": "#capabilities"
+          },
+          {
+            "label": "Contact",
+            "href": "#company"
+          }
+        ]
+      },
+      {
+        "title": "FOCUS",
+        "links": [
+          {
+            "label": "AI Applications",
+            "href": "#products"
+          },
+          {
+            "label": "Internal Tools",
+            "href": "#products"
+          },
+          {
+            "label": "Automation Systems",
+            "href": "#products"
+          }
+        ]
+      }
+    ],
+    "copyright": "© 2026 Aradient. All rights reserved.",
+    "bottomTagline": "Built for teams shipping intelligent software."
+  }
+}
