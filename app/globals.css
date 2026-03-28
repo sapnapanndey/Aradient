@@ -236,6 +236,12 @@ nav {
   transform: translateY(-2px);
 }
 
+.app-button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
 .app-button-primary:hover {
   background: var(--button-bg-hover);
   box-shadow: 0 20px 40px rgba(37, 99, 235, 0.28);
@@ -605,6 +611,13 @@ nav {
 .lead-modal-form textarea {
   resize: vertical;
   min-height: 120px;
+}
+
+.lead-modal-error {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .lead-modal::-webkit-scrollbar {

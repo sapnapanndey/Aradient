@@ -385,6 +385,8 @@ export default function Home() {
   const [heroEmail, setHeroEmail] = useState("");
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [isLeadSubmitted, setIsLeadSubmitted] = useState(false);
+  const [isLeadSubmitting, setIsLeadSubmitting] = useState(false);
+  const [leadSubmitError, setLeadSubmitError] = useState("");
   const [hasAutoOpenedLeadModal, setHasAutoOpenedLeadModal] = useState(false);
   const [leadForm, setLeadForm] = useState({
     name: "",
@@ -538,6 +540,7 @@ export default function Home() {
       ...current,
       email: prefilledEmail || current.email,
     }));
+    setLeadSubmitError("");
     setIsLeadSubmitted(false);
     setIsLeadModalOpen(true);
   };
@@ -556,10 +559,41 @@ export default function Home() {
     }));
   };
 
-  const handleLeadSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleLeadSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsLeadSubmitted(true);
-    setHeroEmail("");
+
+    setIsLeadSubmitting(true);
+    setLeadSubmitError("");
+
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(leadForm),
+      });
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(payload?.error || "Unable to send your request right now.");
+      }
+
+      setIsLeadSubmitted(true);
+      setHeroEmail("");
+      setLeadForm({
+        name: "",
+        email: "",
+        company: "",
+        requirement: "",
+      });
+    } catch (error) {
+      setLeadSubmitError(
+        error instanceof Error ? error.message : "Unable to send your request right now.",
+      );
+    } finally {
+      setIsLeadSubmitting(false);
+    }
   };
 
   const productCards = [
@@ -1280,8 +1314,9 @@ export default function Home() {
                         value={leadForm.requirement}
                       />
                     </label>
-                    <AppButton fullWidth type="submit">
-                      Submit
+                    {leadSubmitError ? <p className="lead-modal-error">{leadSubmitError}</p> : null}
+                    <AppButton disabled={isLeadSubmitting} fullWidth type="submit">
+                      {isLeadSubmitting ? "Sending..." : "Submit"}
                     </AppButton>
                   </form>
                 </div>
