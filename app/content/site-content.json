@@ -76,6 +76,33 @@
       }
     ]
   },
+  "learnMoreSection": {
+    "label": "Why Aradient",
+    "title": "What working with us looks like after the first conversation",
+    "description": "We help teams reduce ambiguity early, move into delivery quickly, and keep the product grounded in real business outcomes instead of demo-only AI.",
+    "highlights": [
+      {
+        "icon": "puzzle",
+        "title": "Product-first planning",
+        "description": "We shape scope around customer value, business goals, and the fastest path to a useful first release."
+      },
+      {
+        "icon": "code",
+        "title": "Senior engineering execution",
+        "description": "From frontend to backend to AI workflows, we build production-ready systems that can actually be maintained and scaled."
+      },
+      {
+        "icon": "automation",
+        "title": "Practical AI integration",
+        "description": "We add AI where it improves speed, decisions, and operations, not where it creates extra complexity."
+      }
+    ],
+    "callout": {
+      "eyebrow": "Built for momentum",
+      "title": "Strategy, delivery, and iteration in one product team",
+      "description": "Whether you are validating a new product, modernizing internal software, or embedding AI into an existing workflow, we stay focused on launch quality, team clarity, and measurable progress."
+    }
+  },
   "successSection": {
     "title": "How we help you succeed",
     "description": "From idea to scale, our process is tailored to meet teams where they are and drive impact at each stage.",

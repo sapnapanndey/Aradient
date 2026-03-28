@@ -21,6 +21,7 @@ import samagraImageThree from "../images/apps/samagraenterprises/3.jpeg";
 import samagraImageTwo from "../images/apps/samagraenterprises/2.jpeg";
 import kunalReddyImage from "../images/kunal Reddy.png";
 import launchImage from "../images/launch.png";
+import logoImage from "../images/logo.png";
 import prototypeImage from "../images/prototype.png";
 import sonamTripathiImage from "../images/Sonam Tripathi.png";
 import strategyImage from "../images/strategy.png";
@@ -380,6 +381,7 @@ export default function Home() {
   const [flippedSuccessIndex, setFlippedSuccessIndex] = useState<number | null>(null);
   const [headerOnLight, setHeaderOnLight] = useState(false);
   const [visibleSections, setVisibleSections] = useState<number[]>([]);
+  const [isLearnMoreOpen, setIsLearnMoreOpen] = useState(false);
   const [heroEmail, setHeroEmail] = useState("");
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [isLeadSubmitted, setIsLeadSubmitted] = useState(false);
@@ -396,13 +398,13 @@ export default function Home() {
     clientsSection,
     footer,
     hero,
+    learnMoreSection,
     navigation,
     products,
     samagraProduct,
     servicesSection,
     showcase,
     successSection,
-    teamSection,
   } = siteContent;
 
   useEffect(() => {
@@ -520,6 +522,17 @@ export default function Home() {
   const isVisible = (index: number) =>
     visibleSections.includes(index) ? "reveal visible" : "reveal";
 
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleLearnMoreClick = () => {
+    setIsLearnMoreOpen(true);
+    window.setTimeout(() => {
+      scrollToSection("learn-more");
+    }, 120);
+  };
+
   const openLeadModal = (prefilledEmail = "") => {
     setLeadForm((current) => ({
       ...current,
@@ -619,8 +632,8 @@ export default function Home() {
     <main>
       <nav className={headerOnLight ? "nav-on-light" : "nav-on-dark"}>
         <div className="nav-logo">
-          <span className="dot" />
-          {brand.name}
+          <Image alt={`${brand.name} logo`} className="nav-logo-image" priority src={logoImage} />
+          <span className="brand-label">{brand.name}</span>
         </div>
         <div className="nav-links">
           {navigation.links.map((link) => (
@@ -693,7 +706,12 @@ export default function Home() {
                 >
                   {showcase.feature.primaryButton}
                 </AppButton>
-                <AppButton className="feature-btn" type="button" variant="secondary">
+                <AppButton
+                  className="feature-btn"
+                  onClick={handleLearnMoreClick}
+                  type="button"
+                  variant="secondary"
+                >
                   {showcase.feature.secondaryButton}
                 </AppButton>
               </div>
@@ -709,6 +727,49 @@ export default function Home() {
             </div>
           </article>
 
+          <section
+            className={`learn-more-section ${isLearnMoreOpen ? "is-open" : "is-hidden"} ${isVisible(100)}`}
+            data-reveal="100"
+            id="learn-more"
+          >
+            <div className={`learn-more-heading ${isVisible(101)}`} data-reveal="101">
+              <span className="learn-more-kicker">{learnMoreSection.label}</span>
+              <h3>{learnMoreSection.title}</h3>
+              <p>{learnMoreSection.description}</p>
+            </div>
+
+            <div className="learn-more-grid">
+              {learnMoreSection.highlights.map((highlight, index) => (
+                <article
+                  className={`learn-more-card ${isVisible(102 + index)}`}
+                  data-reveal={102 + index}
+                  key={highlight.title}
+                >
+                  <span className="learn-more-icon">
+                    <SvgIcon className="icon-svg" name={highlight.icon} />
+                  </span>
+                  <h4>{highlight.title}</h4>
+                  <p>{highlight.description}</p>
+                </article>
+              ))}
+
+              <aside className={`learn-more-callout ${isVisible(105)}`} data-reveal="105">
+                <span className="learn-more-callout-eyebrow">
+                  {learnMoreSection.callout.eyebrow}
+                </span>
+                <h4>{learnMoreSection.callout.title}</h4>
+                <p>{learnMoreSection.callout.description}</p>
+                <AppButton
+                  className="learn-more-callout-button"
+                  onClick={() => openLeadModal(heroEmail.trim())}
+                  type="button"
+                  variant="secondary"
+                >
+                  {navigation.cta}
+                </AppButton>
+              </aside>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -1008,6 +1069,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/*
       <section className={`team-section ${isVisible(10)}`} data-reveal="10" id="team">
         <div className="team-shell">
           <div className="team-heading">
@@ -1053,13 +1115,14 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       <footer className={isVisible(18)} data-reveal="18">
         <div className="footer-top">
           <div className="footer-brand">
-            <div className="nav-logo footer-logo">
-              <span className="dot" />
-              {brand.name}
+            <div className="footer-brand-lockup">
+              <Image alt={`${brand.name} logo`} className="footer-logo-image" src={logoImage} />
+              <span className="brand-label footer-brand-label">{brand.name}</span>
             </div>
             <p>{footer.description}</p>
             <div className="footer-contact-list">
@@ -1131,12 +1194,12 @@ export default function Home() {
 
             {isLeadSubmitted ? (
               <div className="lead-modal-success">
+                <div className="lead-modal-success-badge">Request sent</div>
                 <Image
                   alt="Contact illustration"
                   className="lead-modal-illustration"
                   src={contactImage}
                 />
-                <span className="lead-modal-eyebrow">Request sent</span>
                 <h2 id="lead-modal-title">We will get back to you soon.</h2>
                 <p>
                   Thanks for sharing your requirement. Our team will review it and
@@ -1147,56 +1210,82 @@ export default function Home() {
                 </AppButton>
               </div>
             ) : (
-              <>
-                <Image
-                  alt="Contact illustration"
-                  className="lead-modal-illustration"
-                  src={contactImage}
-                />
-                <span className="lead-modal-eyebrow">Start a conversation</span>
-                <h2 id="lead-modal-title">Share your requirement</h2>
-                <p className="lead-modal-copy">
-                  A few details are enough. We will follow up with the right next
-                  step.
-                </p>
+              <div className="lead-modal-shell">
+                <aside className="lead-modal-aside">
+                  <span className="lead-modal-eyebrow">Start a conversation</span>
+                  <h2 id="lead-modal-title">Share your requirement</h2>
+                  <p className="lead-modal-copy">
+                    A few details are enough. We will follow up with the right next
+                    step.
+                  </p>
 
-                <form className="lead-modal-form" onSubmit={handleLeadSubmit}>
-                  <input
-                    name="name"
-                    onChange={handleLeadFieldChange}
-                    placeholder="Your name"
-                    required
-                    type="text"
-                    value={leadForm.name}
-                  />
-                  <input
-                    name="email"
-                    onChange={handleLeadFieldChange}
-                    placeholder="Work email"
-                    required
-                    type="email"
-                    value={leadForm.email}
-                  />
-                  <input
-                    name="company"
-                    onChange={handleLeadFieldChange}
-                    placeholder="Company name"
-                    type="text"
-                    value={leadForm.company}
-                  />
-                  <textarea
-                    name="requirement"
-                    onChange={handleLeadFieldChange}
-                    placeholder="Briefly describe your requirement"
-                    required
-                    rows={4}
-                    value={leadForm.requirement}
-                  />
-                  <AppButton fullWidth type="submit">
-                    Submit
-                  </AppButton>
-                </form>
-              </>
+                  <div className="lead-modal-highlights">
+                    <span>Fast response</span>
+                    <span>Product thinking</span>
+                    <span>Execution-ready team</span>
+                  </div>
+
+                  <div className="lead-modal-visual">
+                    <Image
+                      alt="Contact illustration"
+                      className="lead-modal-illustration"
+                      src={contactImage}
+                    />
+                  </div>
+                </aside>
+
+                <div className="lead-modal-panel">
+                  <form className="lead-modal-form" onSubmit={handleLeadSubmit}>
+                    <label className="lead-modal-field">
+                      <span>Name</span>
+                      <input
+                        name="name"
+                        onChange={handleLeadFieldChange}
+                        placeholder="Your name"
+                        required
+                        type="text"
+                        value={leadForm.name}
+                      />
+                    </label>
+                    <label className="lead-modal-field">
+                      <span>Work email</span>
+                      <input
+                        name="email"
+                        onChange={handleLeadFieldChange}
+                        placeholder="name@company.com"
+                        required
+                        type="email"
+                        value={leadForm.email}
+                      />
+                    </label>
+                    <label className="lead-modal-field">
+                      <span>Company</span>
+                      <input
+                        aria-label="Company name optional"
+                        name="company"
+                        onChange={handleLeadFieldChange}
+                        placeholder="Company name (optional)"
+                        type="text"
+                        value={leadForm.company}
+                      />
+                    </label>
+                    <label className="lead-modal-field">
+                      <span>Requirement</span>
+                      <textarea
+                        name="requirement"
+                        onChange={handleLeadFieldChange}
+                        placeholder="Briefly describe your requirement"
+                        required
+                        rows={4}
+                        value={leadForm.requirement}
+                      />
+                    </label>
+                    <AppButton fullWidth type="submit">
+                      Submit
+                    </AppButton>
+                  </form>
+                </div>
+              </div>
             )}
           </div>
         </div>
