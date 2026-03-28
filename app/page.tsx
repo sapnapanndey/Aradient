@@ -7,6 +7,11 @@ import engineeringImage from "../images/engineering.png";
 import fixAiImageOne from "../images/apps/fixai/1.webp";
 import fixAiImageThree from "../images/apps/fixai/3.webp";
 import fixAiImageTwo from "../images/apps/fixai/2.webp";
+import samagraImageFive from "../images/apps/samagraenterprises/5.jpeg";
+import samagraImageFour from "../images/apps/samagraenterprises/4.jpeg";
+import samagraImageOne from "../images/apps/samagraenterprises/1.jpeg";
+import samagraImageThree from "../images/apps/samagraenterprises/3.jpeg";
+import samagraImageTwo from "../images/apps/samagraenterprises/2.jpeg";
 import kunalReddyImage from "../images/kunal Reddy.png";
 import launchImage from "../images/launch.png";
 import prototypeImage from "../images/prototype.png";
@@ -172,6 +177,7 @@ const teamImages = {
 export default function Home() {
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [activeProductSlide, setActiveProductSlide] = useState(0);
+  const [activeSamagraSlide, setActiveSamagraSlide] = useState(0);
   const [flippedSuccessIndex, setFlippedSuccessIndex] = useState<number | null>(null);
   const [headerOnLight, setHeaderOnLight] = useState(false);
   const [visibleSections, setVisibleSections] = useState<number[]>([]);
@@ -183,6 +189,7 @@ export default function Home() {
     hero,
     navigation,
     products,
+    samagraProduct,
     showcase,
     successSection,
     teamSection,
@@ -225,6 +232,14 @@ export default function Home() {
   useEffect(() => {
     const interval = window.setInterval(() => {
       setActiveProductSlide((current) => (current + 1) % 3);
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveSamagraSlide((current) => (current + 1) % 5);
     }, 5000);
 
     return () => window.clearInterval(interval);
@@ -276,6 +291,36 @@ export default function Home() {
     { image: fixAiImageOne, alt: products.images.heroAlt },
     { image: fixAiImageTwo, alt: products.images.overviewAlt },
     { image: fixAiImageThree, alt: products.images.stepsAlt },
+  ];
+
+  const samagraCards = [
+    {
+      title: samagraProduct.heroTitle,
+      description: samagraProduct.heroDescription,
+      items: samagraProduct.heroPoints,
+    },
+    {
+      title: samagraProduct.platformTitle,
+      description: samagraProduct.platformDescription,
+      items: samagraProduct.capabilities.map(
+        (capability) => `${capability.title}: ${capability.description}`,
+      ),
+    },
+    {
+      title: samagraProduct.aiTitle,
+      description: samagraProduct.aiDescription,
+      items: samagraProduct.aiFeatures.map(
+        (feature) => `${feature.title}: ${feature.description}`,
+      ),
+    },
+  ];
+
+  const samagraSlides = [
+    { image: samagraImageOne, alt: samagraProduct.images.heroAlt },
+    { image: samagraImageTwo, alt: samagraProduct.images.overviewAlt },
+    { image: samagraImageThree, alt: samagraProduct.images.stepsAlt },
+    { image: samagraImageFour, alt: samagraProduct.images.extraAltOne },
+    { image: samagraImageFive, alt: samagraProduct.images.extraAltTwo },
   ];
 
   const goToPreviousProductSlide = () => {
@@ -430,7 +475,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={`clients-section ${isVisible(8)}`} data-reveal="8">
+      <section className={`clients-section ${isVisible(8)}`} data-reveal="8" id="clients">
         <div className="clients-shell">
           <div className={`clients-header ${isVisible(9)}`} data-reveal="9">
             <h2>{clientsSection.title}</h2>
@@ -459,7 +504,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={`team-section ${isVisible(10)}`} data-reveal="10">
+      <section className={`team-section ${isVisible(10)}`} data-reveal="10" id="team">
         <div className="team-shell">
           <div className="team-heading">
             <div className={`team-heading-left ${isVisible(11)}`} data-reveal="11">
@@ -505,62 +550,125 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className={`products-section ${isVisible(17)}`}
-        data-reveal="17"
-        id="products"
-      >
-        <div className="products-inner">
-          <div className="products-list" id="capabilities">
-            <div className={`products-nameplate ${isVisible(18)}`} data-reveal="18">
-              <span className="products-nameplate-kicker">Product</span>
-              <h2>{products.name}</h2>
+      <section className="products-group" id="products">
+        <div className={`products-group-header ${isVisible(17)}`} data-reveal="17">
+          <span className="products-group-kicker">Built by Aradient</span>
+          <h2>Products by Aradient</h2>
+        </div>
+
+        <div className={`products-section ${isVisible(17)}`} data-reveal="17">
+          <div className="products-inner">
+            <div className="products-list" id="capabilities">
+              <div className={`products-nameplate ${isVisible(18)}`} data-reveal="18">
+                <span className="products-nameplate-kicker">Featured Product</span>
+                <h2>{products.name}</h2>
+              </div>
+
+              <div className={`product-card-stage ${isVisible(19)}`} data-reveal="19">
+                {productCards.map((product, index) => (
+                  <article
+                    className={`product-item ${index === activeProductSlide ? "active is-visible" : ""}`}
+                    key={product.title}
+                  >
+                    <h3>{product.title}</h3>
+                    <p className="product-item-description">{product.description}</p>
+                    <ul>
+                      {product.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+
+              <div className={`product-slider-controls ${isVisible(20)}`} data-reveal="20">
+                <div className="product-slider-dots">
+                  {productSlides.map((slide, index) => (
+                    <button
+                      aria-label={`Go to slide ${index + 1}`}
+                      className={`product-slider-dot ${index === activeProductSlide ? "is-active" : ""}`}
+                      key={slide.alt}
+                      onClick={() => setActiveProductSlide(index)}
+                      type="button"
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
 
-            <div className={`product-card-stage ${isVisible(19)}`} data-reveal="19">
-              {productCards.map((product, index) => (
-                <article
-                  className={`product-item ${index === activeProductSlide ? "active is-visible" : ""}`}
-                  key={product.title}
-                >
-                  <h3>{product.title}</h3>
-                  <p className="product-item-description">{product.description}</p>
-                  <ul>
-                    {product.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-
-            <div className={`product-slider-controls ${isVisible(20)}`} data-reveal="20">
-              <div className="product-slider-dots">
+            <div className={`product-visual ${isVisible(21)}`} data-reveal="21">
+              <div className="product-slider">
                 {productSlides.map((slide, index) => (
-                  <button
-                    aria-label={`Go to slide ${index + 1}`}
-                    className={`product-slider-dot ${index === activeProductSlide ? "is-active" : ""}`}
+                  <div
+                    className={`product-slide ${index === activeProductSlide ? "is-active" : ""}`}
                     key={slide.alt}
-                    onClick={() => setActiveProductSlide(index)}
-                    type="button"
-                  />
+                  >
+                    <Image alt={slide.alt} className="product-slide-image" src={slide.image} />
+                  </div>
                 ))}
               </div>
             </div>
           </div>
+        </div>
 
-          <div className={`product-visual ${isVisible(21)}`} data-reveal="21">
-            <div className="product-slider">
-              {productSlides.map((slide, index) => (
-                <div
-                  className={`product-slide ${index === activeProductSlide ? "is-active" : ""}`}
-                  key={slide.alt}
-                >
-                  <Image alt={slide.alt} className="product-slide-image" src={slide.image} />
+        <div className={`products-divider ${isVisible(22)}`} data-reveal="22" aria-hidden="true">
+          <span className="products-divider-line" />
+          <span className="products-divider-badge">Next Product</span>
+          <span className="products-divider-line" />
+        </div>
+
+        <div className={`products-section products-section-solar ${isVisible(23)}`} data-reveal="23">
+          <div className="products-inner">
+            <div className="products-list">
+              <div className={`products-nameplate ${isVisible(24)}`} data-reveal="24">
+                <span className="products-nameplate-kicker">{samagraProduct.tagline}</span>
+                <h2>{samagraProduct.name}</h2>
+              </div>
+
+              <div className={`product-card-stage ${isVisible(25)}`} data-reveal="25">
+                {samagraCards.map((product, index) => (
+                  <article
+                    className={`product-item ${index === activeSamagraSlide % samagraCards.length ? "active is-visible" : ""}`}
+                    key={product.title}
+                  >
+                    <h3>{product.title}</h3>
+                    <p className="product-item-description">{product.description}</p>
+                    <ul>
+                      {product.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+
+              <div className={`product-slider-controls ${isVisible(26)}`} data-reveal="26">
+                <div className="product-slider-dots">
+                  {samagraSlides.map((slide, index) => (
+                    <button
+                      aria-label={`Go to Samagra slide ${index + 1}`}
+                      className={`product-slider-dot ${index === activeSamagraSlide ? "is-active" : ""}`}
+                      key={slide.alt}
+                      onClick={() => setActiveSamagraSlide(index)}
+                      type="button"
+                    />
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
 
+            <div className={`product-visual ${isVisible(27)}`} data-reveal="27">
+              <div className="product-slider">
+                {samagraSlides.map((slide, index) => (
+                  <div
+                    className={`product-slide ${index === activeSamagraSlide ? "is-active" : ""}`}
+                    key={slide.alt}
+                  >
+                    <Image alt={slide.alt} className="product-slide-image" src={slide.image} />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

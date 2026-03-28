@@ -10,20 +10,24 @@
   "navigation": {
     "links": [
       {
-        "label": "Services",
+        "label": "Company",
+        "href": "#company"
+      },
+      {
+        "label": "Process",
         "href": "#services"
       },
       {
-        "label": "Capabilities",
-        "href": "#capabilities"
+        "label": "Clients",
+        "href": "#clients"
+      },
+      {
+        "label": "Team",
+        "href": "#team"
       },
       {
         "label": "Products",
         "href": "#products"
-      },
-      {
-        "label": "Company",
-        "href": "#company"
       }
     ],
     "cta": "Book a discovery call"
@@ -244,6 +248,66 @@
       "heroAlt": "FixAi smart home maintenance overview",
       "overviewAlt": "FixAi appliance management interface",
       "stepsAlt": "FixAi onboarding and guidance workflow"
+    }
+  },
+  "samagraProduct": {
+    "logo": "Samagra Enterprises Logo",
+    "name": "Samagra Enterprises",
+    "tagline": "Solar Solutions India",
+    "heroTitle": "The Sun Pays Your Bills. Let It.",
+    "heroDescription": "Samagra Enterprises delivers high-performance solar solutions across India — cutting your electricity costs from Day 1, and your carbon footprint forever.",
+    "heroPoints": [
+      "Calculate your savings with a practical solar estimate",
+      "Reduce electricity bills with residential and commercial solar",
+      "Build with quality-first engineering and durable components",
+      "Deploy nationwide with trusted execution across India"
+    ],
+    "platformTitle": "Comprehensive Solar Services",
+    "platformDescription": "Samagra Enterprises provides end-to-end solar energy solutions across India with engineering precision, reliable delivery, and long-term performance in every installation.",
+    "capabilities": [
+      {
+        "title": "Residential Solar",
+        "description": "Cut your electricity bills by up to 90% with custom-designed rooftop solar systems for your home."
+      },
+      {
+        "title": "Commercial Solar",
+        "description": "High-capacity solar EPC solutions tailored for factories, hospitals, and educational institutions."
+      },
+      {
+        "title": "Industrial EPC",
+        "description": "End-to-end engineering, procurement, and construction for utility-scale solar power plants."
+      },
+      {
+        "title": "Price Calculator",
+        "description": "Get a fast estimate using monthly bill and roof area before you schedule your consultation."
+      }
+    ],
+    "aiTitle": "Built For Performance and Long-Term Reliability",
+    "aiDescription": "From premium components to large-scale execution, Samagra Enterprises delivers quality solar systems engineered to perform for years across homes, institutions, and industrial projects.",
+    "aiFeatures": [
+      {
+        "title": "Solar Panels",
+        "description": "High-efficiency mono-PERC modules for residential and commercial rooftops with a 25-year warranty."
+      },
+      {
+        "title": "Solar Inverters",
+        "description": "Advanced grid-tie and hybrid smart inverters with mobile monitoring and a 10-year warranty."
+      },
+      {
+        "title": "Solar Water Heaters",
+        "description": "Durable, high-capacity systems for reliable hot water performance in all weather conditions."
+      },
+      {
+        "title": "Trusted By Industry Leaders",
+        "description": "Proven work across Indian Railways, UP Power Corp, L&T Infra, Tata Projects, NHPC, BHEL, Adani Green, and Airtel."
+      }
+    ],
+    "images": {
+      "heroAlt": "Samagra Enterprises solar project showcase",
+      "overviewAlt": "Samagra Enterprises solar services overview",
+      "stepsAlt": "Samagra Enterprises solar consultation and pricing",
+      "extraAltOne": "Samagra Enterprises foundation and impact work",
+      "extraAltTwo": "Samagra Enterprises consultation and solar planning"
     }
   },
   "footer": {
