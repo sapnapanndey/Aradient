@@ -71,54 +71,7 @@
         "icon": "brain",
         "className": "orbit-chip orbit-chip-dark"
       }
-    ],
-    "capabilities": [
-      {
-        "icon": "spark",
-        "iconClassName": "capability-icon capability-icon-dark",
-        "title": "Rapid prototyping & MVP delivery",
-        "description": "Quickly bring ideas to life and validate concepts",
-        "size": "wide"
-      },
-      {
-        "icon": "bot",
-        "iconClassName": "capability-icon capability-icon-light",
-        "title": "AI copilots & workflow automation",
-        "description": "Build AI assistants to automate tasks and improve efficiency",
-        "size": "wide"
-      },
-      {
-        "icon": "bot",
-        "iconClassName": "capability-icon capability-icon-light",
-        "title": "AI copilots & workflow automation",
-        "description": "Build AI assistants to automate tasks and improve efficiency",
-        "size": "standard"
-      },
-      {
-        "icon": "puzzle",
-        "iconClassName": "capability-icon capability-icon-mint",
-        "title": "Scalable web apps & AI platforms",
-        "description": "Develop apps, APIs, and internal tools ready to scale",
-        "size": "standard"
-      }
-    ],
-    "cta": {
-      "title": "Work with a team that can shape the product vision, build the platform, and evolve it as your AI roadmap matures.",
-      "steps": [
-        {
-          "icon": "idea",
-          "label": "Vision"
-        },
-        {
-          "icon": "tools",
-          "label": "Development"
-        },
-        {
-          "icon": "rocket",
-          "label": "Launch"
-        }
-      ]
-    }
+    ]
   },
   "successSection": {
     "title": "How we help you succeed",
@@ -141,6 +94,46 @@
         "iconClassName": "success-icon success-icon-mint",
         "title": "Launch & Optimize",
         "description": "Launch confidently and iterate with data-driven insights"
+      }
+    ]
+  },
+  "clientsSection": {
+    "title": "Our Clients",
+    "description": "Forward-thinking teams trust Aradient to design, build, and scale digital products, AI workflows, and modern software systems.",
+    "rows": [
+      ["Northstar", "Velora", "Lumio", "Korbit", "Helix Labs", "Aven", "Solvix"],
+      ["Acora", "Fintrix", "Novus Health", "Pixelcraft", "Zenbyte", "Verto", "Aptiq"],
+      ["OrbitOne", "Bluepeak", "Kinetic", "Flexton", "Datanova", "Inventa", "MercuryOS"]
+    ]
+  },
+  "teamSection": {
+    "label": "Our Team",
+    "title": "Skilled Team Innovating the Product",
+    "description": "Our skilled team continuously innovates, ensuring our product stays ahead of industry standards.",
+    "members": [
+      {
+        "name": "Ritu Malhotra",
+        "role": "CEO & Owner",
+        "variant": "pink",
+        "image": "https://placehold.co/640x720/f3a9c5/241f2b?text=Ritu"
+      },
+      {
+        "name": "Kavita Sinha",
+        "role": "Co-Founder",
+        "variant": "neutral",
+        "image": "https://placehold.co/640x720/e8e6e4/241f2b?text=Kavita"
+      },
+      {
+        "name": "Dev Patel",
+        "role": "Marketing Manager",
+        "variant": "plum",
+        "image": "https://placehold.co/640x720/d4c1c8/241f2b?text=Dev"
+      },
+      {
+        "name": "Kunal Verma",
+        "role": "Developer",
+        "variant": "blue",
+        "image": "https://placehold.co/640x720/c8d7ec/241f2b?text=Kunal"
       }
     ]
   },

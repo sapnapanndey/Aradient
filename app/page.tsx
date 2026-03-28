@@ -149,16 +149,19 @@ function SvgIcon({
 export default function Home() {
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [activeProductIndex, setActiveProductIndex] = useState(0);
+  const [flippedSuccessIndex, setFlippedSuccessIndex] = useState<number | null>(null);
   const [visibleSections, setVisibleSections] = useState<number[]>([]);
 
   const {
     brand,
+    clientsSection,
     footer,
     hero,
     navigation,
     products,
     showcase,
     successSection,
+    teamSection,
   } = siteContent;
 
   useEffect(() => {
@@ -302,71 +305,12 @@ export default function Home() {
             </div>
           </article>
 
-          <div className="capability-layout" id="services">
-            <div className="capability-column capability-column-wide">
-              {showcase.capabilities
-                .filter((capability) => capability.size === "wide")
-                .map((capability, index) => (
-                  <article
-                    className={`capability-card ${isVisible(index + 3)}`}
-                    data-reveal={index + 3}
-                    key={`${capability.title}-${index}`}
-                  >
-                    <div className={capability.iconClassName}>
-                      <SvgIcon name={capability.icon} className="icon-svg capability-svg" />
-                    </div>
-                    <div>
-                      <h3>{capability.title}</h3>
-                      <p>{capability.description}</p>
-                    </div>
-                  </article>
-                ))}
-            </div>
-            <div className="capability-column capability-column-standard">
-              {showcase.capabilities
-                .filter((capability) => capability.size === "standard")
-                .map((capability, index) => (
-                  <article
-                    className={`capability-card capability-card-compact ${isVisible(index + 5)}`}
-                    data-reveal={index + 5}
-                    key={`${capability.title}-${index}`}
-                  >
-                    <div className={capability.iconClassName}>
-                      <SvgIcon name={capability.icon} className="icon-svg capability-svg" />
-                    </div>
-                    <div>
-                      <h3>{capability.title}</h3>
-                      <p>{capability.description}</p>
-                    </div>
-                  </article>
-                ))}
-            </div>
-          </div>
-
-          <article className={`process-panel ${isVisible(7)}`} data-reveal="7" id="capabilities">
-            <h2>{showcase.cta.title}</h2>
-            <div className="process-steps">
-              {showcase.cta.steps.map((step, index) => (
-                <div className="process-step-wrap" key={step.label}>
-                  <div className="process-step">
-                    <span className="process-step-icon" aria-hidden="true">
-                      <SvgIcon name={step.icon} className="icon-svg process-step-svg" />
-                    </span>
-                    <span>{step.label}</span>
-                  </div>
-                  {index < showcase.cta.steps.length - 1 ? (
-                    <span className="process-divider" aria-hidden="true" />
-                  ) : null}
-                </div>
-              ))}
-            </div>
-          </article>
         </div>
       </section>
 
-      <section className={`success-section ${isVisible(8)}`} data-reveal="8">
+      <section className={`success-section ${isVisible(3)}`} data-reveal="3" id="services">
         <div className="success-shell">
-          <div className={`success-header ${isVisible(9)}`} data-reveal="9">
+          <div className={`success-header ${isVisible(4)}`} data-reveal="4">
             <h2>{successSection.title}</h2>
             <p>{successSection.description}</p>
           </div>
@@ -374,16 +318,34 @@ export default function Home() {
           <div className="success-grid">
             {successSection.steps.map((step, index) => (
               <div className="success-card-wrap" key={step.title}>
-                <article
-                  className={`success-card ${isVisible(index + 10)}`}
-                  data-reveal={index + 10}
+                <button
+                  className={`success-card success-card-button ${isVisible(index + 5)} ${
+                    flippedSuccessIndex === index ? "is-flipped" : ""
+                  }`}
+                  data-reveal={index + 5}
+                  onClick={() =>
+                    setFlippedSuccessIndex((current) => (current === index ? null : index))
+                  }
+                  onMouseEnter={() => setFlippedSuccessIndex(index)}
+                  onMouseLeave={() => setFlippedSuccessIndex((current) => (current === index ? null : current))}
+                  onBlur={() => setFlippedSuccessIndex((current) => (current === index ? null : current))}
+                  type="button"
                 >
-                  <div className={step.iconClassName}>
-                    <SvgIcon name={step.icon} className="icon-svg success-svg" />
+                  <div className="success-card-inner">
+                    <div className="success-card-face success-card-front">
+                      <div className={step.iconClassName}>
+                        <SvgIcon name={step.icon} className="icon-svg success-svg" />
+                      </div>
+                      <h3>{step.title}</h3>
+                      <span className="success-card-hint">View details</span>
+                    </div>
+
+                    <div className="success-card-face success-card-back">
+                      <h3>{step.title}</h3>
+                      <p>{step.description}</p>
+                    </div>
                   </div>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
-                </article>
+                </button>
                 {index < successSection.steps.length - 1 ? (
                   <div className="success-connector" aria-hidden="true">
                     <span />
@@ -397,9 +359,75 @@ export default function Home() {
         </div>
       </section>
 
+      <section className={`clients-section ${isVisible(8)}`} data-reveal="8">
+        <div className="clients-shell">
+          <div className={`clients-header ${isVisible(9)}`} data-reveal="9">
+            <h2>{clientsSection.title}</h2>
+            <p>{clientsSection.description}</p>
+          </div>
+
+          <div className="clients-marquee-group">
+            {clientsSection.rows.map((row, rowIndex) => (
+              <div
+                className={`clients-marquee-row ${
+                  rowIndex % 2 === 0 ? "clients-marquee-left" : "clients-marquee-right"
+                }`}
+                key={`row-${rowIndex}`}
+              >
+                {[...row, ...row].map((client, clientIndex) => (
+                  <div className="client-pill" key={`${client}-${clientIndex}`}>
+                    <span className="client-mark" aria-hidden="true">
+                      {client.charAt(0)}
+                    </span>
+                    <span>{client}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={`team-section ${isVisible(10)}`} data-reveal="10">
+        <div className="team-shell">
+          <div className="team-heading">
+            <div className={`team-heading-left ${isVisible(11)}`} data-reveal="11">
+              <span className="team-kicker">{teamSection.label}</span>
+              <h2>{teamSection.title}</h2>
+            </div>
+            <div className={`team-heading-right ${isVisible(12)}`} data-reveal="12">
+              <p>{teamSection.description}</p>
+            </div>
+          </div>
+
+          <div className="team-grid">
+            {teamSection.members.map((member, index) => (
+              <article
+                className={`team-card ${isVisible(index + 13)}`}
+                data-reveal={index + 13}
+                key={member.name}
+              >
+                <div className={`team-portrait team-portrait-${member.variant}`}>
+                  <img
+                    alt={member.name}
+                    className="team-portrait-image"
+                    loading="lazy"
+                    src={member.image}
+                  />
+                </div>
+                <div className="team-copy">
+                  <h3>{member.name}</h3>
+                  <p>{member.role}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section
-        className={`products-section ${isVisible(13)}`}
-        data-reveal="13"
+        className={`products-section ${isVisible(17)}`}
+        data-reveal="17"
         id="products"
       >
         <div className="products-inner">
@@ -442,7 +470,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className={isVisible(14)} data-reveal="14">
+      <footer className={isVisible(18)} data-reveal="18">
         <div className="footer-top">
           <div className="footer-brand">
             <div className="nav-logo footer-logo">
