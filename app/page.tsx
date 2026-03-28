@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import akankshaImage from "../images/akanksha.jpeg";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import engineeringImage from "../images/engineering.png";
+import fixAiImageOne from "../images/apps/fixai/1.webp";
+import fixAiImageThree from "../images/apps/fixai/3.webp";
+import fixAiImageTwo from "../images/apps/fixai/2.webp";
 import kunalReddyImage from "../images/kunal Reddy.png";
 import launchImage from "../images/launch.png";
 import prototypeImage from "../images/prototype.png";
@@ -149,6 +152,12 @@ function SvgIcon({
           <path d="M5 12H19M13 6L19 12L13 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       );
+    case "arrow-left":
+      return (
+        <svg {...sharedProps}>
+          <path d="M19 12H5M11 6L5 12L11 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -162,7 +171,7 @@ const teamImages = {
 
 export default function Home() {
   const [activeWordIndex, setActiveWordIndex] = useState(0);
-  const [activeProductIndex, setActiveProductIndex] = useState(0);
+  const [activeProductSlide, setActiveProductSlide] = useState(0);
   const [flippedSuccessIndex, setFlippedSuccessIndex] = useState<number | null>(null);
   const [headerOnLight, setHeaderOnLight] = useState(false);
   const [visibleSections, setVisibleSections] = useState<number[]>([]);
@@ -214,6 +223,14 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveProductSlide((current) => (current + 1) % 3);
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     const updateHeaderTheme = () => {
       const triggerSection = document.getElementById("company");
       if (!triggerSection) return;
@@ -232,13 +249,44 @@ export default function Home() {
     };
   }, []);
 
-  const activeProduct = useMemo(
-    () => products.items[activeProductIndex],
-    [activeProductIndex, products.items],
-  );
-
   const isVisible = (index: number) =>
     visibleSections.includes(index) ? "reveal visible" : "reveal";
+
+  const productCards = [
+    {
+      title: products.heroTitle,
+      description: products.heroDescription,
+      items: products.heroPoints,
+    },
+    {
+      title: products.platformTitle,
+      description: products.platformDescription,
+      items: products.capabilities.map(
+        (capability) => `${capability.title}: ${capability.description}`,
+      ),
+    },
+    {
+      title: products.aiTitle,
+      description: products.aiDescription,
+      items: products.aiFeatures.map((feature) => `${feature.title}: ${feature.description}`),
+    },
+  ];
+
+  const productSlides = [
+    { image: fixAiImageOne, alt: products.images.heroAlt },
+    { image: fixAiImageTwo, alt: products.images.overviewAlt },
+    { image: fixAiImageThree, alt: products.images.stepsAlt },
+  ];
+
+  const goToPreviousProductSlide = () => {
+    setActiveProductSlide((current) =>
+      current === 0 ? productCards.length - 1 : current - 1,
+    );
+  };
+
+  const goToNextProductSlide = () => {
+    setActiveProductSlide((current) => (current + 1) % productCards.length);
+  };
 
   return (
     <main>
@@ -262,13 +310,6 @@ export default function Home() {
       <section className="hero">
         <div className="hero-bg" />
         <div className="hero-grain" />
-
-        <div className="hero-badge">
-          <span className="hero-badge-dot">
-            <SvgIcon name="badge-star" className="hero-badge-icon" />
-          </span>
-          {hero.badge}
-        </div>
 
         <h1>
           {hero.titlePrefix}{" "}
@@ -471,40 +512,55 @@ export default function Home() {
       >
         <div className="products-inner">
           <div className="products-list" id="capabilities">
-            {products.items.map((product, index) => (
-              <button
-                className={`product-item ${index === activeProductIndex ? "active" : ""}`}
-                key={product.title}
-                onClick={() => setActiveProductIndex(index)}
-                type="button"
-              >
-                <h3>
-                  <span className="product-item-icon">
-                    <SvgIcon name={product.icon} className="icon-svg product-item-svg" />
-                  </span>
-                  {product.title}
-                </h3>
-                <ul>
-                  {product.items.map((item) => (
-                    <li key={item.label}>
-                      <span>{item.label}:</span> {item.text}
-                    </li>
-                  ))}
-                </ul>
-              </button>
-            ))}
-          </div>
+            <div className={`products-nameplate ${isVisible(18)}`} data-reveal="18">
+              <span className="products-nameplate-kicker">Product</span>
+              <h2>{products.name}</h2>
+            </div>
 
-          <div className="product-visual">
-            <div className="orbit-container" aria-hidden="true">
-              <div className="orbit-ring" />
-              <div className="orbit-ring" />
-              <div className="orbit-ring" />
-              <div className="orbit-center">
-                <SvgIcon name={activeProduct.centerIcon} className="icon-svg orbit-center-svg" />
+            <div className={`product-card-stage ${isVisible(19)}`} data-reveal="19">
+              {productCards.map((product, index) => (
+                <article
+                  className={`product-item ${index === activeProductSlide ? "active is-visible" : ""}`}
+                  key={product.title}
+                >
+                  <h3>{product.title}</h3>
+                  <p className="product-item-description">{product.description}</p>
+                  <ul>
+                    {product.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+
+            <div className={`product-slider-controls ${isVisible(20)}`} data-reveal="20">
+              <div className="product-slider-dots">
+                {productSlides.map((slide, index) => (
+                  <button
+                    aria-label={`Go to slide ${index + 1}`}
+                    className={`product-slider-dot ${index === activeProductSlide ? "is-active" : ""}`}
+                    key={slide.alt}
+                    onClick={() => setActiveProductSlide(index)}
+                    type="button"
+                  />
+                ))}
               </div>
             </div>
-            <div className="nocode-badge">{activeProduct.badge}</div>
+          </div>
+
+          <div className={`product-visual ${isVisible(21)}`} data-reveal="21">
+            <div className="product-slider">
+              {productSlides.map((slide, index) => (
+                <div
+                  className={`product-slide ${index === activeProductSlide ? "is-active" : ""}`}
+                  key={slide.alt}
+                >
+                  <Image alt={slide.alt} className="product-slide-image" src={slide.image} />
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>

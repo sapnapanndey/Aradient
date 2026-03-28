@@ -29,7 +29,6 @@
     "cta": "Book a discovery call"
   },
   "hero": {
-    "badge": "AI-first digital product studio",
     "words": ["products", "agents", "platforms", "workflows"],
     "titlePrefix": "We build",
     "titleSuffix": "for modern teams",
@@ -135,68 +134,117 @@
     ]
   },
   "products": {
-    "items": [
+    "logo": "FixAI Logo",
+    "name": "FixAi",
+    "navLinks": ["Features", "How it works", "AI Assistant"],
+    "signIn": "Sign in",
+    "createAccount": "Create Account",
+    "learnMore": "See how FixAi works →",
+    "heroTitle": "Smarter Home Maintenance, Powered by AI",
+    "heroDescription": "FixAi helps homeowners track appliances, stay ahead of maintenance, and troubleshoot problems using AI — all in one simple place.",
+    "heroPoints": [
+      "Never forget appliance maintenance again",
+      "Understand issues before they become expensive repairs",
+      "Keep appliance details, manuals, and history organized",
+      "Get AI guidance in plain English, anytime"
+    ],
+    "problemKicker": "FixAi - Smart Home Maintenance",
+    "problemTitle": "Home maintenance shouldn't be reactive",
+    "problemParagraphs": [
+      "Most homeowners don't ignore maintenance — they simply don't have a system.",
+      "Maintenance schedules get forgotten. Appliance manuals disappear. Problems are noticed only when something breaks.",
+      "By the time you act, the cost is already higher — and the stress is unavoidable.",
+      "FixAi was built to change that."
+    ],
+    "platformKicker": "Home Maintenance Problems",
+    "platformTitle": "One intelligent platform for your entire home",
+    "platformDescription": "FixAi brings appliance tracking, maintenance reminders, and AI-powered help together — so you always know what to do next.",
+    "capabilities": [
       {
-        "icon": "brain",
-        "title": "AI Product Development",
-        "badge": "Product Strategy",
-        "centerIcon": "brain",
-        "items": [
-          {
-            "label": "Opportunity mapping",
-            "text": "Identify where AI creates real value across your product, operations, and customer experience."
-          },
-          {
-            "label": "MVP definition",
-            "text": "Scope launch-ready products with clear priorities, workflows, and measurable outcomes."
-          },
-          {
-            "label": "Execution leadership",
-            "text": "Move from idea to release with structured delivery and hands-on technical ownership."
-          }
-        ]
+        "title": "Add Your Home",
+        "description": "Create a digital profile of your home in seconds. Everything FixAi does is tailored to your space."
       },
       {
-        "icon": "code",
-        "title": "Custom Software Engineering",
-        "badge": "Full-Stack Build",
-        "centerIcon": "code",
-        "items": [
-          {
-            "label": "Modern frontend systems",
-            "text": "Responsive web apps built for speed, clarity, and conversion."
-          },
-          {
-            "label": "Backend and APIs",
-            "text": "Reliable services, integrations, data models, and business logic tailored to your workflows."
-          },
-          {
-            "label": "Production readiness",
-            "text": "Deployable software with maintainable code, observability, and room to scale."
-          }
-        ]
+        "title": "Track Appliances Automatically",
+        "description": "Store appliance type, model, history, and maintenance needs in one place — no spreadsheets or notes."
       },
       {
-        "icon": "bot",
-        "title": "Automation and AI Enablement",
-        "badge": "Workflow Automation",
-        "centerIcon": "automation",
-        "items": [
-          {
-            "label": "Agentic workflows",
-            "text": "Automate research, support, operations, and repetitive internal tasks."
-          },
-          {
-            "label": "LLM integrations",
-            "text": "Connect models, tools, and data sources into secure product experiences."
-          },
-          {
-            "label": "Human-in-the-loop systems",
-            "text": "Balance automation with review flows, governance, and business control."
-          }
-        ]
+        "title": "AI-Powered Guidance",
+        "description": "Ask questions, describe issues, or get step-by-step help without technical jargon."
+      },
+      {
+        "title": "Prevent Problems Early",
+        "description": "Timely reminders help you act before minor issues turn into costly repairs."
       }
-    ]
+    ],
+    "stepsKicker": "Get started in minutes",
+    "stepsTitle": "How FixAi works",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Create an account",
+        "description": "Sign up and start with your home."
+      },
+      {
+        "number": "2",
+        "title": "Add appliances",
+        "description": "FixAi helps you organize everything quickly and accurately."
+      },
+      {
+        "number": "3",
+        "title": "Let AI assist you",
+        "description": "From maintenance reminders to troubleshooting, FixAi guides you every step of the way."
+      }
+    ],
+    "aiKicker": "AI that actually understands your home",
+    "aiTitle": "Built specifically for homeowners — not generic chatbots",
+    "aiDescription": "Instead of overwhelming you with information, FixAi tells you what matters, why it matters, and what to do next.",
+    "aiFeatures": [
+      {
+        "title": "Routine Maintenance",
+        "description": "FixAi reminds you when filters, inspections, or upkeep are due — before performance drops."
+      },
+      {
+        "title": "Unexpected Issues",
+        "description": "Strange noise? Poor performance? Ask FixAi and get clear guidance instantly."
+      },
+      {
+        "title": "Appliance Organization",
+        "description": "Model numbers, manuals, and service history — always available when you need them."
+      },
+      {
+        "title": "Peace of Mind",
+        "description": "Know your home is being maintained properly without constantly thinking about it."
+      }
+    ],
+    "ctaKicker": "Stop guessing. Start maintaining smarter.",
+    "ctaTitle": "Protect one of your biggest investments with FixAi",
+    "ctaDescription": "Your home is one of your biggest investments. FixAi helps you protect it intelligently.",
+    "ctaNote": "Free to start. Takes only a few minutes.",
+    "footerText": "FixAi © 2026",
+    "footerLinks": [
+      {
+        "label": "About",
+        "href": "#company"
+      },
+      {
+        "label": "Contact",
+        "href": "#company"
+      },
+      {
+        "label": "Terms",
+        "href": "#products"
+      },
+      {
+        "label": "Privacy",
+        "href": "#products"
+      }
+    ],
+    "images": {
+      "heroAlt": "FixAi smart home maintenance overview",
+      "overviewAlt": "FixAi appliance management interface",
+      "stepsAlt": "FixAi onboarding and guidance workflow"
+    }
   },
   "footer": {
     "description": "Aradient builds AI products and custom software for teams that want practical innovation, fast execution, and durable systems.",
