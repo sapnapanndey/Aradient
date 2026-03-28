@@ -813,13 +813,9 @@ nav {
 }
 
 .service-card {
-  padding: 30px 24px 24px 24px;
   transform-origin: center bottom;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  perspective: 1400px;
 }
 
 .service-card::before {
@@ -842,6 +838,38 @@ nav {
 .service-card > * {
   position: relative;
   z-index: 1;
+}
+
+.service-card-inner {
+  position: relative;
+  min-height: 380px;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+}
+
+.service-card-face {
+  position: absolute;
+  inset: 0;
+  padding: 30px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  backface-visibility: hidden;
+  border-radius: var(--card-radius);
+}
+
+.service-card-front {
+  background: transparent;
+}
+
+.service-card-back {
+  transform: rotateY(180deg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(236, 243, 255, 0.8)),
+    radial-gradient(circle at top right, rgba(191, 219, 254, 0.2), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(167, 139, 250, 0.14), transparent 30%);
+  justify-content: center;
 }
 
 .service-icon {
@@ -917,6 +945,24 @@ nav {
   line-height: 1.75;
 }
 
+.service-card-kicker,
+.service-card-hint {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.service-card-kicker {
+  color: #3155da;
+  margin-bottom: 14px;
+}
+
+.service-card-hint {
+  margin-top: 18px;
+  color: #6c7ca0;
+}
+
 .service-cta-card {
   padding: 36px 34px;
   background:
@@ -952,6 +998,11 @@ nav {
 .service-card:hover,
 .service-card:focus-within {
   transform: translateY(-8px);
+}
+
+.service-card:hover .service-card-inner,
+.service-card:focus-within .service-card-inner {
+  transform: rotateY(180deg);
 }
 
 .service-card:hover .service-illustration-wrap,
@@ -2139,7 +2190,7 @@ footer {
   }
 
   .service-card {
-    padding: 24px 20px 20px;
+    min-height: 340px;
   }
 
   .service-illustration-wrap {
@@ -2154,6 +2205,14 @@ footer {
 
   .service-cta-card {
     padding: 28px 24px;
+  }
+
+  .service-card-inner {
+    min-height: 340px;
+  }
+
+  .service-card-face {
+    padding: 24px 20px 20px;
   }
 
   .success-header {

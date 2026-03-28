@@ -679,16 +679,27 @@ export default function Home() {
                 data-reveal={index + 29}
                 key={service.title}
               >
-                <div className="service-illustration-wrap">
-                  <img
-                    alt={service.title}
-                    className="service-illustration"
-                    loading="lazy"
-                    src={service.illustrationUrl}
-                  />
+                <div className="service-card-inner">
+                  <div className="service-card-face service-card-front">
+                    <div className="service-illustration-wrap">
+                      <img
+                        alt={service.title}
+                        className="service-illustration"
+                        loading="lazy"
+                        src={service.illustrationUrl}
+                      />
+                    </div>
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </div>
+
+                  <div className="service-card-face service-card-back">
+                    <span className="service-card-kicker">Software Service</span>
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                    <span className="service-card-hint">Built with Aradient</span>
+                  </div>
                 </div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
               </article>
             ))}
 
