@@ -14,8 +14,12 @@
         "href": "#company"
       },
       {
-        "label": "Process",
+        "label": "Services",
         "href": "#services"
+      },
+      {
+        "label": "Products",
+        "href": "#products"
       },
       {
         "label": "Clients",
@@ -24,10 +28,6 @@
       {
         "label": "Team",
         "href": "#team"
-      },
-      {
-        "label": "Products",
-        "href": "#products"
       }
     ],
     "cta": "Book a discovery call"
@@ -103,13 +103,123 @@
       }
     ]
   },
+  "servicesSection": {
+    "title": "Our Services",
+    "description": "We design, build, launch, and scale modern software products with practical engineering, product thinking, and AI built in where it creates real value.",
+    "ctaTitle": "Need another service?",
+    "ctaDescription": "Tell us what you're building and we'll shape the right software team around it.",
+    "ctaButton": "Call Us Now",
+    "items": [
+      {
+        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/in/illustrations/previews/xWrhgyf6uCRFKSrI.webp",
+        "title": "Web App Development",
+        "description": "Responsive product websites, dashboards, admin panels, and full-featured web applications."
+      },
+      {
+        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/tm/illustrations/previews/_ATRSSbCs3bFxHu7.webp",
+        "title": "Mobile App Development",
+        "description": "Cross-platform iOS and Android apps with polished user experience and scalable architecture."
+      },
+      {
+        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/wy/illustrations/previews/-m3pfcKcWqPN5WYE.webp",
+        "title": "AI Solutions",
+        "description": "AI assistants, copilots, retrieval systems, workflows, and intelligent product experiences."
+      },
+      {
+        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/nj/illustrations/previews/ohJ0h5S6xCKO_6op.webp",
+        "title": "Custom Software",
+        "description": "Tailored platforms and internal tools built around your business model, users, and operations."
+      },
+      {
+        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/kx/illustrations/previews/ZXHSdr_DYccYqoDh.webp",
+        "title": "Automation & Integrations",
+        "description": "Automate repetitive work and connect CRMs, APIs, internal systems, and third-party services."
+      },
+      {
+        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/qd/illustrations/previews/F9bLVoXqqPKUIJxs.webp",
+        "title": "Backend & APIs",
+        "description": "Reliable backend systems, secure APIs, databases, authentication, and cloud-ready architecture."
+      },
+      {
+        "illustrationUrl": "https://ouch-prod-var-cdn.icons8.com/rl/illustrations/previews/yYdhW4trFpOeMJUb.webp",
+        "title": "Data & Analytics",
+        "description": "Reporting pipelines, operational dashboards, data workflows, and product analytics foundations."
+      }
+    ]
+  },
   "clientsSection": {
-    "title": "Our Clients",
-    "description": "Forward-thinking teams trust Aradient to design, build, and scale digital products, AI workflows, and modern software systems.",
+    "title": "Technologies We Are Working With",
+    "description": "We build modern products with a practical stack across frontend, backend, AI, cloud, and data.",
     "rows": [
-      ["FixAi Canada", "Samgra Enterprises Solar Company", "Gurukul Technology", "Deep Individual Coaching"],
-      ["FixAi Canada", "Gurukul Technology", "Samgra Enterprises Solar Company", "Deep Individual Coaching"],
-      ["Deep Individual Coaching", "FixAi Canada", "Samgra Enterprises Solar Company", "Gurukul Technology"]
+      [
+        {
+          "name": "React",
+          "icon": "react",
+          "logoUrl": "https://cdn.simpleicons.org/react"
+        },
+        {
+          "name": "React Native",
+          "icon": "reactnative",
+          "logoUrl": "https://cdn.simpleicons.org/react"
+        },
+        {
+          "name": "Next.js",
+          "icon": "nextjs",
+          "logoUrl": "https://cdn.simpleicons.org/nextdotjs"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescript",
+          "logoUrl": "https://cdn.simpleicons.org/typescript"
+        },
+        {
+          "name": "Node.js",
+          "icon": "nodejs",
+          "logoUrl": "https://cdn.simpleicons.org/nodedotjs"
+        },
+        {
+          "name": "Flutter",
+          "icon": "flutter",
+          "logoUrl": "https://cdn.simpleicons.org/flutter"
+        }
+      ],
+      [
+        {
+          "name": "Python",
+          "icon": "python",
+          "logoUrl": "https://cdn.simpleicons.org/python"
+        },
+        {
+          "name": "OpenAI",
+          "icon": "openai",
+          "logoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/OpenAI_logo_2025.svg"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": "postgresql",
+          "logoUrl": "https://cdn.simpleicons.org/postgresql"
+        },
+        {
+          "name": "MongoDB",
+          "icon": "mongodb",
+          "logoUrl": "https://cdn.simpleicons.org/mongodb"
+        },
+        {
+          "name": "AWS",
+          "icon": "aws",
+          "logoUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Aws_logo.svg"
+        },
+        {
+          "name": "Data Science",
+          "icon": "datascience",
+          "logoUrl": "https://cdn.simpleicons.org/jupyter"
+        },
+        {
+          "name": "Machine Learning",
+          "icon": "machinelearning",
+          "logoUrl": "https://cdn.simpleicons.org/tensorflow"
+        }
+      ]
     ]
   },
   "teamSection": {
@@ -139,6 +249,7 @@
   },
   "products": {
     "logo": "FixAI Logo",
+    "logoUrl": "https://www.fixai.ca/assets/SVG/logo.svg",
     "name": "FixAi",
     "navLinks": ["Features", "How it works", "AI Assistant"],
     "signIn": "Sign in",
@@ -252,6 +363,7 @@
   },
   "samagraProduct": {
     "logo": "Samagra Enterprises Logo",
+    "logoUrl": "https://samagraenterprises.com/assets/logo.png",
     "name": "Samagra Enterprises",
     "tagline": "Solar Solutions India",
     "heroTitle": "The Sun Pays Your Bills. Let It.",
