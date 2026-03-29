@@ -219,6 +219,15 @@ function SvgIcon({
           <circle cx="17.2" cy="6.8" r="1" fill="currentColor" />
         </svg>
       );
+    case "linkedin":
+      return (
+        <svg {...sharedProps}>
+          <path d="M7.1 9.3V19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          <path d="M7.1 6.9C7.8 6.9 8.3 6.4 8.3 5.7C8.3 5 7.8 4.5 7.1 4.5C6.4 4.5 5.9 5 5.9 5.7C5.9 6.4 6.4 6.9 7.1 6.9Z" fill="currentColor" />
+          <path d="M11.4 19V12.9C11.4 10.9 12.7 9.5 14.5 9.5C16.3 9.5 17.4 10.6 17.4 13V19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M11.4 11C12.1 10 13.2 9.5 14.5 9.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
     case "globe":
       return (
         <svg {...sharedProps}>

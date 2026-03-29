@@ -24,10 +24,6 @@
       {
         "label": "Clients",
         "href": "#clients"
-      },
-      {
-        "label": "Team",
-        "href": "#team"
       }
     ],
     "cta": "Book a discovery call"
@@ -454,8 +450,8 @@
     "contacts": [
       {
         "icon": "phone",
-        "label": "+91 98765 43210",
-        "href": "tel:+919876543210"
+        "label": "+91 9129633003",
+        "href": "tel:+919129633003"
       },
       {
         "icon": "mail",
@@ -485,16 +481,8 @@
             "href": "#products"
           },
           {
-            "label": "Book a Discovery Call",
-            "href": "#company"
-          },
-          {
             "label": "Technology Stack",
             "href": "#clients"
-          },
-          {
-            "label": "Team",
-            "href": "#team"
           }
         ]
       },
@@ -524,48 +512,19 @@
         ]
       },
       {
-        "title": "Partner",
+        "title": "Legal",
         "links": [
-          {
-            "label": "For Startups",
-            "href": "#company"
-          },
-          {
-            "label": "For Enterprises",
-            "href": "#company"
-          },
-          {
-            "label": "For Product Teams",
-            "href": "#company"
-          },
-          {
-            "label": "For Founders",
-            "href": "#company"
-          }
-        ]
-      },
-      {
-        "title": "Resources",
-        "links": [
-          {
-            "label": "Support",
-            "href": "#company"
-          },
-          {
-            "label": "Security",
-            "href": "#company"
-          },
-          {
-            "label": "Help Center",
-            "href": "#company"
-          },
           {
             "label": "Privacy Policy",
-            "href": "#company"
+            "href": "/privacy-policy"
           },
           {
-            "label": "Terms of Use",
-            "href": "#company"
+            "label": "Terms & Conditions",
+            "href": "/terms-and-conditions"
+          },
+          {
+            "label": "Cookie Policy",
+            "href": "/cookie-policy"
           }
         ]
       }
@@ -574,37 +533,27 @@
     "bottomLinks": [
       {
         "label": "Terms & Conditions",
-        "href": "#company"
+        "href": "/terms-and-conditions"
       },
       {
         "label": "Privacy Policy",
-        "href": "#company"
+        "href": "/privacy-policy"
       },
       {
         "label": "Cookie Policy",
-        "href": "#company"
+        "href": "/cookie-policy"
       }
     ],
     "socials": [
       {
-        "label": "Facebook",
-        "href": "#company",
-        "icon": "facebook"
-      },
-      {
-        "label": "X",
-        "href": "#company",
-        "icon": "x-social"
-      },
-      {
         "label": "Instagram",
-        "href": "#company",
+        "href": "https://www.instagram.com/aradient_technologies?igsh=MW0waW9rODNia2QxMQ==",
         "icon": "instagram"
       },
       {
-        "label": "Dribbble",
-        "href": "#company",
-        "icon": "globe"
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/company/aradient/?viewAsMember=true",
+        "icon": "linkedin"
       }
     ]
   }
