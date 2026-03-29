@@ -671,6 +671,7 @@ export default function Home() {
     setActiveProductSlide((current) => (current + 1) % productCards.length);
   };
 
+  // Split the brand into two lines so the header lockup stays compact on smaller screens.
   const [brandPrimary, ...brandSecondaryParts] = brand.name.split(" ");
   const brandSecondary = brandSecondaryParts.join(" ");
 
@@ -687,6 +688,7 @@ export default function Home() {
           </span>
         </div>
         <div className="nav-links">
+          {/* Keep header navigation content-managed so copy updates do not require layout edits. */}
           {navigation.links.map((link) => (
             <a href={link.href} key={link.label}>
               {link.label}
