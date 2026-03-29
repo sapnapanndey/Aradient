@@ -7,6 +7,7 @@ import {
   type ChangeEvent,
   type FormEvent,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import engineeringImage from "../images/engineering.png";
@@ -190,6 +191,38 @@ function SvgIcon({
         <svg {...sharedProps}>
           <rect x="3.5" y="5.5" width="17" height="13" rx="2.4" stroke="currentColor" strokeWidth="1.6" />
           <path d="M4.5 7L12 12.5L19.5 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "chat":
+      return (
+        <svg {...sharedProps}>
+          <path
+            d="M6.2 7.1C4.4 8.6 3.5 10.6 3.5 12.7C3.5 16.7 6.9 19.8 11.2 19.8C12.4 19.8 13.6 19.6 14.7 19.1L19.4 20.1L18.1 16.1C19.3 14.9 20 13.4 20 11.7C20 7.7 16.6 4.6 12.3 4.6C10.1 4.6 8 5.5 6.2 7.1Z"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M8.7 11.8H15.1M8.7 14.5H12.9"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+          />
+        </svg>
+      );
+    case "whatsapp":
+      return (
+        <svg {...sharedProps}>
+          <path
+            d="M12 4.1C7.7 4.1 4.3 7.5 4.3 11.7C4.3 13.1 4.7 14.4 5.4 15.6L4.4 19.6L8.5 18.5C9.6 19.1 10.8 19.4 12 19.4C16.2 19.4 19.7 16 19.7 11.7C19.7 7.5 16.2 4.1 12 4.1Z"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M9.2 8.9C9.4 8.4 9.7 8.4 9.9 8.4C10.1 8.4 10.3 8.4 10.5 8.9C10.7 9.4 11.1 10.6 11.2 10.8C11.3 11.1 11.2 11.3 11 11.5L10.6 11.9C10.5 12 10.4 12.1 10.5 12.3C10.7 12.7 11.1 13.2 11.6 13.6C12.2 14.2 12.7 14.4 13.1 14.6C13.3 14.7 13.5 14.6 13.6 14.5L14.1 14C14.3 13.9 14.5 13.8 14.8 13.9C15 14 16.2 14.5 16.5 14.7C16.7 14.8 16.8 14.9 16.8 15.1C16.7 15.6 16.3 16.1 15.9 16.3C15.6 16.5 15.1 16.6 14.7 16.5C14.1 16.4 13.4 16.1 12.7 15.8C11.6 15.2 10.5 14.3 9.7 13.2C9.1 12.4 8.6 11.5 8.5 10.7C8.4 10.1 8.7 9.5 9.2 8.9Z"
+            fill="currentColor"
+          />
         </svg>
       );
     case "location":
@@ -384,6 +417,7 @@ const teamImages = {
 } as const;
 
 export default function Home() {
+  const leadModalCloseTimeoutRef = useRef<number | null>(null);
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [activeProductSlide, setActiveProductSlide] = useState(0);
   const [activeSamagraSlide, setActiveSamagraSlide] = useState(0);
@@ -393,10 +427,12 @@ export default function Home() {
   const [isLearnMoreOpen, setIsLearnMoreOpen] = useState(false);
   const [heroEmail, setHeroEmail] = useState("");
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+  const [isLeadModalClosing, setIsLeadModalClosing] = useState(false);
   const [isLeadSubmitted, setIsLeadSubmitted] = useState(false);
   const [isLeadSubmitting, setIsLeadSubmitting] = useState(false);
   const [leadSubmitError, setLeadSubmitError] = useState("");
   const [hasAutoOpenedLeadModal, setHasAutoOpenedLeadModal] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [leadForm, setLeadForm] = useState({
     name: "",
     email: "",
@@ -488,14 +524,27 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (!isLeadModalOpen) {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMobileNavOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const isLeadModalVisible = isLeadModalOpen || isLeadModalClosing;
+
+    if (!isLeadModalVisible) {
       document.body.style.overflow = "";
       return;
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsLeadModalOpen(false);
+        closeLeadModal();
       }
     };
 
@@ -506,7 +555,15 @@ export default function Home() {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isLeadModalOpen]);
+  }, [isLeadModalClosing, isLeadModalOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (leadModalCloseTimeoutRef.current) {
+        window.clearTimeout(leadModalCloseTimeoutRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (hasAutoOpenedLeadModal) return;
@@ -545,17 +602,30 @@ export default function Home() {
   };
 
   const openLeadModal = (prefilledEmail = "") => {
+    if (leadModalCloseTimeoutRef.current) {
+      window.clearTimeout(leadModalCloseTimeoutRef.current);
+      leadModalCloseTimeoutRef.current = null;
+    }
+
     setLeadForm((current) => ({
       ...current,
       email: prefilledEmail || current.email,
     }));
     setLeadSubmitError("");
     setIsLeadSubmitted(false);
+    setIsLeadModalClosing(false);
     setIsLeadModalOpen(true);
   };
 
   const closeLeadModal = () => {
-    setIsLeadModalOpen(false);
+    if (!isLeadModalOpen || isLeadModalClosing) return;
+
+    setIsLeadModalClosing(true);
+    leadModalCloseTimeoutRef.current = window.setTimeout(() => {
+      setIsLeadModalOpen(false);
+      setIsLeadModalClosing(false);
+      leadModalCloseTimeoutRef.current = null;
+    }, 320);
   };
 
   const handleLeadFieldChange = (
@@ -687,18 +757,33 @@ export default function Home() {
             ) : null}
           </span>
         </div>
-        <div className="nav-links">
+        <button
+          aria-controls="site-navigation"
+          aria-expanded={isMobileNavOpen}
+          aria-label={isMobileNavOpen ? "Close menu" : "Open menu"}
+          className={`nav-toggle ${isMobileNavOpen ? "is-open" : ""}`}
+          onClick={() => setIsMobileNavOpen((current) => !current)}
+          type="button"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <div
+          className={`nav-links ${isMobileNavOpen ? "is-open" : ""}`}
+          id="site-navigation"
+        >
           {/* Keep header navigation content-managed so copy updates do not require layout edits. */}
           {navigation.links.map((link) => (
-            <a href={link.href} key={link.label}>
+            <a
+              href={link.href}
+              key={link.label}
+              onClick={() => setIsMobileNavOpen(false)}
+            >
               {link.label}
             </a>
           ))}
         </div>
-        <AppButton className="nav-cta" onClick={() => openLeadModal()} size="sm" type="button">
-          <SvgIcon className="icon-svg" name="calendar" />
-          {navigation.cta}
-        </AppButton>
       </nav>
 
       <section className="hero">
@@ -1233,15 +1318,27 @@ export default function Home() {
         </div>
       </footer>
 
-      {isLeadModalOpen ? (
+      <button
+        aria-label="Chat with us"
+        className="floating-whatsapp-button"
+        onClick={() => openLeadModal(heroEmail.trim())}
+        type="button"
+      >
+        <span className="floating-whatsapp-button-icon" aria-hidden="true">
+          <SvgIcon className="icon-svg" name="chat" />
+        </span>
+        <span className="floating-whatsapp-button-label">Chat with us</span>
+      </button>
+
+      {isLeadModalOpen || isLeadModalClosing ? (
         <div
-          className="lead-modal-backdrop"
+          className={`lead-modal-backdrop ${isLeadModalClosing ? "is-closing" : ""}`}
           onClick={closeLeadModal}
         >
           <div
             aria-labelledby="lead-modal-title"
             aria-modal="true"
-            className="lead-modal"
+            className={`lead-modal ${isLeadModalClosing ? "is-closing" : ""}`}
             onClick={(event) => event.stopPropagation()}
             role="dialog"
           >
@@ -1262,7 +1359,7 @@ export default function Home() {
                   className="lead-modal-illustration"
                   src={contactImage}
                 />
-                <h2 id="lead-modal-title">We will get back to you soon.</h2>
+                <h2>We will get back to you soon.</h2>
                 <p>
                   Thanks for sharing your requirement. Our team will review it and
                   reach out shortly.
@@ -1274,27 +1371,38 @@ export default function Home() {
             ) : (
               <div className="lead-modal-shell">
                 <aside className="lead-modal-aside">
-                  <span className="lead-modal-eyebrow">Start a conversation</span>
-                  <h2 id="lead-modal-title">Share your requirement</h2>
-                  <p className="lead-modal-copy">
-                    A few details are enough. We will follow up with the right next
-                    step.
-                  </p>
-
-                  <div className="lead-modal-highlights">
-                    <span>Fast response</span>
-                    <span>Product thinking</span>
-                    <span>Execution-ready team</span>
-                  </div>
-
-                  <div className="lead-modal-visual">
-                    <Image
-                      alt="Contact illustration"
-                      className="lead-modal-illustration"
-                      src={contactImage}
-                    />
+                  <h2 className="lead-modal-compact-title" id="lead-modal-title">
+                    Chat
+                  </h2>
+                  <div className="lead-modal-quick-connect">
+                    <div className="lead-modal-quick-grid">
+                      <a
+                        className="lead-modal-contact-card lead-modal-contact-card-primary"
+                        href="https://wa.me/message/MU4CXCA7EF5MN1"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <span className="lead-modal-contact-icon" aria-hidden="true">
+                          <SvgIcon className="icon-svg" name="whatsapp" />
+                        </span>
+                        <strong>Chat on WhatsApp</strong>
+                      </a>
+                      <a
+                        className="lead-modal-contact-card"
+                        href="tel:+919129633003"
+                      >
+                        <span className="lead-modal-contact-icon" aria-hidden="true">
+                          <SvgIcon className="icon-svg" name="phone" />
+                        </span>
+                        <strong>Call directly</strong>
+                        <span>+91 9129633003</span>
+                      </a>
+                    </div>
                   </div>
                 </aside>
+                <div className="lead-modal-section-separator" aria-hidden="true">
+                  <span>or</span>
+                </div>
 
                 <div className="lead-modal-panel">
                   <form className="lead-modal-form" onSubmit={handleLeadSubmit}>
@@ -1332,11 +1440,11 @@ export default function Home() {
                       />
                     </label>
                     <label className="lead-modal-field">
-                      <span>Requirement</span>
+                      <span>Message</span>
                       <textarea
                         name="requirement"
                         onChange={handleLeadFieldChange}
-                        placeholder="Briefly describe your requirement"
+                        placeholder="Type your message"
                         required
                         rows={4}
                         value={leadForm.requirement}
