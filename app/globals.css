@@ -204,6 +204,32 @@ nav {
   color: inherit;
 }
 
+.brand-label-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 24px;
+  line-height: 1;
+}
+
+.brand-label-primary,
+.brand-label-secondary {
+  display: block;
+  line-height: 1;
+}
+
+.brand-label-primary {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.brand-label-secondary {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
 .dot {
   width: 8px;
   height: 8px;
@@ -2261,9 +2287,22 @@ footer {
   margin-bottom: 24px;
 }
 
+.footer-brand-label-stack {
+  height: 28px;
+}
+
+.footer-brand-label-primary {
+  font-size: 15px;
+  color: #111827;
+}
+
+.footer-brand-label-secondary {
+  font-size: 10px;
+  color: #111827;
+}
+
 .footer-brand-label {
   color: #111827;
-  font-size: 28px;
 }
 
 .footer-brand p {
@@ -3150,6 +3189,18 @@ footer {
 
   .brand-label {
     font-size: 18px;
+  }
+
+  .brand-label-stack {
+    height: 20px;
+  }
+
+  .brand-label-primary {
+    font-size: 11px;
+  }
+
+  .brand-label-secondary {
+    font-size: 8px;
   }
 
   .nav-cta {
