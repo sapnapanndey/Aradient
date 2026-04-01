@@ -28,6 +28,10 @@
     ],
     "cta": "Book a discovery call"
   },
+  "leadModal": {
+    "asideEyebrow": "Direct line",
+    "asideTitle": "Choose how you would like to connect"
+  },
   "hero": {
     "words": ["products", "agents", "platforms", "workflows"],
     "titlePrefix": "We build",
@@ -547,17 +551,17 @@
     "socials": [
       {
         "label": "Facebook",
-        "href": "https://www.facebook.com/share/19xcTho8A1/",
+        "href": "https://www.facebook.com/share/1HjdQWtEie/",
         "icon": "facebook"
       },
       {
         "label": "Instagram",
-        "href": "https://www.instagram.com/aradient_technologies?igsh=MW0waW9rODNia2QxMQ==",
+        "href": "https://www.instagram.com/aradient_technology?utm_source=qr&igsh=MW0waW9rODNia2QxMQ==",
         "icon": "instagram"
       },
       {
         "label": "LinkedIn",
-        "href": "https://www.linkedin.com/company/aradient/?viewAsMember=true",
+        "href": "https://www.linkedin.com/company/113344970/admin/dashboard/",
         "icon": "linkedin"
       }
     ]

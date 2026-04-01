@@ -446,6 +446,7 @@ export default function Home() {
     footer,
     hero,
     learnMoreSection,
+    leadModal,
     navigation,
     products,
     samagraProduct,
@@ -1310,6 +1311,8 @@ export default function Home() {
                 className="footer-social-link"
                 href={social.href}
                 key={social.label}
+                rel="noreferrer"
+                target="_blank"
               >
                 <SvgIcon className="icon-svg footer-social-icon" name={social.icon} />
               </a>
@@ -1371,9 +1374,13 @@ export default function Home() {
             ) : (
               <div className="lead-modal-shell">
                 <aside className="lead-modal-aside">
-                  <h2 className="lead-modal-compact-title" id="lead-modal-title">
-                    Chat
-                  </h2>
+                  <header className="lead-modal-aside-head">
+                    <p className="lead-modal-aside-eyebrow">{leadModal.asideEyebrow}</p>
+                    <h2 className="lead-modal-compact-title" id="lead-modal-title">
+                      {leadModal.asideTitle}
+                    </h2>
+                    <div className="lead-modal-aside-rule" aria-hidden="true" />
+                  </header>
                   <div className="lead-modal-quick-connect">
                     <div className="lead-modal-quick-grid">
                       <a
@@ -1385,7 +1392,12 @@ export default function Home() {
                         <span className="lead-modal-contact-icon" aria-hidden="true">
                           <SvgIcon className="icon-svg" name="whatsapp" />
                         </span>
-                        <strong>Chat on WhatsApp</strong>
+                        <span className="lead-modal-contact-body">
+                          <strong>Chat on WhatsApp</strong>
+                          <span className="lead-modal-contact-meta">
+                            Instant replies during business hours
+                          </span>
+                        </span>
                       </a>
                       <a
                         className="lead-modal-contact-card"
@@ -1394,8 +1406,12 @@ export default function Home() {
                         <span className="lead-modal-contact-icon" aria-hidden="true">
                           <SvgIcon className="icon-svg" name="phone" />
                         </span>
-                        <strong>Call directly</strong>
-                        <span>+91 9129633003</span>
+                        <span className="lead-modal-contact-body">
+                          <strong>Call directly</strong>
+                          <span className="lead-modal-contact-meta">
+                            +91 9129633003
+                          </span>
+                        </span>
                       </a>
                     </div>
                   </div>
