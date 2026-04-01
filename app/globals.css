@@ -368,6 +368,8 @@ nav {
   cursor: pointer;
   font-weight: 700;
   text-decoration: none;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .app-button-primary {
@@ -578,6 +580,8 @@ nav {
 
 .hero-form .app-button {
   white-space: nowrap;
+  /* Match the pill-shaped .hero-form track (see border-radius on .hero-form) */
+  border-radius: 999px;
 }
 
 .lead-modal-backdrop {
@@ -599,6 +603,7 @@ nav {
 
 .lead-modal {
   --lead-soft-surface: #ffffff;
+  /* Keep modal radii fixed — other sections should match these, not the reverse */
   --lead-soft-radius: 6px;
   --lead-soft-radius-inner: 6px;
   --lead-card-row-bg: #f8fafc;
@@ -1041,6 +1046,11 @@ nav {
   color: #475569;
 }
 
+/* Match inputs / contact rows — same token as .lead-modal-field controls */
+.lead-modal .app-button {
+  border-radius: var(--lead-soft-radius-inner);
+}
+
 .lead-modal-success .app-button {
   margin-top: 22px;
 }
@@ -1096,8 +1106,10 @@ nav {
 }
 
 .feature-panel {
+  /* Same token for the white “model” card and its CTAs (soft corners, matches --radius) */
+  --feature-radius: var(--radius);
   min-height: 360px;
-  border-radius: var(--card-radius);
+  border-radius: var(--feature-radius);
   padding: 52px 56px;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
@@ -1130,6 +1142,11 @@ nav {
 
 .feature-btn {
   min-width: 150px;
+}
+
+.feature-panel .feature-actions .app-button.app-button-primary,
+.feature-panel .feature-actions .app-button.app-button-secondary {
+  border-radius: var(--feature-radius);
 }
 
 .feature-visual {
@@ -1533,12 +1550,14 @@ nav {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 28px 24px;
   align-items: stretch;
+  /* One radius for white flip cards + blue CTA so they always match */
+  --service-surface-radius: var(--card-radius);
 }
 
 .service-card,
 .service-cta-card {
   min-height: 380px;
-  border-radius: var(--card-radius);
+  border-radius: var(--service-surface-radius);
   transition:
     transform 0.28s ease,
     box-shadow 0.28s ease,
@@ -1549,13 +1568,15 @@ nav {
   transform-origin: center bottom;
   position: relative;
   perspective: 1400px;
+  /* Clip 3D faces + ::before to the rounded rect (same visible radius as .service-cta-card) */
+  overflow: hidden;
 }
 
 .service-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: var(--card-radius);
+  border-radius: var(--service-surface-radius);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(247, 250, 255, 0.82)),
     radial-gradient(circle at top right, rgba(191, 219, 254, 0.18), transparent 34%),
@@ -1578,6 +1599,7 @@ nav {
   min-height: 380px;
   transform-style: preserve-3d;
   transition: transform 0.7s ease;
+  border-radius: var(--service-surface-radius);
 }
 
 .service-card-face {
@@ -1589,7 +1611,7 @@ nav {
   align-items: flex-start;
   justify-content: flex-start;
   backface-visibility: hidden;
-  border-radius: var(--card-radius);
+  border-radius: var(--service-surface-radius);
 }
 
 .service-card-front {
@@ -1713,11 +1735,15 @@ nav {
   color: rgba(23, 32, 51, 0.8);
 }
 
+/* Same radius as .service-cta-card / .service-card (--service-surface-radius from .services-grid) */
+.service-cta-card .service-cta-button.app-button {
+  border-radius: var(--service-surface-radius);
+}
+
 .service-cta-button {
   width: 100%;
   margin-top: 24px;
   border: none;
-  border-radius: inherit;
   background: #fff;
   color: #3155da;
   box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12);
@@ -3181,7 +3207,6 @@ footer {
   }
 
   .hero-form .app-button {
-    border-radius: 999px;
     font-size: 12px;
     font-weight: 700;
     min-width: auto;
@@ -3217,7 +3242,7 @@ footer {
   .lead-modal-aside,
   .lead-modal-panel,
   .lead-modal-success {
-    border-radius: 6px;
+    border-radius: var(--lead-soft-radius);
   }
 
   .lead-modal-aside,
@@ -3836,7 +3861,7 @@ footer {
 
   .lead-modal {
     max-height: calc(100vh - 20px);
-    border-radius: 6px;
+    border-radius: var(--lead-soft-radius);
     padding: 10px;
   }
 
@@ -3851,12 +3876,12 @@ footer {
   .lead-modal-panel,
   .lead-modal-success {
     padding: 18px;
-    border-radius: 6px;
+    border-radius: var(--lead-soft-radius);
   }
 
   .lead-modal-contact-card {
     padding: 16px 18px;
-    border-radius: 6px;
+    border-radius: var(--lead-soft-radius-inner);
     gap: 12px;
   }
 
