@@ -28,6 +28,8 @@ import sonamTripathiImage from "../images/Sonam Tripathi.png";
 import strategyImage from "../images/strategy.png";
 import siteContent from "./content/site-content.json";
 
+const WHATSAPP_CHAT_URL = "https://wa.me/message/J7MNBJMSUUIKF1";
+
 function SvgIcon({
   name,
   className,
@@ -1385,7 +1387,7 @@ export default function Home() {
                     <div className="lead-modal-quick-grid">
                       <a
                         className="lead-modal-contact-card lead-modal-contact-card-primary"
-                        href="https://wa.me/message/MU4CXCA7EF5MN1"
+                        href={WHATSAPP_CHAT_URL}
                         rel="noreferrer"
                         target="_blank"
                       >
@@ -1413,6 +1415,25 @@ export default function Home() {
                           </span>
                         </span>
                       </a>
+                    </div>
+                    <div className="lead-modal-whatsapp-qr">
+                      <a
+                        className="lead-modal-whatsapp-qr-visual"
+                        href={WHATSAPP_CHAT_URL}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <Image
+                          alt="Scan this QR code to start a WhatsApp chat with Aradient"
+                          className="lead-modal-whatsapp-qr-image"
+                          height={1024}
+                          src="/whatsapp-qr.png"
+                          width={576}
+                        />
+                      </a>
+                      <p className="lead-modal-whatsapp-qr-caption">
+                        Scan with your phone camera to open WhatsApp, or tap the image.
+                      </p>
                     </div>
                   </div>
                 </aside>
