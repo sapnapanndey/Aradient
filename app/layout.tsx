@@ -21,15 +21,6 @@ export const metadata: Metadata = {
       "Aradient partners with startups and enterprises to design, build, and launch AI-powered software, web apps, and scalable digital products.",
     url: siteUrl,
     siteName: "Aradient",
-    // File is public/brandImage.png → served at /brandImage.png (not /images/...)
-    images: [
-      {
-        url: "/brandImage.png",
-        width: 2872,
-        height: 1238,
-        alt: "Aradient",
-      },
-    ],
     type: "website",
   },
 };
