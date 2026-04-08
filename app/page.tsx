@@ -22,7 +22,8 @@ import samagraImageThree from "../images/apps/samagraenterprises/3.jpeg";
 import samagraImageTwo from "../images/apps/samagraenterprises/2.jpeg";
 import kunalReddyImage from "../images/kunal Reddy.png";
 import launchImage from "../images/launch.png";
-import logoImage from "../images/logo.svg";
+import logoBlackImage from "../images/logo_black.svg";
+import logoWhiteImage from "../images/logo_white.svg";
 import prototypeImage from "../images/prototype.png";
 import sonamTripathiImage from "../images/Sonam Tripathi.png";
 import strategyImage from "../images/strategy.png";
@@ -744,21 +745,11 @@ export default function Home() {
     setActiveProductSlide((current) => (current + 1) % productCards.length);
   };
 
-  // Split the brand into two lines so the header lockup stays compact on smaller screens.
-  const [brandPrimary, ...brandSecondaryParts] = brand.name.split(" ");
-  const brandSecondary = brandSecondaryParts.join(" ");
-
   return (
     <main>
       <nav className={headerOnLight ? "nav-on-light" : "nav-on-dark"}>
         <div className="nav-logo">
-          <Image alt={`${brand.name} logo`} className="nav-logo-image" priority src={logoImage} />
-          <span className="brand-label-stack">
-            <span className="brand-label brand-label-primary">{brandPrimary}</span>
-            {brandSecondary ? (
-              <span className="brand-label brand-label-secondary">{brandSecondary}</span>
-            ) : null}
-          </span>
+          <Image alt={`${brand.name} logo`} className="nav-logo-image" priority src={logoBlackImage} />
         </div>
         <button
           aria-controls="site-navigation"
@@ -1262,17 +1253,7 @@ export default function Home() {
         <div className="footer-top">
           <div className="footer-brand">
             <div className="footer-brand-lockup">
-              <Image alt={`${brand.name} logo`} className="footer-logo-image" src={logoImage} />
-              <span className="brand-label-stack footer-brand-label-stack">
-                <span className="brand-label brand-label-primary footer-brand-label-primary">
-                  {brandPrimary}
-                </span>
-                {brandSecondary ? (
-                  <span className="brand-label brand-label-secondary footer-brand-label-secondary">
-                    {brandSecondary}
-                  </span>
-                ) : null}
-              </span>
+              <Image alt={`${brand.name} logo`} className="footer-logo-image" src={logoWhiteImage} />
             </div>
             <p>{footer.description}</p>
             <div className="footer-contact-list">

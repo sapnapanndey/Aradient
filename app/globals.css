@@ -176,7 +176,7 @@ nav {
 .nav-logo-image {
   display: block;
   width: auto;
-  height: 24px;
+  height: 34px;
   object-fit: contain;
   transition: filter 0.25s ease;
 }
@@ -2610,7 +2610,7 @@ footer {
 .footer-logo-image {
   display: block;
   width: auto;
-  height: 28px;
+  height: 36px;
   margin-bottom: 0;
   object-fit: contain;
   filter:
@@ -3824,7 +3824,7 @@ footer {
   }
 
   .nav-logo-image {
-    height: 20px;
+    height: 26px;
   }
 
   .brand-label {
