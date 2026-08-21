@@ -33,7 +33,12 @@
     "asideTitle": "Choose how you would like to connect"
   },
   "hero": {
-    "words": ["products", "agents", "platforms", "workflows"],
+    "words": [
+      "products",
+      "agents",
+      "platforms",
+      "workflows"
+    ],
     "titlePrefix": "We build",
     "titleSuffix": "for modern teams",
     "description": "Aradient partners with startups and enterprises to design, engineer, and launch AI-powered software products that create measurable business momentum.",
@@ -278,7 +283,11 @@
     "logo": "FixAI Logo",
     "logoUrl": "https://www.fixai.ca/assets/SVG/logo.svg",
     "name": "FixAi",
-    "navLinks": ["Features", "How it works", "AI Assistant"],
+    "navLinks": [
+      "Features",
+      "How it works",
+      "AI Assistant"
+    ],
     "signIn": "Sign in",
     "createAccount": "Create Account",
     "learnMore": "See how FixAi works →",
@@ -447,6 +456,23 @@
       "stepsAlt": "Samagra Enterprises solar consultation and pricing",
       "extraAltOne": "Samagra Enterprises foundation and impact work",
       "extraAltTwo": "Samagra Enterprises consultation and solar planning"
+    }
+  },
+  "schoolProduct": {
+    "name": "School Management Software",
+    "tagline": "School Operations Platform",
+    "heroTitle": "One system for the whole school",
+    "heroDescription": "From the first admission enquiry to the last fee receipt, every school office works from the same records — and parents and students see their own view of it.",
+    "heroPoints": [
+      "Front office: admission enquiries, visitor log, gate passes, and complaints",
+      "Academics: timetables, attendance, homework, lesson plans, exams, and results",
+      "Operations: fee structures, transport routes, hostel rooms, library, and certificates",
+      "A parent and student portal running on the same live data"
+    ],
+    "video": {
+      "src": "/products/school-management-demo.mp4",
+      "poster": "/products/school-management-demo-poster.jpg",
+      "caption": "School Management Software product demo"
     }
   },
   "footer": {

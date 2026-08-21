@@ -11,19 +11,18 @@ import {
   useState,
 } from "react";
 import engineeringImage from "../images/engineering.png";
-import fixAiImageOne from "../images/apps/fixai/1.webp";
-import fixAiImageThree from "../images/apps/fixai/3.webp";
-import fixAiImageTwo from "../images/apps/fixai/2.webp";
+import fixAiImageOne from "../images/apps/fixai/cropped/1.webp";
+import fixAiImageThree from "../images/apps/fixai/cropped/3.webp";
+import fixAiImageTwo from "../images/apps/fixai/cropped/2.webp";
 import contactImage from "../images/contact.svg";
-import samagraImageFive from "../images/apps/samagraenterprises/5.jpeg";
-import samagraImageFour from "../images/apps/samagraenterprises/4.jpeg";
-import samagraImageOne from "../images/apps/samagraenterprises/1.jpeg";
-import samagraImageThree from "../images/apps/samagraenterprises/3.jpeg";
-import samagraImageTwo from "../images/apps/samagraenterprises/2.jpeg";
+import samagraImageFive from "../images/apps/samagraenterprises/cropped/5.jpeg";
+import samagraImageFour from "../images/apps/samagraenterprises/cropped/4.jpeg";
+import samagraImageOne from "../images/apps/samagraenterprises/cropped/1.jpeg";
+import samagraImageThree from "../images/apps/samagraenterprises/cropped/3.jpeg";
+import samagraImageTwo from "../images/apps/samagraenterprises/cropped/2.jpeg";
 import kunalReddyImage from "../images/kunal Reddy.png";
 import launchImage from "../images/launch.png";
 import logoBlackImage from "../images/logo_black.svg";
-import logoWhiteImage from "../images/logo_white.svg";
 import prototypeImage from "../images/prototype.png";
 import sonamTripathiImage from "../images/Sonam Tripathi.png";
 import strategyImage from "../images/strategy.png";
@@ -424,7 +423,6 @@ export default function Home() {
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [activeProductSlide, setActiveProductSlide] = useState(0);
   const [activeSamagraSlide, setActiveSamagraSlide] = useState(0);
-  const [flippedSuccessIndex, setFlippedSuccessIndex] = useState<number | null>(null);
   const [headerOnLight, setHeaderOnLight] = useState(false);
   const [visibleSections, setVisibleSections] = useState<number[]>([]);
   const [isLearnMoreOpen, setIsLearnMoreOpen] = useState(false);
@@ -453,6 +451,7 @@ export default function Home() {
     navigation,
     products,
     samagraProduct,
+    schoolProduct,
     servicesSection,
     showcase,
     successSection,
@@ -777,6 +776,17 @@ export default function Home() {
               {link.label}
             </a>
           ))}
+          <AppButton
+            className="nav-cta"
+            onClick={() => {
+              setIsMobileNavOpen(false);
+              openLeadModal(heroEmail.trim());
+            }}
+            size="sm"
+            type="button"
+          >
+            {navigation.cta}
+          </AppButton>
         </div>
       </nav>
 
@@ -919,6 +929,7 @@ export default function Home() {
                 data-reveal={index + 29}
                 key={service.title}
               >
+                {/* Flat enterprise card: illustration tile, title, copy. */}
                 <div className="service-card-inner">
                   <div className="service-card-face service-card-front">
                     <div className="service-illustration-wrap">
@@ -931,13 +942,6 @@ export default function Home() {
                     </div>
                     <h3>{service.title}</h3>
                     <p>{service.description}</p>
-                  </div>
-
-                  <div className="service-card-face service-card-back">
-                    <span className="service-card-kicker">Software Service</span>
-                    <h3>{service.title}</h3>
-                    <p>{service.description}</p>
-                    <span className="service-card-hint">Built with Aradient</span>
                   </div>
                 </div>
               </article>
@@ -974,18 +978,10 @@ export default function Home() {
           <div className="success-grid">
             {successSection.steps.map((step, index) => (
               <div className="success-card-wrap" key={step.title}>
-                <button
-                  className={`success-card success-card-button ${isVisible(index + 5)} ${
-                    flippedSuccessIndex === index ? "is-flipped" : ""
-                  }`}
+                {/* Flat enterprise card: icon tile, step title, description. */}
+                <article
+                  className={`success-card ${isVisible(index + 5)}`}
                   data-reveal={index + 5}
-                  onClick={() =>
-                    setFlippedSuccessIndex((current) => (current === index ? null : index))
-                  }
-                  onMouseEnter={() => setFlippedSuccessIndex(index)}
-                  onMouseLeave={() => setFlippedSuccessIndex((current) => (current === index ? null : current))}
-                  onBlur={() => setFlippedSuccessIndex((current) => (current === index ? null : current))}
-                  type="button"
                 >
                   <div className="success-card-inner">
                     <div className="success-card-face success-card-front">
@@ -1005,16 +1001,10 @@ export default function Home() {
                         )}
                       </div>
                       <h3>{step.title}</h3>
-                      <div className="success-card-line" aria-hidden="true" />
-                      <span className="success-card-hint">View details</span>
-                    </div>
-
-                    <div className="success-card-face success-card-back">
-                      <h3>{step.title}</h3>
                       <p>{step.description}</p>
                     </div>
                   </div>
-                </button>
+                </article>
               </div>
             ))}
           </div>
@@ -1160,6 +1150,53 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div className={`products-divider ${isVisible(22)}`} data-reveal="22" aria-hidden="true">
+          <span className="products-divider-line" />
+          <span className="products-divider-badge">Next Product</span>
+          <span className="products-divider-line" />
+        </div>
+
+        <div className={`products-section products-section-school ${isVisible(23)}`} data-reveal="23">
+          <div className="products-inner">
+            <div className="products-list">
+              <div className={`products-nameplate ${isVisible(24)}`} data-reveal="24">
+                <span className="products-nameplate-kicker">{schoolProduct.tagline}</span>
+                <div className="products-app-brand">
+                  <h2>{schoolProduct.name}</h2>
+                </div>
+              </div>
+
+              <article className={`product-item is-static ${isVisible(25)}`} data-reveal="25">
+                <h3>{schoolProduct.heroTitle}</h3>
+                <p className="product-item-description">{schoolProduct.heroDescription}</p>
+                <ul>
+                  {schoolProduct.heroPoints.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+
+            {/* Silent screen recording: autoplays muted, loops forever, and the
+                native controls give viewers play/pause and fullscreen. */}
+            <div className={`product-visual product-visual-video ${isVisible(27)}`} data-reveal="27">
+              <video
+                autoPlay
+                className="product-video"
+                controls
+                controlsList="nodownload"
+                loop
+                muted
+                playsInline
+                poster={schoolProduct.video.poster}
+                preload="metadata"
+              >
+                <source src={schoolProduct.video.src} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className={`clients-section ${isVisible(8)}`} data-reveal="8" id="clients">
@@ -1253,7 +1290,7 @@ export default function Home() {
         <div className="footer-top">
           <div className="footer-brand">
             <div className="footer-brand-lockup">
-              <Image alt={`${brand.name} logo`} className="footer-logo-image" src={logoWhiteImage} />
+              <Image alt={`${brand.name} logo`} className="footer-logo-image" src={logoBlackImage} />
             </div>
             <p>{footer.description}</p>
             <div className="footer-contact-list">

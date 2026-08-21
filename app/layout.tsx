@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import "./enterprise-theme.css";
 import siteContent from "./content/site-content.json";
-const poppins = Poppins({
+// Google Sans is not publicly distributable; Inter is the closest open match
+// for the enterprise theme's typography.
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-poppins",
+  variable: "--font-sans",
 });
 
 const siteUrl = "https://aradient.com";
@@ -42,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${poppins.className}`}>{children}</body>
+      <body className={`${inter.variable} ${inter.className}`}>{children}</body>
     </html>
   );
 }
