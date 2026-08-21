@@ -28,8 +28,6 @@ import sonamTripathiImage from "../images/Sonam Tripathi.png";
 import strategyImage from "../images/strategy.png";
 import siteContent from "./content/site-content.json";
 
-const WHATSAPP_CHAT_URL = "https://wa.me/message/J7MNBJMSUUIKF1";
-
 function SvgIcon({
   name,
   className,
@@ -209,21 +207,6 @@ function SvgIcon({
             stroke="currentColor"
             strokeWidth="1.6"
             strokeLinecap="round"
-          />
-        </svg>
-      );
-    case "whatsapp":
-      return (
-        <svg {...sharedProps}>
-          <path
-            d="M12 4.1C7.7 4.1 4.3 7.5 4.3 11.7C4.3 13.1 4.7 14.4 5.4 15.6L4.4 19.6L8.5 18.5C9.6 19.1 10.8 19.4 12 19.4C16.2 19.4 19.7 16 19.7 11.7C19.7 7.5 16.2 4.1 12 4.1Z"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M9.2 8.9C9.4 8.4 9.7 8.4 9.9 8.4C10.1 8.4 10.3 8.4 10.5 8.9C10.7 9.4 11.1 10.6 11.2 10.8C11.3 11.1 11.2 11.3 11 11.5L10.6 11.9C10.5 12 10.4 12.1 10.5 12.3C10.7 12.7 11.1 13.2 11.6 13.6C12.2 14.2 12.7 14.4 13.1 14.6C13.3 14.7 13.5 14.6 13.6 14.5L14.1 14C14.3 13.9 14.5 13.8 14.8 13.9C15 14 16.2 14.5 16.5 14.7C16.7 14.8 16.8 14.9 16.8 15.1C16.7 15.6 16.3 16.1 15.9 16.3C15.6 16.5 15.1 16.6 14.7 16.5C14.1 16.4 13.4 16.1 12.7 15.8C11.6 15.2 10.5 14.3 9.7 13.2C9.1 12.4 8.6 11.5 8.5 10.7C8.4 10.1 8.7 9.5 9.2 8.9Z"
-            fill="currentColor"
           />
         </svg>
       );
@@ -1341,17 +1324,6 @@ export default function Home() {
         </div>
       </footer>
 
-      <button
-        aria-label="Chat with us"
-        className="floating-whatsapp-button"
-        onClick={() => openLeadModal(heroEmail.trim())}
-        type="button"
-      >
-        <span className="floating-whatsapp-button-icon" aria-hidden="true">
-          <SvgIcon className="icon-svg" name="chat" />
-        </span>
-        <span className="floating-whatsapp-button-label">Chat with us</span>
-      </button>
 
       {isLeadModalOpen || isLeadModalClosing ? (
         <div
@@ -1405,22 +1377,6 @@ export default function Home() {
                     <div className="lead-modal-quick-grid">
                       <a
                         className="lead-modal-contact-card lead-modal-contact-card-primary"
-                        href={WHATSAPP_CHAT_URL}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        <span className="lead-modal-contact-icon" aria-hidden="true">
-                          <SvgIcon className="icon-svg" name="whatsapp" />
-                        </span>
-                        <span className="lead-modal-contact-body">
-                          <strong>Chat on WhatsApp</strong>
-                          <span className="lead-modal-contact-meta">
-                            Instant replies during business hours
-                          </span>
-                        </span>
-                      </a>
-                      <a
-                        className="lead-modal-contact-card"
                         href="tel:+919129633003"
                       >
                         <span className="lead-modal-contact-icon" aria-hidden="true">
@@ -1433,25 +1389,20 @@ export default function Home() {
                           </span>
                         </span>
                       </a>
-                    </div>
-                    <div className="lead-modal-whatsapp-qr">
                       <a
-                        className="lead-modal-whatsapp-qr-visual"
-                        href={WHATSAPP_CHAT_URL}
-                        rel="noreferrer"
-                        target="_blank"
+                        className="lead-modal-contact-card"
+                        href="mailto:ajay@aradient.com"
                       >
-                        <Image
-                          alt="Scan this QR code to start a WhatsApp chat with Aradient"
-                          className="lead-modal-whatsapp-qr-image"
-                          height={1024}
-                          src="/whatsapp-qr.png"
-                          width={576}
-                        />
+                        <span className="lead-modal-contact-icon" aria-hidden="true">
+                          <SvgIcon className="icon-svg" name="mail" />
+                        </span>
+                        <span className="lead-modal-contact-body">
+                          <strong>Email us</strong>
+                          <span className="lead-modal-contact-meta">
+                            ajay@aradient.com
+                          </span>
+                        </span>
                       </a>
-                      <p className="lead-modal-whatsapp-qr-caption">
-                        Scan with your phone camera to open WhatsApp, or tap the image.
-                      </p>
                     </div>
                   </div>
                 </aside>
