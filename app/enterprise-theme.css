@@ -974,6 +974,66 @@ nav {
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
 }
 
+/* --------------------------------------------------- products: mobile */
+
+/* globals.css stacks the carousel slides with position:absolute inside a
+   fixed-height stage. On narrow screens the copy is far taller than that
+   stage, so slides ran over each other and over the device shot below.
+   Below 900px the active slide is the only one in flow and the stage
+   simply takes its height. */
+@media (max-width: 900px) {
+  .products-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 36px);
+  }
+
+  .product-card-stage {
+    min-height: 0 !important;
+    position: relative;
+  }
+
+  .product-item {
+    position: static;
+    display: none;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition: none;
+  }
+
+  .product-item.is-visible,
+  .product-item.is-static {
+    display: block;
+  }
+
+  .product-visual {
+    min-height: 0;
+    max-width: 520px;
+    margin-inline: auto;
+    padding: clamp(16px, 4vw, 24px);
+  }
+
+  .product-slider {
+    min-height: clamp(280px, 68vw, 420px) !important;
+  }
+
+  .product-slider-controls {
+    margin-top: 18px;
+  }
+
+  .products-nameplate h2 {
+    font-size: clamp(26px, 6.4vw, 34px);
+  }
+
+  .product-item h3 {
+    font-size: 19px;
+  }
+
+  .product-item-description {
+    font-size: 16px;
+  }
+}
+
 /* ------------------------------------------------------- clients strip */
 
 .clients-section {
