@@ -1,0 +1,2652 @@
+/*
+ * Landing page. Loaded after enterprise-theme.css; every block is prefixed
+ * `ix-` so it never collides with the legacy selectors in globals.css.
+ *
+ * Layout language: a cinematic full-bleed hero in an inset rounded frame,
+ * glass pill navigation, flat white cards on pale-blue and black bands,
+ * underlined text links, and abstract art tiles drawn in CSS.
+ */
+
+:root {
+  --ix-ink: #0d1b3e;
+  --ix-ink-2: #44506b;
+  --ix-ink-3: #6b7590;
+  --ix-blue-band: #e3e9f4;
+  --ix-blue-soft: #eef2f9;
+  --ix-black: #050608;
+  --ix-line: #d5dbe7;
+  --ix-accent: #6b5cf6;
+  --ix-accent-2: #3a7bfd;
+  --ix-radius: 14px;
+  --ix-radius-lg: 24px;
+  --ix-shadow: 0 1px 2px rgba(13, 27, 62, 0.06), 0 18px 40px -18px rgba(13, 27, 62, 0.22);
+  --ix-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ix-container: 1240px;
+  /* One vertical rhythm for every section: ~200px between content blocks on
+     desktop, ~130px on phones. */
+  --ix-section-y: clamp(64px, 7.2vw, 104px);
+  --ix-head-gap: clamp(40px, 4.5vw, 64px);
+}
+
+.ix-page {
+  overflow-x: clip;
+  color: var(--ix-ink);
+}
+
+.ix-page h1,
+.ix-page h2,
+.ix-page h3,
+.ix-page h4 {
+  color: var(--ix-ink);
+}
+
+.ix-page p {
+  color: var(--ix-ink-2);
+}
+
+.ix-container {
+  width: min(var(--ix-container), 100% - 2 * clamp(16px, 4vw, 48px));
+  margin-inline: auto;
+}
+
+.ix-page .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s var(--ix-ease), transform 0.8s var(--ix-ease);
+}
+
+.ix-page .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.ix-section {
+  padding-block: var(--ix-section-y);
+}
+
+.ix-head {
+  max-width: 720px;
+  margin: 0 auto var(--ix-head-gap);
+  text-align: center;
+}
+
+.ix-head h2 {
+  text-wrap: balance;
+  font-size: clamp(34px, 4.2vw, 58px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.ix-head p {
+  max-width: 560px;
+  margin: 20px auto 0;
+  font-size: clamp(17px, 1.3vw, 19px);
+  line-height: 1.6;
+}
+
+.ix-eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ix-ink);
+}
+
+.ix-accent {
+  background: linear-gradient(90deg, var(--ix-accent), #a66cf0 60%, var(--ix-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ix-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid currentColor;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ix-ink);
+  text-decoration: none;
+}
+
+.ix-link .icon-svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s var(--ix-ease);
+}
+
+.ix-link:hover .icon-svg {
+  transform: translate(2px, -2px);
+}
+
+.ix-link-button {
+  padding-inline: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.ix-tag {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: var(--ix-ink);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ix-tag-light {
+  background: #fff;
+  color: var(--ix-ink);
+}
+
+.ix-dark-button,
+.ix-light-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.25s var(--ix-ease), box-shadow 0.25s var(--ix-ease),
+    background 0.2s ease;
+}
+
+.ix-dark-button {
+  background: linear-gradient(180deg, #2a2d36, #0b0c10);
+  color: #fff;
+  box-shadow: 0 10px 24px -10px rgba(5, 6, 8, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.ix-light-button {
+  background: #fff;
+  color: var(--ix-ink);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.5);
+}
+
+.ix-dark-button:hover,
+.ix-light-button:hover {
+  transform: translateY(-2px);
+}
+
+.ix-dark-button .icon-svg,
+.ix-light-button .icon-svg {
+  width: 15px;
+  height: 15px;
+}
+
+.ix-dark-button-sm {
+  min-height: 40px;
+  padding: 9px 16px;
+  font-size: 14px;
+}
+
+/* -------------------------------------------------------------- header */
+
+.ix-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: clamp(16px, 3vw, 48px);
+  padding: 28px clamp(28px, 4vw, 56px);
+  transition: padding 0.35s var(--ix-ease);
+}
+
+.ix-header::before {
+  content: "";
+  position: absolute;
+  inset: 8px 10px;
+  z-index: -1;
+  border-radius: 999px;
+  background: rgba(214, 220, 232, 0.72);
+  box-shadow: 0 10px 30px -14px rgba(13, 27, 62, 0.35);
+  backdrop-filter: blur(18px) saturate(160%);
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.35s ease, transform 0.35s var(--ix-ease);
+}
+
+.ix-header.is-scrolled {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.ix-header.is-scrolled::before {
+  opacity: 1;
+  transform: none;
+}
+
+.ix-burger {
+  display: grid;
+  place-content: center;
+  gap: 4px;
+  width: 50px;
+  height: 50px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 6px 18px -8px rgba(13, 27, 62, 0.4);
+  cursor: pointer;
+}
+
+.ix-burger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ix-ink);
+  transition: transform 0.3s var(--ix-ease), opacity 0.2s ease;
+}
+
+.ix-burger.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.ix-burger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.ix-burger.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.ix-logo {
+  display: inline-flex;
+}
+
+.ix-logo-image {
+  width: auto;
+  height: 34px;
+}
+
+.ix-logo-dark,
+.ix-header.is-scrolled .ix-logo-light {
+  display: none;
+}
+
+.ix-header.is-scrolled .ix-logo-dark {
+  display: block;
+}
+
+.ix-pill-nav {
+  justify-self: center;
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border-radius: 999px;
+  background: rgba(225, 231, 242, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(14px);
+}
+
+.ix-pill-nav a {
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ix-ink);
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.ix-pill-nav a:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.ix-header.is-scrolled .ix-pill-nav {
+  background: transparent;
+  border-color: transparent;
+  backdrop-filter: none;
+}
+
+.ix-header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #23252d, #050608);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.14), 0 10px 24px -10px rgba(0, 0, 0, 0.6);
+}
+
+.ix-header-cta .icon-svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* Slide-out menu behind the hamburger. */
+.ix-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(5, 6, 8, 0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.ix-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ix-menu-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: min(420px, 100%);
+  height: 100%;
+  padding: 120px 32px 32px;
+  background: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.45s var(--ix-ease);
+}
+
+.ix-menu.is-open .ix-menu-panel {
+  transform: none;
+}
+
+.ix-menu-links {
+  display: grid;
+}
+
+.ix-menu-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--ix-line);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ix-ink);
+  text-decoration: none;
+}
+
+.ix-menu-links .icon-svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ix-menu-contact {
+  display: grid;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.ix-menu-contact a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--ix-ink-2);
+  text-decoration: none;
+}
+
+.ix-menu-contact .icon-svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------------------------------------------------------------- hero */
+
+.ix-hero {
+  padding: 10px;
+}
+
+.ix-hero-frame {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: max(100svh - 20px, 760px);
+  padding: 120px clamp(16px, 4vw, 56px) clamp(24px, 3vw, 40px);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #14284f;
+}
+
+.ix-hero-scene {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  animation: ix-scene-in 2.4s var(--ix-ease) both;
+}
+
+@keyframes ix-scene-in {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.ix-hero-clouds {
+  animation: ix-clouds 40s ease-in-out infinite alternate;
+}
+
+.ix-hero-mist {
+  animation: ix-clouds 28s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes ix-clouds {
+  to {
+    transform: translateX(60px);
+  }
+}
+
+.ix-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(55% 32% at 50% 34%, rgba(10, 20, 45, 0.3), transparent 70%),
+    linear-gradient(180deg, rgba(10, 20, 45, 0.2), transparent 28%, transparent 72%, rgba(5, 10, 25, 0.5));
+}
+
+.ix-hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0;
+  padding-block: clamp(24px, 4vh, 56px);
+  text-align: center;
+}
+
+.ix-hero-center h1 {
+  margin-top: 0;
+  font-size: clamp(42px, 6.4vw, 88px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: #fff;
+  text-shadow: 0 2px 30px rgba(5, 10, 25, 0.35);
+  animation: ix-rise 0.9s var(--ix-ease) 0.3s both;
+}
+
+.ix-word-slot {
+  display: inline-grid;
+  text-align: left;
+}
+
+.ix-word {
+  grid-area: 1 / 1;
+  padding-bottom: 0.06em;
+  background: linear-gradient(90deg, #ffd9b0, #f7b3d9 50%, #b9c3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  opacity: 0;
+  transform: translateY(0.25em);
+  transition: opacity 0.6s var(--ix-ease), transform 0.6s var(--ix-ease);
+}
+
+.ix-word.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes ix-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* "Ask"-style prompt: one input and a send button. */
+.ix-prompt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(640px, 100%);
+  margin-top: clamp(48px, 7vh, 72px);
+  padding: 10px 10px 10px 26px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 30px 60px -24px rgba(5, 10, 25, 0.55);
+  text-align: left;
+  animation: ix-rise 0.9s var(--ix-ease) 0.45s both;
+  transition: box-shadow 0.25s ease;
+}
+
+.ix-prompt:focus-within {
+  box-shadow: 0 0 0 4px rgba(58, 123, 253, 0.35), 0 30px 60px -24px rgba(5, 10, 25, 0.55);
+}
+
+.ix-prompt input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 17px;
+  color: var(--ix-ink);
+}
+
+.ix-prompt input::placeholder {
+  color: var(--ix-ink-3);
+}
+
+/* Glow pulse, also used by the contact form success badge. */
+@keyframes ix-orb {
+  50% {
+    box-shadow: 0 0 0 10px rgba(58, 107, 255, 0.1), 0 0 44px rgba(58, 107, 255, 0.85);
+  }
+}
+
+.ix-prompt-send {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ix-ink);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.25s var(--ix-ease);
+}
+
+.ix-prompt-send:hover {
+  transform: scale(1.06);
+}
+
+.ix-prompt-send .icon-svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* White cards along the bottom edge of the hero. */
+.ix-hero-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: min(1080px, 100%);
+  margin-inline: auto;
+}
+
+.ix-hero-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 128px;
+  padding: 20px 56px 22px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  animation: ix-rise 0.9s var(--ix-ease) both;
+  transition: transform 0.3s var(--ix-ease), background 0.3s ease, border-color 0.3s ease;
+}
+
+.ix-hero-card:nth-child(1) {
+  animation-delay: 0.55s;
+}
+
+.ix-hero-card:nth-child(2) {
+  animation-delay: 0.62s;
+}
+
+.ix-hero-card:nth-child(3) {
+  animation-delay: 0.69s;
+}
+
+.ix-hero-card:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.1));
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.ix-hero-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.ix-hero-card strong {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.ix-hero-card-arrow {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s var(--ix-ease);
+}
+
+.ix-hero-card-arrow .icon-svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ix-hero-card:hover .ix-hero-card-arrow {
+  background: #fff;
+  color: var(--ix-ink);
+  transform: rotate(45deg);
+}
+
+/* Twinkle a few stars and let the cloud streaks drift. */
+.ix-hero-stars circle:nth-child(3n) {
+  animation: ix-twinkle 4s ease-in-out infinite;
+}
+
+.ix-hero-stars circle:nth-child(5n) {
+  animation: ix-twinkle 6s ease-in-out infinite 1.5s;
+}
+
+@keyframes ix-twinkle {
+  50% {
+    opacity: 0.1;
+  }
+}
+
+/* ----------------------------------------------------- art tiles (CSS) */
+
+.ix-art {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ix-art-photo {
+  background: #0d1b3e;
+}
+
+.ix-art-photo img {
+  object-fit: cover;
+  transition: transform 0.9s var(--ix-ease);
+}
+
+.ix-story:hover .ix-art-photo img,
+.ix-offer:hover .ix-art-photo img,
+.ix-case:hover .ix-art-photo img,
+.ix-insight:hover .ix-art-photo img {
+  transform: scale(1.05);
+}
+
+.ix-art i {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+/* Glass ring on periwinkle. */
+.ix-art-ribbon {
+  background: radial-gradient(120% 90% at 20% 10%, #f4f6ff, #c9d3fb 55%, #9fb0f2);
+}
+
+.ix-art-ribbon i:nth-child(1) {
+  inset: -10% -25%;
+  border-radius: 50%;
+  background: conic-gradient(from 30deg, #5d73ff, #b6a4ff, #ffffff, #7fb6ff, #ff9ad5, #5d73ff);
+  -webkit-mask: radial-gradient(closest-side, transparent 58%, #000 60%, #000 76%, transparent 78%);
+  mask: radial-gradient(closest-side, transparent 58%, #000 60%, #000 76%, transparent 78%);
+  transform: rotate(-24deg) scaleY(0.5);
+  filter: blur(0.5px) drop-shadow(0 12px 18px rgba(60, 70, 160, 0.4));
+  animation: ix-spin 24s linear infinite;
+}
+
+.ix-art-ribbon i:nth-child(2) {
+  inset: 0;
+  background: radial-gradient(40% 30% at 30% 30%, rgba(255, 255, 255, 0.85), transparent 70%);
+  mix-blend-mode: screen;
+}
+
+/* Glossy spheres on electric blue. */
+.ix-art-glass {
+  background: linear-gradient(140deg, #2a35c8, #5a6cff 55%, #9fb0ff);
+}
+
+.ix-art-glass i:nth-child(1) {
+  width: 62%;
+  aspect-ratio: 1;
+  right: -10%;
+  bottom: -18%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #f2f4ff, #8f9dff 30%, #3f4fe0 62%, #1d2690 100%);
+  box-shadow: -30px -20px 60px rgba(20, 30, 140, 0.45);
+  animation: ix-bob 9s ease-in-out infinite;
+}
+
+.ix-art-glass i:nth-child(2) {
+  width: 24%;
+  aspect-ratio: 1;
+  left: 16%;
+  top: 14%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #ffffff, #a9b4ff 35%, #4b5af0 75%);
+  box-shadow: 0 20px 40px rgba(20, 30, 140, 0.45);
+  animation: ix-bob 7s ease-in-out infinite reverse;
+}
+
+/* Warm silk folds. */
+.ix-art-flame {
+  background: #1b0b2e;
+}
+
+.ix-art-flame i:nth-child(1) {
+  inset: -30%;
+  background: conic-gradient(from 200deg at 35% 60%, #ff6a3d, #ff2d87, #7b2ff7, #2b9bff, #ffb347, #ff6a3d);
+  filter: blur(28px);
+  animation: ix-spin 30s linear infinite;
+}
+
+.ix-art-flame i:nth-child(2) {
+  inset: 0;
+  background: repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.22) 0 2px, transparent 2px 22px);
+  -webkit-mask: radial-gradient(70% 60% at 50% 50%, #000, transparent);
+  mask: radial-gradient(70% 60% at 50% 50%, #000, transparent);
+  mix-blend-mode: overlay;
+}
+
+/* Neon blocks on night. */
+.ix-art-cubes {
+  background: radial-gradient(80% 80% at 70% 30%, #1d1663, #070418);
+}
+
+.ix-art-cubes i:nth-child(1) {
+  inset: 12% 10% 12% 18%;
+  background: linear-gradient(135deg, #ff3ea5, #8a5bff 45%, #00c2ff);
+  -webkit-mask:
+    repeating-linear-gradient(0deg, #000 0 34px, transparent 34px 42px),
+    repeating-linear-gradient(90deg, #000 0 34px, transparent 34px 42px);
+  -webkit-mask-composite: source-in;
+  mask:
+    repeating-linear-gradient(0deg, #000 0 34px, transparent 34px 42px) intersect,
+    repeating-linear-gradient(90deg, #000 0 34px, transparent 34px 42px);
+  transform: perspective(600px) rotateY(-18deg) rotateX(8deg);
+  filter: drop-shadow(0 0 18px rgba(255, 62, 165, 0.5));
+}
+
+.ix-art-cubes i:nth-child(2) {
+  inset: 0;
+  background: radial-gradient(40% 40% at 30% 70%, rgba(0, 194, 255, 0.35), transparent 70%);
+}
+
+/* Teal ripples. */
+.ix-art-wave {
+  background: radial-gradient(90% 90% at 20% 90%, #0d4b55, #041c22 70%);
+}
+
+.ix-art-wave i:nth-child(1) {
+  inset: -20%;
+  background: repeating-radial-gradient(circle at 10% 100%, rgba(80, 240, 215, 0.75) 0 2px, transparent 3px 18px);
+  -webkit-mask: radial-gradient(80% 80% at 20% 90%, #000 20%, transparent 75%);
+  mask: radial-gradient(80% 80% at 20% 90%, #000 20%, transparent 75%);
+  animation: ix-bob 10s ease-in-out infinite;
+}
+
+.ix-art-wave i:nth-child(2) {
+  inset: 0;
+  background: radial-gradient(40% 40% at 70% 30%, rgba(80, 160, 255, 0.35), transparent 70%);
+}
+
+/* Glowing rings on deep blue. */
+.ix-art-halo {
+  background: radial-gradient(90% 90% at 50% 50%, #18216e, #05082a 75%);
+}
+
+.ix-art-halo i {
+  left: 50%;
+  top: 50%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  translate: -50% -50%;
+  background: conic-gradient(from 0deg, #5b8cff, #c06cf0, #2fd4ff, #5b8cff);
+  -webkit-mask: radial-gradient(closest-side, transparent 86%, #000 88%, #000 98%, transparent);
+  mask: radial-gradient(closest-side, transparent 86%, #000 88%, #000 98%, transparent);
+  filter: drop-shadow(0 0 14px rgba(110, 140, 255, 0.9));
+  animation: ix-spin 16s linear infinite;
+}
+
+.ix-art-halo i:nth-child(1) {
+  width: 70%;
+}
+
+.ix-art-halo i:nth-child(2) {
+  width: 44%;
+  animation-direction: reverse;
+  animation-duration: 11s;
+}
+
+/* Pastel silk. */
+.ix-art-silk {
+  background: linear-gradient(160deg, #fbe6dc, #e9dcff 50%, #d6e6ff);
+}
+
+.ix-art-silk i:nth-child(1) {
+  inset: -20% -30%;
+  background:
+    radial-gradient(60% 30% at 40% 40%, rgba(255, 140, 180, 0.6), transparent 70%),
+    radial-gradient(50% 30% at 70% 65%, rgba(120, 140, 255, 0.55), transparent 70%);
+  filter: blur(10px);
+  animation: ix-bob 12s ease-in-out infinite;
+}
+
+.ix-art-silk i:nth-child(2) {
+  inset: 0;
+  background: repeating-linear-gradient(160deg, rgba(255, 255, 255, 0.5) 0 1px, transparent 1px 16px);
+  -webkit-mask: radial-gradient(70% 50% at 50% 50%, #000, transparent);
+  mask: radial-gradient(70% 50% at 50% 50%, #000, transparent);
+}
+
+@keyframes ix-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes ix-bob {
+  50% {
+    transform: translateY(-4%);
+  }
+}
+
+/* ----------------------------------------------------------- carousels */
+
+.ix-track {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: max(clamp(16px, 4vw, 48px), (100% - var(--ix-container)) / 2);
+  padding-inline: max(clamp(16px, 4vw, 48px), (100% - var(--ix-container)) / 2);
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.ix-track::-webkit-scrollbar {
+  display: none;
+}
+
+.ix-track > * {
+  scroll-snap-align: start;
+  flex: none;
+}
+
+.ix-pager {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+  color: var(--ix-ink);
+}
+
+.ix-pager button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--ix-ink);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ix-ink);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.ix-pager button:hover:not(:disabled) {
+  background: var(--ix-ink);
+  color: #fff;
+}
+
+.ix-pager button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.ix-pager .icon-svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ix-pager-dark,
+.ix-pager-dark button {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.ix-pager-dark button:not(:disabled) {
+  background: var(--ix-accent-2);
+  border-color: var(--ix-accent-2);
+}
+
+/* ------------------------------------------------------------ spotlight */
+
+.ix-spotlight {
+  padding-block: var(--ix-section-y);
+  background: var(--ix-blue-band);
+}
+
+.ix-spotlight-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.ix-story {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  width: min(720px, 86vw);
+  min-height: 320px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #eef2fa;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.ix-story-art {
+  height: 100%;
+  min-height: 220px;
+}
+
+.ix-story-body {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 36px 36px;
+}
+
+.ix-story-body h3 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.ix-story-tagline {
+  margin-top: 6px;
+  font-size: 16px;
+  color: var(--ix-ink) !important;
+}
+
+.ix-story-body p:not(.ix-story-tagline) {
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.ix-story-body .ix-link {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 20px;
+  border-bottom: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ------------------------------------------------------------- crafting */
+
+.ix-crafting .ix-dark-button {
+  margin-top: 28px;
+}
+
+.ix-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px;
+}
+
+.ix-offer {
+  display: flex;
+  flex-direction: column;
+}
+
+.ix-offer:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.ix-offer:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.ix-offer-art {
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+}
+
+.ix-offer-body {
+  position: relative;
+  flex: 1;
+  margin: -40px 16px 0;
+  padding: 32px 28px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--ix-shadow);
+  transition: transform 0.35s var(--ix-ease);
+}
+
+.ix-offer:hover .ix-offer-body {
+  transform: translateY(-6px);
+}
+
+.ix-offer-body h3 {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.ix-offer-body p {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.ix-offer-body .ix-link {
+  margin-top: 24px;
+}
+
+/* --------------------------------------------------------------- action */
+
+.ix-action {
+  background: var(--ix-black);
+}
+
+.ix-head-dark h2 {
+  color: #fff !important;
+}
+
+.ix-head-dark p {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.ix-case {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(440px, 82vw);
+}
+
+.ix-case-art {
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+}
+
+.ix-case-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: -36px 14px 0;
+  padding: 24px 24px 22px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.7);
+}
+
+.ix-case-body .ix-tag {
+  align-self: flex-start;
+}
+
+.ix-case-body h3 {
+  margin-top: 14px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.ix-case-body p {
+  margin: 10px 0 24px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.ix-case-body .ix-dark-button {
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+.ix-action-pager {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Quiet monochrome logo row for the tech stack. */
+.ix-logos {
+  padding-block: clamp(48px, 5vw, 72px);
+  background: #fff;
+  text-align: center;
+}
+
+.ix-logos ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px 44px;
+  max-width: 1000px;
+  margin: 28px auto 0;
+  list-style: none;
+}
+
+.ix-logos li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ix-ink-2);
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+.ix-logos li:hover {
+  filter: none;
+  opacity: 1;
+}
+
+.ix-logos img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* -------------------------------------------------------------- process */
+
+.ix-process {
+  background: var(--ix-blue-soft);
+}
+
+.ix-process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.ix-insight {
+  display: grid;
+  grid-template-rows: 220px 1fr;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--ix-shadow);
+}
+
+.ix-insight-art {
+  height: 100%;
+}
+
+.ix-insight-body {
+  padding: 32px 30px 36px;
+}
+
+.ix-insight-body h3 {
+  margin-top: 16px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.ix-insight-body p {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.ix-insight-body ul {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+  list-style: none;
+}
+
+.ix-insight-body li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ix-ink);
+}
+
+.ix-insight-body li .icon-svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  color: var(--ix-accent);
+}
+
+/* ----------------------------------------------------------------- band */
+
+.ix-band {
+  padding-block: var(--ix-section-y);
+  background: #141518;
+}
+
+.ix-band-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.ix-band-copy h2 {
+  margin-top: 18px;
+  font-size: clamp(32px, 3.8vw, 52px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #fff !important;
+}
+
+.ix-band-copy p {
+  margin-top: 16px;
+  max-width: 48ch;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.ix-band-copy .ix-light-button {
+  margin-top: 28px;
+}
+
+.ix-band-art {
+  aspect-ratio: 16 / 11;
+  border-radius: 10px;
+}
+
+/* --------------------------------------------------------------- footer */
+
+.ix-footer {
+  padding-top: clamp(56px, 6vw, 80px);
+  background: #fff;
+}
+
+.ix-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, minmax(0, 1fr));
+  gap: 48px;
+}
+
+.ix-footer-logo {
+  width: auto;
+  height: 32px;
+}
+
+.ix-footer-brand p {
+  max-width: 32ch;
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ix-footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ix-footer-col h4 {
+  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ix-footer-col a {
+  font-size: 14px;
+  color: var(--ix-ink-2);
+  text-decoration: underline;
+  text-decoration-color: var(--ix-line);
+  text-underline-offset: 4px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.ix-footer-col a:hover {
+  color: var(--ix-ink);
+  text-decoration-color: currentColor;
+}
+
+.ix-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: clamp(40px, 4vw, 56px);
+  padding-block: 24px;
+  border-top: 1px solid var(--ix-line);
+}
+
+.ix-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: var(--ix-blue-soft);
+  font-size: 14px;
+  color: var(--ix-ink);
+}
+
+.ix-location .icon-svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ix-socials {
+  display: flex;
+  gap: 18px;
+}
+
+.ix-socials a {
+  color: var(--ix-ink);
+  transition: opacity 0.2s ease;
+}
+
+.ix-socials a:hover {
+  opacity: 0.6;
+}
+
+.ix-socials .icon-svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ix-footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 13px;
+  color: var(--ix-ink-3);
+}
+
+.ix-footer-legal a {
+  color: var(--ix-ink-3);
+  text-decoration: none;
+}
+
+.ix-footer-legal a:hover {
+  color: var(--ix-ink);
+}
+
+/* --------------------------------------------------------- detail pages */
+
+.ix-dark-button,
+.ix-light-button {
+  text-decoration: none;
+}
+
+.ix-detail-frame {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: max(64svh, 520px);
+  padding: 140px 0 clamp(48px, 6vw, 80px);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--ix-ink);
+}
+
+.ix-detail-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.ix-detail-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(8, 14, 32, 0.96) 0%, rgba(8, 14, 32, 0.86) 35%, rgba(8, 14, 32, 0.35) 65%, rgba(8, 14, 32, 0.1) 100%),
+    linear-gradient(180deg, rgba(8, 14, 32, 0.45), transparent 30%);
+}
+
+.ix-detail-inner {
+  animation: ix-rise 0.9s var(--ix-ease) 0.1s both;
+}
+
+.ix-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+  list-style: none;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.ix-crumbs li + li::before {
+  content: "/";
+  margin-right: 8px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.ix-crumbs a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+
+.ix-crumbs a:hover {
+  color: #fff;
+}
+
+.ix-crumbs span {
+  color: #fff;
+}
+
+.ix-detail-inner h1 {
+  max-width: 18ch;
+  text-wrap: balance;
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: #fff !important;
+}
+
+.ix-detail-inner > p {
+  max-width: 480px;
+  margin-top: 18px;
+  font-size: clamp(16px, 1.15vw, 18px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.ix-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 32px;
+}
+
+.ix-ghost-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.ix-ghost-link:hover {
+  opacity: 1;
+}
+
+.ix-ghost-link .icon-svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Overview: copy beside a checklist card. */
+.ix-overview-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.ix-overview-grid.is-single {
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+}
+
+.ix-overview-copy h2 {
+  margin-top: 14px;
+  font-size: clamp(30px, 3.4vw, 46px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.ix-overview-copy p {
+  margin-top: 18px;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.ix-checklist {
+  padding: 32px;
+  border-radius: 14px;
+  background: var(--ix-blue-soft);
+}
+
+.ix-checklist h3 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ix-checklist ul {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.ix-checklist li {
+  display: flex;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ix-ink);
+}
+
+.ix-checklist .icon-svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  padding: 4px;
+  border-radius: 50%;
+  background: var(--ix-ink);
+  color: #fff;
+}
+
+/* Real product screens. */
+.ix-gallery {
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(58, 123, 253, 0.22), transparent 70%),
+    var(--ix-black);
+}
+
+/* Phones share the row and shrink to fit, so none are ever clipped. The
+   even ones drop slightly for rhythm; the bottom padding leaves room. */
+.ix-phones {
+  display: grid;
+  grid-template-columns: repeat(var(--count, 3), minmax(0, 240px));
+  justify-content: center;
+  gap: clamp(14px, 2vw, 28px);
+  padding-bottom: 32px;
+}
+
+.ix-phone {
+  width: 100%;
+  overflow: hidden;
+  border: 6px solid #1c1f28;
+  border-radius: 30px;
+  background: #000;
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: transform 0.4s var(--ix-ease);
+}
+
+.ix-phone:nth-child(even) {
+  transform: translateY(28px);
+}
+
+.ix-phone:hover {
+  transform: translateY(-6px);
+}
+
+.ix-phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Website screens in browser frames, two per row. */
+.ix-browsers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 32px);
+}
+
+.ix-browser {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: #0b0b0c;
+  box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.85);
+  transition: transform 0.4s var(--ix-ease);
+}
+
+.ix-browser:hover {
+  transform: translateY(-6px);
+}
+
+.ix-browser-bar {
+  display: flex;
+  gap: 7px;
+  padding: 11px 14px;
+  background: #1a1c24;
+}
+
+.ix-browser-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+
+.ix-browser-bar span:nth-child(2) {
+  background: #febc2e;
+}
+
+.ix-browser-bar span:nth-child(3) {
+  background: #28c840;
+}
+
+.ix-browser img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Feature cards on the dark band (used when a product has no app screens). */
+.ix-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ix-tile {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  transition: transform 0.35s var(--ix-ease), border-color 0.35s ease, background 0.35s ease;
+}
+
+.ix-tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.24);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04));
+}
+
+/* Stand-in for a feature image: same frame, a glowing icon on a soft grid. */
+.ix-tile-media.ix-tile-media-icon {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(55% 60% at 50% 50%, rgba(58, 123, 253, 0.32), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 0 / 28px 28px,
+    #0b1330;
+}
+
+.ix-tile-icon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(58, 123, 253, 0.9), rgba(107, 92, 246, 0.9));
+  color: #fff;
+  box-shadow: 0 0 0 8px rgba(58, 123, 253, 0.1), 0 18px 40px -12px rgba(58, 123, 253, 0.9);
+  transition: transform 0.6s var(--ix-ease);
+}
+
+.ix-tile-icon .icon-svg {
+  width: 32px;
+  height: 32px;
+}
+
+.ix-tile:hover .ix-tile-icon {
+  transform: scale(1.06);
+}
+
+.ix-tile-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.ix-tile-media img {
+  object-fit: cover;
+  transition: transform 0.9s var(--ix-ease);
+}
+
+.ix-tile:hover .ix-tile-media img {
+  transform: scale(1.05);
+}
+
+.ix-tile-body {
+  padding: 20px 24px 26px;
+}
+
+.ix-tile-module {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9fb0ff;
+}
+
+.ix-tile h3 {
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff !important;
+}
+
+.ix-tile p {
+  margin-top: 8px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+/* Numbered feature cards. */
+.ix-features-white {
+  background: #fff;
+}
+
+.ix-features-tint {
+  background: var(--ix-blue-soft);
+}
+
+.ix-feature-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.ix-feature-grid-1,
+.ix-feature-grid-2,
+.ix-feature-grid-4 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ix-feature-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ix-feature {
+  padding: 32px 30px;
+  border: 1px solid var(--ix-line);
+  border-radius: 14px;
+  background: #fff;
+  transition: transform 0.35s var(--ix-ease), box-shadow 0.35s var(--ix-ease);
+}
+
+.ix-features-white .ix-feature {
+  background: var(--ix-blue-soft);
+  border-color: transparent;
+}
+
+.ix-feature:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ix-shadow);
+}
+
+.ix-feature-num {
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--ix-accent), var(--ix-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ix-feature h3 {
+  margin-top: 14px;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.ix-feature p {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Compact process row on service pages. */
+.ix-steps-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.ix-step-art {
+  aspect-ratio: 16 / 9;
+  margin-bottom: 20px;
+  border-radius: 12px;
+}
+
+.ix-step-item h3 {
+  margin-top: 14px;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.ix-step-item p {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* "Explore more" cards linking to sibling pages. */
+.ix-related {
+  background: #fff;
+}
+
+.ix-related-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: var(--ix-head-gap);
+}
+
+/* The banner already frames the top of an inner page, so the first section
+   needs less space above it. */
+.ix-detail-hero + .ix-section {
+  padding-top: clamp(48px, 5.5vw, 80px);
+}
+
+/* Never stack two white sections: "Explore more" switches to the tint. */
+.ix-features-white + .ix-related {
+  background: var(--ix-blue-soft);
+}
+
+.ix-related-head h2 {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.ix-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.ix-related-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--ix-line);
+  border-radius: 14px;
+  background: #fff;
+  text-decoration: none;
+  transition: transform 0.35s var(--ix-ease), box-shadow 0.35s var(--ix-ease);
+}
+
+.ix-related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ix-shadow);
+}
+
+.ix-related-card:hover .ix-art-photo img {
+  transform: scale(1.05);
+}
+
+.ix-related-art {
+  aspect-ratio: 16 / 9;
+}
+
+.ix-related-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px 26px 26px;
+}
+
+.ix-related-kicker {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ix-accent);
+}
+
+.ix-related-body h3 {
+  margin-top: 8px;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.ix-related-body p {
+  margin: 8px 0 20px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.ix-related-body .ix-link {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* ---------------------------------------------------------- legal pages */
+
+.ix-banner-frame {
+  padding: 140px 0 clamp(48px, 5vw, 72px);
+  border-radius: 22px;
+  background:
+    radial-gradient(50% 80% at 85% 0%, rgba(107, 92, 246, 0.35), transparent 70%),
+    radial-gradient(40% 70% at 10% 100%, rgba(58, 123, 253, 0.25), transparent 70%),
+    var(--ix-ink);
+}
+
+.ix-banner h1 {
+  font-size: clamp(36px, 4.6vw, 60px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #fff !important;
+}
+
+.ix-banner p {
+  max-width: 640px;
+  margin-top: 18px;
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.ix-legal {
+  width: min(760px, 100% - 2 * clamp(16px, 4vw, 48px));
+  margin: clamp(48px, 5.5vw, 80px) auto var(--ix-section-y);
+}
+
+.ix-legal .legal-section {
+  margin: 0;
+}
+
+.ix-legal .legal-section + .legal-section {
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid var(--ix-line);
+}
+
+.ix-legal h2 {
+  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ix-ink);
+}
+
+.ix-legal p {
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--ix-ink-2);
+}
+
+/* ---------------------------------------------------------------- modal */
+
+.ix-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(8, 14, 32, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: ix-fade-in 0.3s ease both;
+}
+
+.ix-modal-backdrop.is-closing {
+  animation: ix-fade-out 0.32s ease both;
+}
+
+@keyframes ix-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes ix-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.ix-modal {
+  position: relative;
+  width: min(960px, 100%);
+  max-height: calc(100svh - 32px);
+  overflow: auto;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 40px 100px -30px rgba(5, 10, 25, 0.6);
+  animation: ix-modal-in 0.5s var(--ix-ease) both;
+}
+
+.ix-modal.is-closing {
+  animation: ix-modal-out 0.32s ease both;
+}
+
+.ix-modal.is-success {
+  width: min(520px, 100%);
+}
+
+@keyframes ix-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+@keyframes ix-modal-out {
+  to {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+.ix-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--ix-line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ix-ink);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.3s var(--ix-ease);
+}
+
+.ix-modal-close:hover {
+  background: var(--ix-blue-soft);
+  transform: rotate(90deg);
+}
+
+.ix-modal-close .icon-svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ix-modal-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  min-height: 580px;
+}
+
+/* Image panel with the contact options. */
+.ix-modal-aside {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  overflow: hidden;
+  background: var(--ix-ink);
+}
+
+.ix-modal-aside-image {
+  z-index: -2;
+  object-fit: cover;
+}
+
+.ix-modal-aside::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(8, 14, 32, 0.25) 0%, rgba(8, 14, 32, 0.7) 45%, rgba(8, 14, 32, 0.94) 100%);
+}
+
+.ix-modal-aside-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 36px 32px 32px;
+}
+
+.ix-modal-aside-content .ix-tag {
+  align-self: flex-start;
+}
+
+.ix-modal-aside h2 {
+  margin-top: 16px;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #fff !important;
+}
+
+.ix-modal-aside-content > p:not(.ix-modal-note) {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.ix-modal-contacts {
+  display: grid;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.ix-modal-contact {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.ix-modal-contact:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.ix-modal-contact-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ix-ink);
+}
+
+.ix-modal-contact-icon .icon-svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ix-modal-contact small {
+  display: block;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.ix-modal-contact strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.ix-modal-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.ix-modal-note-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+}
+
+/* Form side. */
+.ix-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 40px 36px 32px;
+}
+
+.ix-modal-form h3 {
+  padding-right: 48px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.ix-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.ix-field {
+  display: grid;
+  gap: 7px;
+}
+
+.ix-field > span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ix-ink);
+}
+
+.ix-field em {
+  margin-left: 4px;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ix-ink-3);
+}
+
+.ix-field input,
+.ix-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--ix-line);
+  border-radius: 10px;
+  background: var(--ix-blue-soft);
+  font: inherit;
+  font-size: 15px;
+  color: var(--ix-ink);
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ix-field textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.ix-field input::placeholder,
+.ix-field textarea::placeholder {
+  color: var(--ix-ink-3);
+}
+
+.ix-field input:focus,
+.ix-field textarea:focus {
+  border-color: var(--ix-accent-2);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(58, 123, 253, 0.14);
+}
+
+.ix-modal-error {
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #fef2f2;
+  font-size: 14px;
+  color: #b91c1c !important;
+}
+
+.ix-modal-submit {
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  margin-top: 4px;
+}
+
+.ix-modal-submit:disabled {
+  opacity: 0.7;
+  cursor: progress;
+  transform: none;
+}
+
+.ix-modal-privacy {
+  font-size: 12px;
+  text-align: center;
+  color: var(--ix-ink-3) !important;
+}
+
+/* Success state. */
+.ix-modal-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 40px 44px;
+  text-align: center;
+}
+
+.ix-modal-success-orb {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #a8c4ff, #3a6bff 60%, #2a3fd8);
+  color: #fff;
+  box-shadow: 0 0 0 10px rgba(58, 107, 255, 0.12), 0 0 44px rgba(58, 107, 255, 0.55);
+  animation: ix-orb 3s ease-in-out infinite;
+}
+
+.ix-modal-success-orb .icon-svg {
+  width: 32px;
+  height: 32px;
+}
+
+.ix-modal-success h2 {
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.ix-modal-success p {
+  max-width: 36ch;
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.ix-modal-success .ix-dark-button {
+  margin-top: 32px;
+}
+
+/* ----------------------------------------------------------- responsive */
+
+@media (max-width: 1080px) {
+  .ix-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ix-overview-grid,
+  .ix-feature-grid-3,
+  .ix-steps-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ix-steps-row {
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .ix-pill-nav {
+    display: none;
+  }
+
+  .ix-header {
+    grid-template-columns: auto auto 1fr auto;
+  }
+
+  .ix-header-cta {
+    grid-column: 4;
+  }
+
+  .ix-offer-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .ix-process-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .ix-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ix-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .ix-tiles,
+  .ix-browsers {
+    grid-template-columns: 1fr;
+  }
+
+  .ix-banner-frame {
+    padding-top: 112px;
+    border-radius: 18px;
+  }
+
+  .ix-detail-frame {
+    min-height: 0;
+    padding: 120px 0 40px;
+    border-radius: 18px;
+  }
+
+  .ix-detail-shade {
+    background: linear-gradient(180deg, rgba(8, 14, 32, 0.55), rgba(8, 14, 32, 0.92));
+  }
+
+  .ix-feature-grid-1,
+  .ix-feature-grid-2,
+  .ix-feature-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* On phones the screens become a swipeable row that starts at the left edge. */
+  .ix-phones {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 62%;
+    justify-content: start;
+    margin-inline: -16px;
+    padding: 4px 16px 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    scrollbar-width: none;
+  }
+
+  .ix-phones::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ix-phone {
+    scroll-snap-align: start;
+  }
+
+  .ix-phone:nth-child(even) {
+    transform: none;
+  }
+
+  .ix-related-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ix-modal-backdrop {
+    place-items: end stretch;
+    padding: 0;
+  }
+
+  .ix-modal {
+    width: 100%;
+    max-height: calc(100svh - 24px);
+    border-radius: 20px 20px 0 0;
+  }
+
+  .ix-modal.is-success {
+    width: 100%;
+  }
+
+  @keyframes ix-modal-in {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes ix-modal-out {
+    to {
+      transform: translateY(100%);
+    }
+  }
+
+  .ix-modal-grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .ix-modal-aside-content {
+    padding: 64px 20px 22px;
+  }
+
+  .ix-modal-aside h2 {
+    font-size: 24px;
+  }
+
+  .ix-modal-contacts {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20px;
+  }
+
+  .ix-modal-contact {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  /* Tap-to-call and tap-to-email: the label alone is enough on phones. */
+  .ix-modal-contact small {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .ix-modal-contact strong {
+    display: none;
+  }
+
+  .ix-modal-form {
+    padding: 24px 20px 28px;
+  }
+
+  .ix-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ix-header {
+    gap: 12px;
+    padding: 18px 20px;
+  }
+
+  .ix-burger {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ix-logo-image {
+    height: 28px;
+  }
+
+  .ix-header-cta {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .ix-header-cta .icon-svg {
+    display: none;
+  }
+
+  .ix-hero {
+    padding: 6px;
+  }
+
+  .ix-hero-frame {
+    min-height: auto;
+    padding: 108px 16px 16px;
+    border-radius: 18px;
+  }
+
+  .ix-hero-center {
+    padding-block: 32px 40px;
+  }
+
+  .ix-prompt {
+    padding: 6px 6px 6px 18px;
+  }
+
+  .ix-prompt input {
+    font-size: 16px;
+  }
+
+  .ix-hero-cards {
+    display: flex;
+    gap: 10px;
+    margin-inline: -16px;
+    padding-inline: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .ix-hero-card {
+    flex: none;
+    width: 78%;
+    min-height: 130px;
+    scroll-snap-align: start;
+  }
+
+  .ix-story {
+    grid-template-columns: 1fr;
+    grid-template-rows: 180px 1fr;
+  }
+
+  .ix-story-art {
+    min-height: 0;
+  }
+
+  .ix-process-grid,
+  .ix-band-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .ix-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ix-page *,
+  .ix-page *::before,
+  .ix-page *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ix-page .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

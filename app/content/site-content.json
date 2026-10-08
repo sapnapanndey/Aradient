@@ -10,29 +10,38 @@
   "navigation": {
     "links": [
       {
-        "label": "About",
-        "href": "#company"
+        "label": "Products",
+        "href": "/#spotlight"
       },
       {
         "label": "Services",
-        "href": "#services"
+        "href": "/#services"
       },
       {
-        "label": "Products",
-        "href": "#products"
+        "label": "How we work",
+        "href": "/#process"
       },
       {
-        "label": "Clients",
-        "href": "#clients"
+        "label": "About",
+        "href": "/#company"
       }
     ],
-    "cta": "Book a discovery call"
+    "cta": "Talk to us"
   },
   "leadModal": {
-    "asideEyebrow": "Direct line",
-    "asideTitle": "Choose how you would like to connect"
+    "asideEyebrow": "Let’s talk",
+    "asideTitle": "Tell us what you’re building",
+    "asideDescription": "Share a few details and we will map the fastest path to a useful first release.",
+    "replyNote": "We reply within one business day",
+    "formTitle": "Send us a message",
+    "submit": "Send message",
+    "privacy": "We only use your details to reply to this request.",
+    "successTitle": "Thanks, we’ve got your message",
+    "successText": "Our team will review your requirement and get back to you within one business day.",
+    "successButton": "Back to site"
   },
   "hero": {
+    "eyebrow": "AI product studio · India, US & global teams",
     "words": [
       "products",
       "agents",
@@ -42,20 +51,34 @@
     "titlePrefix": "We build",
     "titleSuffix": "for modern teams",
     "description": "Aradient partners with startups and enterprises to design, engineer, and launch AI-powered software products that create measurable business momentum.",
-    "formPlaceholder": "Enter your work email",
-    "formButton": "Start a project",
-    "stats": [
+    "primaryCta": "Book a discovery call",
+    "secondaryCta": "See our work",
+    "note": "Free 30-minute call · Reply within one business day",
+    "visual": {
+      "agentLabel": "AI assistant",
+      "agentStatus": "Live",
+      "agentMessage": "Your dryer filter is due for cleaning. Want the 3-step guide?",
+      "metricLabel": "Admission enquiries",
+      "metricValue": "8 new today"
+    },
+    "shippedLabel": "Products we have designed, built and shipped",
+    "kicker": "Aradient Technology",
+    "promptPlaceholder": "Tell us what you want to build…",
+    "cards": [
       {
-        "value": "AI",
-        "label": "Native product thinking"
+        "label": "Approach",
+        "title": "Product-first planning, shaped around real users",
+        "href": "/#process"
       },
       {
-        "value": "Full-stack",
-        "label": "Design to deployment"
+        "label": "Engineering",
+        "title": "Senior engineers from frontend to backend",
+        "href": "/#capabilities"
       },
       {
-        "value": "Fast",
-        "label": "Lean delivery cycles"
+        "label": "AI",
+        "title": "Practical AI where it improves the product",
+        "href": "/#services"
       }
     ]
   },
@@ -82,7 +105,7 @@
     ]
   },
   "learnMoreSection": {
-    "label": "Why Aradient",
+    "label": "About Aradient",
     "title": "What working with us looks like after the first conversation",
     "description": "We help teams reduce ambiguity early, move into delivery quickly, and keep the product grounded in real business outcomes instead of demo-only AI.",
     "highlights": [
@@ -109,7 +132,7 @@
     }
   },
   "successSection": {
-    "title": "How we help you succeed",
+    "title": "How We Work",
     "description": "From idea to scale, our process is tailored to meet teams where they are and drive impact at each stage.",
     "steps": [
       {
@@ -117,70 +140,105 @@
         "iconClassName": "success-icon success-icon-violet",
         "title": "Define & Strategize",
         "description": "Collaborate to identify objectives, strategy and requirements",
-        "image": "strategy"
+        "image": "strategy",
+        "deliverables": [
+          "Discovery workshop",
+          "Scope & product roadmap",
+          "Technical architecture"
+        ]
       },
       {
         "icon": "tools",
         "iconClassName": "success-icon success-icon-blue",
         "title": "Prototype & Build",
         "description": "Rapid prototyping and agile MVP delivery",
-        "image": "prototype"
+        "image": "prototype",
+        "deliverables": [
+          "Clickable prototype",
+          "Weekly working releases",
+          "Production-grade MVP"
+        ]
       },
       {
         "icon": "rocket",
         "iconClassName": "success-icon success-icon-mint",
         "title": "Launch & Optimize",
         "description": "Launch confidently and iterate with data-driven insights",
-        "image": "launch"
+        "image": "launch",
+        "deliverables": [
+          "Launch & monitoring",
+          "Analytics & feedback loops",
+          "Ongoing iteration"
+        ]
       }
+    ],
+    "kicker": "How we work",
+    "arts": [
+      "step-strategy",
+      "step-build",
+      "step-launch"
     ]
   },
   "servicesSection": {
-    "title": "Our Services",
+    "title": "Everything you need to ship a product",
     "description": "We design, build, launch, and scale modern software products with practical engineering, product thinking, and AI built in where it creates real value.",
     "ctaTitle": "Need another service?",
     "ctaDescription": "Tell us what you're building and we'll shape the right software team around it.",
     "ctaButton": "Call Us Now",
     "items": [
       {
-        "illustrationUrl": "https://www.svgrepo.com/show/1699/web-development.svg",
         "title": "Web App Development",
-        "description": "Responsive product websites, dashboards, admin panels, and full-featured web applications."
+        "description": "Responsive product websites, dashboards, admin panels, and full-featured web applications.",
+        "icon": "browser",
+        "featured": false
       },
       {
-        "illustrationUrl": "https://www.svgrepo.com/show/530452/mobile-app.svg",
         "title": "Mobile App Development",
-        "description": "Cross-platform iOS and Android apps with polished user experience and scalable architecture."
+        "description": "Cross-platform iOS and Android apps with polished user experience and scalable architecture.",
+        "icon": "mobile",
+        "featured": false
       },
       {
-        "illustrationUrl": "https://www.svgrepo.com/show/198469/artificial-intelligence.svg",
         "title": "AI Solutions",
-        "description": "AI assistants, copilots, retrieval systems, workflows, and intelligent product experiences."
+        "description": "AI assistants, copilots, retrieval systems, workflows, and intelligent product experiences.",
+        "icon": "brain",
+        "featured": true
       },
       {
-        "illustrationUrl": "https://www.svgrepo.com/show/20519/coding.svg",
         "title": "Custom Software",
-        "description": "Tailored platforms and internal tools built around your business model, users, and operations."
+        "description": "Tailored platforms and internal tools built around your business model, users, and operations.",
+        "icon": "puzzle",
+        "featured": false
       },
       {
-        "illustrationUrl": "https://www.svgrepo.com/show/409864/automation.svg",
         "title": "Automation & Integrations",
-        "description": "Automate repetitive work and connect CRMs, APIs, internal systems, and third-party services."
+        "description": "Automate repetitive work and connect CRMs, APIs, internal systems, and third-party services.",
+        "icon": "automation",
+        "featured": false
       },
       {
-        "illustrationUrl": "https://www.svgrepo.com/show/374212/api.svg",
         "title": "Backend & APIs",
-        "description": "Reliable backend systems, secure APIs, databases, authentication, and cloud-ready architecture."
+        "description": "Reliable backend systems, secure APIs, databases, authentication, and cloud-ready architecture.",
+        "icon": "server",
+        "featured": false
       },
       {
-        "illustrationUrl": "https://www.svgrepo.com/show/192987/analytics.svg",
         "title": "Data & Analytics",
-        "description": "Reporting pipelines, operational dashboards, data workflows, and product analytics foundations."
+        "description": "Reporting pipelines, operational dashboards, data workflows, and product analytics foundations.",
+        "icon": "datascience",
+        "featured": false
       }
+    ],
+    "kicker": "What we do",
+    "featuredPoints": [
+      "Assistants & copilots",
+      "Retrieval (RAG) over your data",
+      "Agentic workflows",
+      "Evaluation & guardrails"
     ]
   },
   "clientsSection": {
-    "title": "Technologies We Are Working With",
+    "title": "Technologies we work with",
     "description": "We build modern products with a practical stack across frontend, backend, AI, cloud, and data.",
     "rows": [
       [
@@ -252,7 +310,8 @@
           "logoUrl": "https://cdn.simpleicons.org/tensorflow"
         }
       ]
-    ]
+    ],
+    "kicker": "Our stack"
   },
   "teamSection": {
     "label": "Our Team",
@@ -384,18 +443,23 @@
       },
       {
         "label": "Terms",
-        "href": "#products"
+        "href": "#spotlight"
       },
       {
         "label": "Privacy",
-        "href": "#products"
+        "href": "#spotlight"
       }
     ],
     "images": {
       "heroAlt": "FixAi smart home maintenance overview",
       "overviewAlt": "FixAi appliance management interface",
       "stepsAlt": "FixAi onboarding and guidance workflow"
-    }
+    },
+    "tags": [
+      "Consumer AI",
+      "Mobile app",
+      "LLM assistant"
+    ]
   },
   "samagraProduct": {
     "logo": "Samagra Enterprises Logo",
@@ -456,7 +520,12 @@
       "stepsAlt": "Samagra Enterprises solar consultation and pricing",
       "extraAltOne": "Samagra Enterprises foundation and impact work",
       "extraAltTwo": "Samagra Enterprises consultation and solar planning"
-    }
+    },
+    "tags": [
+      "Clean energy",
+      "Mobile app",
+      "Savings calculator"
+    ]
   },
   "schoolProduct": {
     "name": "School Management Software",
@@ -469,11 +538,87 @@
       "Operations: fee structures, transport routes, hostel rooms, library, and certificates",
       "A parent and student portal running on the same live data"
     ],
-    "video": {
-      "src": "/products/school-management-demo.mp4",
-      "poster": "/products/school-management-demo-poster.jpg",
-      "caption": "School Management Software product demo"
-    }
+    "tags": [
+      "EdTech",
+      "Web platform",
+      "Parent & student portal"
+    ],
+    "featuresTitle": "Everything the school runs on",
+    "featuresDescription": "Every office works from the same records, so nothing is entered twice and nothing gets lost between desks.",
+    "features": [
+      {
+        "module": "Front office",
+        "icon": "chat",
+        "title": "Admission enquiries",
+        "description": "Log every enquiry with the class, contact details and follow-up, then turn it into an application in one click."
+      },
+      {
+        "module": "Front office",
+        "icon": "location",
+        "title": "Visitor log & gate passes",
+        "description": "Record visitors at the front desk and issue gate passes in seconds."
+      },
+      {
+        "module": "Front office",
+        "icon": "check",
+        "title": "Complaints",
+        "description": "Complaints are logged, categorised and tracked through to closure."
+      },
+      {
+        "module": "Academics",
+        "icon": "calendar",
+        "title": "Timetables",
+        "description": "Build class timetables and share them with teachers and students."
+      },
+      {
+        "module": "Academics",
+        "icon": "users",
+        "title": "Attendance",
+        "description": "Mark daily attendance by class and see it update across the school."
+      },
+      {
+        "module": "Academics",
+        "icon": "book",
+        "title": "Homework & lesson plans",
+        "description": "Assign homework and keep lesson plans organised by class and subject."
+      },
+      {
+        "module": "Academics",
+        "icon": "datascience",
+        "title": "Exams & results",
+        "description": "Schedule exams, enter marks and publish results from one place."
+      },
+      {
+        "module": "Operations",
+        "icon": "receipt",
+        "title": "Fees & receipts",
+        "description": "Set fee structures, record payments and issue receipts instantly."
+      },
+      {
+        "module": "Operations",
+        "icon": "bus",
+        "title": "Transport",
+        "description": "Manage routes and stops and the students assigned to each one."
+      },
+      {
+        "module": "Operations",
+        "icon": "server",
+        "title": "Hostel & library",
+        "description": "Allocate hostel rooms, catalogue books and track issues and returns."
+      },
+      {
+        "module": "Operations",
+        "icon": "spark",
+        "title": "Certificates",
+        "description": "Generate certificates straight from student records."
+      },
+      {
+        "module": "Portal",
+        "icon": "mobile",
+        "title": "Parent & student portal",
+        "description": "Parents and students see their own view of the same live data."
+      }
+    ]
   },
   "footer": {
     "description": "Aradient builds AI products and custom software for teams that want practical innovation, fast execution, and durable systems.",
@@ -491,53 +636,28 @@
       {
         "icon": "location",
         "label": "Remote-first team supporting India, US, and global product teams",
-        "href": "#company"
+        "href": "/#company"
       }
     ],
     "columns": [
-      {
-        "title": "Getting Started",
-        "links": [
-          {
-            "label": "Introduction",
-            "href": "#company"
-          },
-          {
-            "label": "How We Work",
-            "href": "#services"
-          },
-          {
-            "label": "Capabilities",
-            "href": "#products"
-          },
-          {
-            "label": "Technology Stack",
-            "href": "#clients"
-          }
-        ]
-      },
       {
         "title": "Company",
         "links": [
           {
             "label": "About Us",
-            "href": "#company"
+            "href": "/#company"
           },
           {
             "label": "Products",
-            "href": "#products"
+            "href": "/#spotlight"
           },
           {
             "label": "Our Services",
-            "href": "#services"
+            "href": "/#services"
           },
           {
-            "label": "Clients & Tech",
-            "href": "#clients"
-          },
-          {
-            "label": "Contact Us",
-            "href": "#company"
+            "label": "Technology Stack",
+            "href": "/#stack"
           }
         ]
       },
@@ -560,20 +680,6 @@
       }
     ],
     "copyright": "© 2026 Aradient. All rights reserved.",
-    "bottomLinks": [
-      {
-        "label": "Terms & Conditions",
-        "href": "/terms-and-conditions"
-      },
-      {
-        "label": "Privacy Policy",
-        "href": "/privacy-policy"
-      },
-      {
-        "label": "Cookie Policy",
-        "href": "/cookie-policy"
-      }
-    ],
     "socials": [
       {
         "label": "Facebook",
@@ -590,6 +696,461 @@
         "href": "https://www.linkedin.com/company/113344970/admin/dashboard/",
         "icon": "linkedin"
       }
+    ],
+    "locationLabel": "India · US · Global"
+  },
+  "metricsSection": {
+    "items": [
+      {
+        "value": "3",
+        "label": "Products live in production"
+      },
+      {
+        "value": "13+",
+        "label": "Technologies in our delivery stack"
+      },
+      {
+        "value": "7",
+        "label": "Service lines, from web and mobile to AI"
+      },
+      {
+        "value": "3",
+        "label": "Regions served: India, US and global"
+      }
     ]
+  },
+  "workSection": {
+    "kicker": "Selected work",
+    "title": "Products we have built and shipped",
+    "description": "Real software in the hands of real users, from consumer AI to enterprise operations."
+  },
+  "testimonialsSection": {
+    "kicker": "Client voices",
+    "title": "What teams say about working with us",
+    "items": []
+  },
+  "finalCta": {
+    "title": "Have a product in mind? Let’s build it.",
+    "description": "Tell us what you are working on. In one call we will map the fastest path to a useful first release.",
+    "primaryCta": "Book a discovery call",
+    "secondaryCta": "Email ajay@aradient.com",
+    "secondaryHref": "mailto:ajay@aradient.com"
+  },
+  "spotlight": {
+    "kicker": "Product spotlight",
+    "items": [
+      {
+        "slug": "fixai",
+        "name": "FixAi",
+        "tagline": "Smarter home maintenance, powered by AI",
+        "description": "Track appliances, get maintenance reminders and troubleshoot problems with an AI assistant.",
+        "art": "spot-fixai"
+      },
+      {
+        "slug": "samagra-enterprises",
+        "name": "Samagra Enterprises",
+        "tagline": "Solar savings and project tracking for India",
+        "description": "Solar quotations, bill-savings estimates and live installation tracking in one app.",
+        "art": "spot-samagra"
+      },
+      {
+        "slug": "school-management-software",
+        "name": "School Management Software",
+        "tagline": "From admission enquiry to fee receipt, in one place",
+        "description": "Admissions, academics, fees and transport in one system, with a portal for parents.",
+        "art": "spot-school"
+      },
+      {
+        "slug": "ey-construction",
+        "name": "EY Construction",
+        "tagline": "Website for a Southern Alberta contractor",
+        "description": "Twelve civil and building services, safety credentials and quote requests in one clear website.",
+        "art": "spot-ey-construction"
+      }
+    ]
+  },
+  "crafting": {
+    "titleBefore": "Crafting",
+    "titleAccent": "Intelligent",
+    "titleAfter": "Products",
+    "description": "New products, modernised internal tools or AI in your workflows, designed and engineered end to end.",
+    "button": "Start a project",
+    "items": [
+      {
+        "service": "AI Solutions",
+        "art": "craft-ai"
+      },
+      {
+        "service": "Web App Development",
+        "art": "craft-web"
+      },
+      {
+        "service": "Mobile App Development",
+        "art": "craft-mobile"
+      }
+    ]
+  },
+  "inAction": {
+    "title": "Engineering in Action",
+    "description": "The systems behind great products: custom platforms, automation, APIs and data.",
+    "tag": "Capability",
+    "button": "I’m Curious",
+    "items": [
+      {
+        "service": "Custom Software",
+        "art": "action-custom"
+      },
+      {
+        "service": "Automation & Integrations",
+        "art": "action-automation"
+      },
+      {
+        "service": "Backend & APIs",
+        "art": "action-backend"
+      },
+      {
+        "service": "Data & Analytics",
+        "art": "action-data"
+      }
+    ]
+  },
+  "ctaBand": {
+    "kicker": "Let’s talk",
+    "title": "Build your next product with Aradient",
+    "description": "Strategy, design, engineering and AI in one team. Tell us what you are building and we will map the fastest path to a useful first release.",
+    "button": "Book a discovery call",
+    "art": "cta-team"
+  },
+  "serviceDetails": [
+    {
+      "slug": "web-app-development",
+      "title": "Web App Development",
+      "art": "craft-web",
+      "headline": "Fast, reliable web apps your users enjoy",
+      "intro": "From marketing sites to complex dashboards and SaaS platforms, we design and build web applications that load fast, scale with your business and stay easy to change.",
+      "deliverables": [
+        "Product websites and landing pages",
+        "Customer portals and dashboards",
+        "Admin panels and internal tools",
+        "Full SaaS platforms with billing and roles"
+      ],
+      "useCases": [
+        {
+          "title": "Launch a SaaS product",
+          "description": "Go from idea to a paid, production-ready web app with authentication, billing and analytics."
+        },
+        {
+          "title": "Replace spreadsheets",
+          "description": "Turn manual spreadsheet workflows into a secure web tool your whole team can use."
+        },
+        {
+          "title": "Modernise a legacy app",
+          "description": "Rebuild slow or outdated software on a modern stack without losing your data."
+        }
+      ],
+      "stack": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "AWS"
+      ]
+    },
+    {
+      "slug": "mobile-app-development",
+      "title": "Mobile App Development",
+      "art": "craft-mobile",
+      "headline": "Mobile apps people keep coming back to",
+      "intro": "We build cross-platform iOS and Android apps with polished interfaces, offline support and the backend they need, from first prototype to app-store launch.",
+      "deliverables": [
+        "iOS and Android apps from one codebase",
+        "App-store ready builds and releases",
+        "Push notifications and offline support",
+        "Backend, APIs and admin panel"
+      ],
+      "useCases": [
+        {
+          "title": "Consumer apps",
+          "description": "Engaging apps with onboarding, notifications and in-app guidance, like FixAi."
+        },
+        {
+          "title": "Field and operations apps",
+          "description": "Apps that track orders, installations or visits in real time, like Samagra."
+        },
+        {
+          "title": "Companion apps",
+          "description": "A mobile experience for an existing web platform or service."
+        }
+      ],
+      "stack": [
+        "React Native",
+        "Flutter",
+        "TypeScript",
+        "Node.js",
+        "MongoDB",
+        "AWS"
+      ]
+    },
+    {
+      "slug": "ai-solutions",
+      "title": "AI Solutions",
+      "art": "craft-ai",
+      "headline": "Practical AI that improves real workflows",
+      "intro": "We add AI where it saves time, improves decisions or creates a better experience: assistants, copilots, search over your own data and agents that complete multi-step work.",
+      "deliverables": [
+        "AI assistants and copilots",
+        "Retrieval (RAG) over your documents and data",
+        "Agentic workflows and automations",
+        "Evaluation, guardrails and monitoring"
+      ],
+      "useCases": [
+        {
+          "title": "Customer support assistant",
+          "description": "Answer common questions instantly using your own help articles and product data."
+        },
+        {
+          "title": "Internal knowledge search",
+          "description": "Let your team ask questions across documents, tickets and wikis in plain language."
+        },
+        {
+          "title": "Document processing",
+          "description": "Extract, classify and summarise information from forms, invoices and reports."
+        }
+      ],
+      "stack": [
+        "Python",
+        "OpenAI",
+        "Machine Learning",
+        "Data Science",
+        "Node.js",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "slug": "custom-software",
+      "title": "Custom Software",
+      "art": "action-custom",
+      "headline": "Software shaped around how your business works",
+      "intro": "When off-the-shelf tools do not fit, we design and build platforms around your users, processes and data, and keep them maintainable as you grow.",
+      "deliverables": [
+        "Business platforms and ERPs",
+        "Role-based internal tools",
+        "Workflow and approval systems",
+        "Integrations with your existing tools"
+      ],
+      "useCases": [
+        {
+          "title": "Operations platform",
+          "description": "One system for orders, inventory, scheduling or service, built around your process."
+        },
+        {
+          "title": "Industry software",
+          "description": "Purpose-built tools for sectors like education, energy or home services."
+        },
+        {
+          "title": "Partner and vendor portals",
+          "description": "Secure portals for partners to share data, documents and updates with you."
+        }
+      ],
+      "stack": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "AWS"
+      ]
+    },
+    {
+      "slug": "automation-integrations",
+      "title": "Automation & Integrations",
+      "art": "action-automation",
+      "headline": "Connect your tools and automate the busywork",
+      "intro": "We connect CRMs, payment systems, spreadsheets and third-party APIs, and automate repetitive work so your team can focus on what matters.",
+      "deliverables": [
+        "CRM, ERP and payment integrations",
+        "Automated workflows and notifications",
+        "Data sync between systems",
+        "Scheduled jobs and reporting"
+      ],
+      "useCases": [
+        {
+          "title": "Lead to customer",
+          "description": "Capture leads, sync them to your CRM and trigger follow-ups automatically."
+        },
+        {
+          "title": "Order and invoice flows",
+          "description": "Move orders, invoices and payments between systems without manual entry."
+        },
+        {
+          "title": "Alerts and reports",
+          "description": "Send the right update to the right person when something important happens."
+        }
+      ],
+      "stack": [
+        "Node.js",
+        "Python",
+        "TypeScript",
+        "PostgreSQL",
+        "MongoDB",
+        "AWS"
+      ]
+    },
+    {
+      "slug": "backend-apis",
+      "title": "Backend & APIs",
+      "art": "action-backend",
+      "headline": "Secure, scalable backends and APIs",
+      "intro": "Reliable backend systems are what make products fast and trustworthy. We design databases, APIs, authentication and cloud infrastructure built to scale.",
+      "deliverables": [
+        "REST and GraphQL APIs",
+        "Database design and migrations",
+        "Authentication and access control",
+        "Cloud deployment and monitoring"
+      ],
+      "useCases": [
+        {
+          "title": "API for web and mobile",
+          "description": "One secure backend that powers your website, mobile apps and partners."
+        },
+        {
+          "title": "Scaling an existing product",
+          "description": "Fix performance bottlenecks and prepare your system for more users."
+        },
+        {
+          "title": "Public developer API",
+          "description": "Documented APIs that let customers and partners build on your platform."
+        }
+      ],
+      "stack": [
+        "Node.js",
+        "Python",
+        "TypeScript",
+        "PostgreSQL",
+        "MongoDB",
+        "AWS"
+      ]
+    },
+    {
+      "slug": "data-analytics",
+      "title": "Data & Analytics",
+      "art": "action-data",
+      "headline": "Turn your data into clear decisions",
+      "intro": "We build the pipelines, dashboards and reporting that show what is happening in your business and product, so decisions are based on evidence.",
+      "deliverables": [
+        "Operational dashboards",
+        "Data pipelines and warehousing",
+        "Product and usage analytics",
+        "Automated reports and alerts"
+      ],
+      "useCases": [
+        {
+          "title": "Business dashboard",
+          "description": "See sales, operations and finance numbers in one live view."
+        },
+        {
+          "title": "Product analytics",
+          "description": "Understand how users move through your product and where they drop off."
+        },
+        {
+          "title": "Forecasting",
+          "description": "Use historical data and machine learning to plan demand and resources."
+        }
+      ],
+      "stack": [
+        "Python",
+        "Data Science",
+        "Machine Learning",
+        "PostgreSQL",
+        "AWS",
+        "React"
+      ]
+    }
+  ],
+  "eyProduct": {
+    "name": "EY Construction",
+    "url": "https://eyconstruction.co/",
+    "tagline": "Website for a Southern Alberta construction company",
+    "heroTitle": "Building the ground Southern Alberta runs on",
+    "heroDescription": "A professional website for a Calgary civil and building contractor, with twelve services and a simple quote request.",
+    "overviewTitle": "A Calgary contractor for civil and building work",
+    "overview": [
+      "EY Construction delivers underground utilities, road works, asphalt paving, rail, environmental, demolition and fencing projects, along with construction management, renovations and custom homes across Southern Alberta.",
+      "The website gives municipalities, developers and homeowners one place to understand those services and start a project, with one project manager from planning to handover."
+    ],
+    "points": [
+      "Civil and building services organised into one clear catalogue",
+      "E-Rail Safe certification and safe work practices shown up front",
+      "Quote request form and click-to-call on every page",
+      "FAQ that answers the questions clients ask most"
+    ],
+    "tags": [
+      "Construction",
+      "Company website",
+      "Quote requests"
+    ],
+    "civilTitle": "Civil construction from the ground up",
+    "civilDescription": "The civil work communities and industry depend on, from utilities to paving.",
+    "civilServices": [
+      {
+        "title": "Underground",
+        "description": "Water, sanitary and storm infrastructure installation and replacement."
+      },
+      {
+        "title": "Road Works",
+        "description": "Subgrade preparation, granular base, ditching and drainage."
+      },
+      {
+        "title": "Asphalt Paving",
+        "description": "Ground preparation, milling, asphalt placement and finishing."
+      },
+      {
+        "title": "Rail",
+        "description": "Track embankment construction and rail support services."
+      },
+      {
+        "title": "Environmental",
+        "description": "Erosion control, watercourse crossings, dewatering and site restoration."
+      },
+      {
+        "title": "Demolition",
+        "description": "Commercial and industrial demolition, site clearing and debris removal."
+      },
+      {
+        "title": "Fencing",
+        "description": "Security, mesh panel and chain-link fencing with gates."
+      }
+    ],
+    "buildingTitle": "One team from permit to handover",
+    "buildingDescription": "Building and development services for owners and developers.",
+    "buildingServices": [
+      {
+        "title": "Construction Management",
+        "description": "Planning, permits, trades and schedule, managed from start to finish."
+      },
+      {
+        "title": "Renovation & Restoration",
+        "description": "Structural, envelope and interior work on homes and commercial buildings."
+      },
+      {
+        "title": "Commercial Construction & Improvements",
+        "description": "Tenant improvements and upgrades for offices, retail and strata buildings."
+      },
+      {
+        "title": "Custom Home Construction",
+        "description": "Custom homes, from concept and permits through to handover."
+      },
+      {
+        "title": "Property Development",
+        "description": "Feasibility, approvals and construction for new developments."
+      }
+    ],
+    "images": {
+      "homeAlt": "EY Construction website home page",
+      "aboutAlt": "EY Construction about section",
+      "servicesAlt": "EY Construction civil services",
+      "quoteAlt": "EY Construction quote request form"
+    }
   }
 }

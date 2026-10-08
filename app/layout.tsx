@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "./enterprise-theme.css";
+import "./redesign.css";
 import siteContent from "./content/site-content.json";
+import { LeadModalProvider } from "./components/lead-modal";
 // Google Sans is not publicly distributable; Inter is the closest open match
 // for the enterprise theme's typography.
 const inter = Inter({
@@ -45,7 +47,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${inter.className}`}>{children}</body>
+      <body className={`${inter.variable} ${inter.className}`}>
+        <LeadModalProvider>{children}</LeadModalProvider>
+      </body>
     </html>
   );
 }
