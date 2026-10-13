@@ -12,6 +12,9 @@ import eyHomeImage from "../../images/apps/eyconstruction/home.jpg";
 import eyAboutImage from "../../images/apps/eyconstruction/about.jpg";
 import eyServicesImage from "../../images/apps/eyconstruction/services.jpg";
 import eyQuoteImage from "../../images/apps/eyconstruction/quote.jpg";
+import billingPointImageOne from "../../images/apps/billingpoint/cropped/1.jpg";
+import billingPointImageTwo from "../../images/apps/billingpoint/cropped/2.jpg";
+import billingPointImageThree from "../../images/apps/billingpoint/cropped/3.jpg";
 
 export type DetailItem = { title: string; description: string };
 export type DetailSection = { kicker: string; title: string; description?: string; items: DetailItem[] };
@@ -48,10 +51,11 @@ const toFileName = (prefix: string, title: string) =>
 export type ServicePage = (typeof siteContent.serviceDetails)[number] & { description: string };
 
 const {
+  billingPointProduct,
   eyProduct,
   products,
   samagraProduct,
-  schoolProduct,
+  // schoolProduct,
   spotlight,
   servicesSection,
   serviceDetails,
@@ -134,29 +138,30 @@ export const productPages: ProductPage[] = [
     ],
     screenKind: "phone",
   },
-  {
-    slug: "school-management-software",
-    name: schoolProduct.name,
-    tagline: spotlightFor("school-management-software").tagline,
-    summary: spotlightFor("school-management-software").description,
-    art: spotlightFor("school-management-software").art,
-    title: schoolProduct.heroTitle,
-    description: schoolProduct.heroDescription,
-    overviewHeading: spotlightFor("school-management-software").tagline,
-    overview: [spotlightFor("school-management-software").description],
-    points: [],
-    sections: [],
-    screens: [],
-    screenKind: "phone",
-    features: {
-      title: schoolProduct.featuresTitle,
-      description: schoolProduct.featuresDescription,
-      tiles: schoolProduct.features.map((feature) => ({
-        ...feature,
-        imageFile: toFileName("school", feature.title),
-      })),
-    },
-  },
+  // School Management Software is hidden for now; uncomment to bring it back.
+  // {
+  //   slug: "school-management-software",
+  //   name: schoolProduct.name,
+  //   tagline: spotlightFor("school-management-software").tagline,
+  //   summary: spotlightFor("school-management-software").description,
+  //   art: spotlightFor("school-management-software").art,
+  //   title: schoolProduct.heroTitle,
+  //   description: schoolProduct.heroDescription,
+  //   overviewHeading: spotlightFor("school-management-software").tagline,
+  //   overview: [spotlightFor("school-management-software").description],
+  //   points: [],
+  //   sections: [],
+  //   screens: [],
+  //   screenKind: "phone",
+  //   features: {
+  //     title: schoolProduct.featuresTitle,
+  //     description: schoolProduct.featuresDescription,
+  //     tiles: schoolProduct.features.map((feature) => ({
+  //       ...feature,
+  //       imageFile: toFileName("school", feature.title),
+  //     })),
+  //   },
+  // },
   {
     slug: "ey-construction",
     name: eyProduct.name,
@@ -191,6 +196,39 @@ export const productPages: ProductPage[] = [
     ],
     screenKind: "browser",
     liveUrl: eyProduct.url,
+  },
+  {
+    slug: "billingpoint",
+    name: billingPointProduct.name,
+    tagline: spotlightFor("billingpoint").tagline,
+    summary: spotlightFor("billingpoint").description,
+    art: spotlightFor("billingpoint").art,
+    title: billingPointProduct.heroTitle,
+    description: billingPointProduct.heroDescription,
+    overviewHeading: billingPointProduct.overviewTitle,
+    overview: billingPointProduct.overview,
+    points: billingPointProduct.points,
+    sections: [
+      {
+        kicker: "Billing",
+        title: billingPointProduct.billingTitle,
+        description: billingPointProduct.billingDescription,
+        items: billingPointProduct.billingFeatures,
+      },
+      {
+        kicker: "Operations",
+        title: billingPointProduct.operationsTitle,
+        description: billingPointProduct.operationsDescription,
+        items: billingPointProduct.operationsFeatures,
+      },
+    ],
+    screens: [
+      { image: billingPointImageOne, alt: billingPointProduct.images.dashboardAlt },
+      { image: billingPointImageTwo, alt: billingPointProduct.images.paymentAlt },
+      { image: billingPointImageThree, alt: billingPointProduct.images.expenseAlt },
+    ],
+    screenKind: "phone",
+    liveUrl: billingPointProduct.url,
   },
 ];
 

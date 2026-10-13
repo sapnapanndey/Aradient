@@ -4,6 +4,7 @@ import spotSamagraImage from "../../images/ai/spot-samagra.jpg";
 import spotSchoolImage from "../../images/ai/spot-school.jpg";
 import spotEyConstructionImage from "../../images/ai/spot-ey-construction.jpg";
 import heroEyConstructionImage from "../../images/ai/hero-ey-construction.jpg";
+import spotBillingPointImage from "../../images/ai/spot-billingpoint.jpg";
 import craftAiImage from "../../images/ai/craft-ai.jpg";
 import craftWebImage from "../../images/ai/craft-web.jpg";
 import craftMobileImage from "../../images/ai/craft-mobile.jpg";
@@ -23,6 +24,7 @@ export const artImages: Record<string, StaticImageData> = {
   "spot-school": spotSchoolImage,
   "spot-ey-construction": spotEyConstructionImage,
   "hero-ey-construction": heroEyConstructionImage,
+  "spot-billingpoint": spotBillingPointImage,
   "craft-ai": craftAiImage,
   "craft-web": craftWebImage,
   "craft-mobile": craftMobileImage,

@@ -13,7 +13,7 @@ import { SiteHeader } from "./components/site-header";
 import { CtaBand, SiteFooter } from "./components/site-footer";
 import { SvgIcon } from "./components/ui";
 import siteContent from "./content/site-content.json";
-import { productHref, serviceHref } from "./lib/catalog";
+import { productHref, productPages, serviceHref } from "./lib/catalog";
 
 const teamImages = {
   akanksha: akankshaImage,
@@ -109,7 +109,9 @@ export default function Home() {
     successSection,
   } = siteContent;
 
-  const spotlightCarousel = useCarousel(spotlight.items.length);
+  // Only spotlight products that currently have a page in the catalog.
+  const spotlightItems = spotlight.items.filter((item) => productPages.some((page) => page.slug === item.slug));
+  const spotlightCarousel = useCarousel(spotlightItems.length);
   const inActionCarousel = useCarousel(inAction.items.length);
 
   const findService = (title: string) =>
@@ -253,7 +255,7 @@ export default function Home() {
           onScroll={spotlightCarousel.onScroll}
           ref={spotlightCarousel.ref}
         >
-          {spotlight.items.map((item, index) => (
+          {spotlightItems.map((item, index) => (
             <article key={item.name} {...reveal(`spot-${index}`, "ix-story")}>
               <ArtTile className="ix-story-art" variant={item.art} />
               <div className="ix-story-body">

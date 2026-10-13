@@ -766,6 +766,13 @@
         "tagline": "Website for a Southern Alberta contractor",
         "description": "Twelve civil and building services, safety credentials and quote requests in one clear website.",
         "art": "spot-ey-construction"
+      },
+      {
+        "slug": "billingpoint",
+        "name": "BillingPoint",
+        "tagline": "GST billing in seconds for Indian businesses",
+        "description": "GST invoices, stock, expenses and UPI payments for restaurants, shops and distributors.",
+        "art": "spot-billingpoint"
       }
     ]
   },
@@ -1151,6 +1158,68 @@
       "aboutAlt": "EY Construction about section",
       "servicesAlt": "EY Construction civil services",
       "quoteAlt": "EY Construction quote request form"
+    }
+  },
+  "billingPointProduct": {
+    "name": "BillingPoint",
+    "url": "https://billingpoint.aradient.com/",
+    "heroTitle": "Billing that keeps up with your counter",
+    "heroDescription": "GST billing, stock and payments for Indian businesses: scan and bill at the counter, print receipts, share on WhatsApp and get paid to your own bank.",
+    "overviewTitle": "One app for the busiest part of the day",
+    "overview": [
+      "Restaurants, retail shops and distributors raise dozens of bills a day, often on paper or in tools built for accountants. BillingPoint puts a GST invoice, the day's sales and what customers still owe on one screen.",
+      "Bills, stock, purchases, expenses and payments live in the same place, so the numbers you need for GST returns are ready when you are."
+    ],
+    "points": [
+      "GST invoices with CGST and SGST calculated automatically",
+      "Today's sales, collections and dues on the home screen",
+      "UPI, cash, NEFT, RTGS and IMPS payments with TDS tracking",
+      "Low-stock alerts and receipt scanning for expenses"
+    ],
+    "billingTitle": "Billing and sales",
+    "billingDescription": "Raise a correct GST invoice in seconds, whether it is a walk-in sale or a regular customer.",
+    "billingFeatures": [
+      {
+        "title": "New bill",
+        "description": "Add items, scan barcodes or paste an order; tax is worked out line by line."
+      },
+      {
+        "title": "Walk-in or account customers",
+        "description": "Bill counter sales without an account, or add a buyer and mobile number for WhatsApp."
+      },
+      {
+        "title": "Share and print",
+        "description": "Print receipts at the counter or send the invoice straight to the customer on WhatsApp."
+      },
+      {
+        "title": "Daily sales dashboard",
+        "description": "Bills today, amount collected and amount to collect, with monthly totals and overdue dues."
+      }
+    ],
+    "operationsTitle": "Stock, payments and expenses",
+    "operationsDescription": "Everything behind the counter that keeps the books straight.",
+    "operationsFeatures": [
+      {
+        "title": "Record payments",
+        "description": "Log UPI, cash and bank transfers against a customer, with UTR reference and TDS deducted."
+      },
+      {
+        "title": "Stock and purchases",
+        "description": "Track items and purchases, and get warned before a product runs out."
+      },
+      {
+        "title": "Expenses with receipt scan",
+        "description": "Photograph a bill and the expense form fills in, with category, GST rate and payment mode."
+      },
+      {
+        "title": "Reports and GST returns",
+        "description": "Sales, collections and tax summaries ready for filing."
+      }
+    ],
+    "images": {
+      "dashboardAlt": "BillingPoint home screen with today's sales, collections and quick actions",
+      "paymentAlt": "BillingPoint record payment screen with UPI, cash and bank transfer modes",
+      "expenseAlt": "BillingPoint add expense screen with receipt scanning and GST rates"
     }
   }
 }
